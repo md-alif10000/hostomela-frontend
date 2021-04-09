@@ -8,7 +8,7 @@ import { getOrders } from "../../actions";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
 import "./style.css";
-import { getRecharges } from "../../actions/recharge.action";
+
 
 export default function Account(props) {
 	const auth = useSelector((state) => state.auth);
@@ -22,12 +22,10 @@ export default function Account(props) {
 
 		useEffect(() => {
 			dispatch(getOrders());
-			dispatch(getRecharges())
+	
 		}, []);
 
-	// useEffect(() => {
-	// 	if (!auth.authenticate) return <Redirect to='/' />;
-	// }, [auth.authenticate]);
+
 
 	if (!auth.authenticate) return <Redirect to='/login' />;
 

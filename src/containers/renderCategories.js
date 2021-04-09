@@ -1,6 +1,4 @@
-import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import List from "@material-ui/core/List";
 import { Link } from "react-router-dom";
 import { generatePublicUrl } from "../urlconfig";
 

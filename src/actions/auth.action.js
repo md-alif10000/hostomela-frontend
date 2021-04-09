@@ -39,16 +39,24 @@ export const registerOtp=(phone)=>{
 
 	return async (dispatch) => {
 		console.log(phone)
-		dispatch({ type: authConstants.REGISTER_OTP_FAILURE });
+		dispatch({ type: authConstants.REGISTER_OTP_REQUEST });
 		const res = await axios.post("/register_verify", {phone});
 
-		if (res.status === 200) {
+		if (res.status == 200) {
 			
 			dispatch({
 				type: authConstants.REGISTER_OTP_SUCCESS,
 			
 			});
 			Swal.fire("Wow.", "Otp sent successful.!", "success");
+		}
+		else if(res.status==400){
+				dispatch({
+					type: authConstants.REGISTER_OTP_FAILURE,
+					payload: { error: res.data.error },
+				});
+				Swal.fire("Oops...", "Something went wrong!", "error");
+
 		} else {
 			if (res.status === 400) {
 				dispatch({

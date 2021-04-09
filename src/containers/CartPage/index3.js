@@ -3,7 +3,6 @@ import Layout from "../../components/Layout";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	addToCart,
-	decreaseCart,
 	getCartItems,
 	
 } from "../../actions/cart.action";
