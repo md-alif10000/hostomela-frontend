@@ -1,0 +1,15 @@
+.tableContainer{
+    margin: 100px;
+
+}
+.orderImg{
+    height: 60px;
+    width: auto;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+@media screen and (max-width:1000px){
+    .tableContainer{
+        margin: 5px;
+    }
+}

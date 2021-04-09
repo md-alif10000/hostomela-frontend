@@ -1,0 +1,12 @@
+.categorybox{
+    border:3px solid  white;
+    border-radius: 10px;
+    background-color: rgb(245, 244, 244);
+
+
+}
+.categorybox:hover{
+    transform: scale(1.1);
+    transition: 1;
+    box-shadow: 2px 2px 1px 1px gray;
+}
