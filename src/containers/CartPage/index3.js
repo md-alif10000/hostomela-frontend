@@ -4,40 +4,41 @@ import { useSelector, useDispatch } from "react-redux";
 import {
 	addToCart,
 	getCartItems,
-	
+	removeCartItem,
 } from "../../actions/cart.action";
-import {validateCoupon} from '../../actions/user.action'
+import { validateCoupon } from "../../actions/user.action";
 import "./style2.css";
 import CartItem2 from "./CartItem/index2";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
 
 export const TotalPrice = (props) => {
-	const [couponInput, setCouponInput] = useState(false)
-	const [couponName, setCouponName] = useState('')
+	const [couponInput, setCouponInput] = useState(false);
+	const [couponName, setCouponName] = useState("");
 	const cart = useSelector((state) => state.cart);
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
+	const coupon = JSON.parse(localStorage.getItem("coupon"));
 
-	const coupon = JSON.parse(localStorage.getItem("coupon")); 
-
-
-	const couponValidation=(e)=>{
-		e.preventDefault()
+	const couponValidation = (e) => {
+		e.preventDefault();
 		dispatch(validateCoupon({ couponName }));
-	}
+	};
 
+	const afterDeliveryCharge = Object.keys(cart.cartItems).reduce(
+		(totalPrice, key) => {
+			const { price, qty } = cart.cartItems[key];
+			return totalPrice + price * qty;
+		},
+		0
+	);
 
-	const afterDeliveryCharge=Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-							const { price, qty } = cart.cartItems[key];
-							return totalPrice + price * qty;
-						},0)
-
-					
-			const couponDiscont= coupon?  afterDeliveryCharge	* (coupon.amount	* (1/100))	:null
-			const afterDiscount =coupon? (afterDeliveryCharge - couponDiscont)+50:null
-
-
+	const couponDiscont = coupon
+		? afterDeliveryCharge * (coupon.amount * (1 / 100))
+		: null;
+	const afterDiscount = coupon
+		? afterDeliveryCharge - couponDiscont + 50
+		: null;
 
 	return (
 		<div className='total-price text-left'>
@@ -143,10 +144,14 @@ export default function CartPage3(props) {
 
 		dispatch(addToCart({ _id, name, price, img }, -1));
 	};
+
+	const onRemoveCartItem = (_id) => {
+		dispatch(removeCartItem({ productId: _id }));
+	};
+
 	if (props.onlyCartItems) {
 		return (
 			<>
-				
 				{Object.keys(cartItems).map((key, index) => (
 					<CartItem2
 						key={index}
@@ -212,6 +217,7 @@ export default function CartPage3(props) {
 								cartItem={cartItems[key]}
 								onQuantityInc={onQuantityIncrement}
 								onQuantityDec={onQuantityDecrement}
+								onRemoveCartItem={onRemoveCartItem}
 							/>
 						))}
 					</table>

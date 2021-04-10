@@ -148,4 +148,43 @@ export const updateCart = () => {
 
 
 
+
+  export const removeCartItem = (payload) => {
+		return async (dispatch) => {
+		
+			try {
+						  const { auth } = store.getState();
+					if (auth.authenticate) {
+								dispatch({ type: cartConstants.REMOVE_CART_ITEM_REQUEST });
+								const res = await axios.post(`/user/cart/removeItem`, {
+									payload,
+								});
+								if (res.status === 202) {
+									dispatch({ type: cartConstants.REMOVE_CART_ITEM_SUCCESS });
+									dispatch(getCartItems());
+								} else {
+									const { error } = res.data;
+									dispatch({
+										type: cartConstants.REMOVE_CART_ITEM_FAILURE,
+										payload: { error },
+									});
+								}
+
+					}else{
+				
+					
+						localStorage.removeItem('cart',payload.productId)
+							dispatch({ type: cartConstants.REMOVE_CART_ITEM_SUCCESS });
+							dispatch(getCartItems());
+					}
+		
+			} catch (error) {
+				console.log(error);
+			}
+		};
+	};
+
+
+
+
 export {getCartItems}

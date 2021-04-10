@@ -33,7 +33,9 @@ export default function CartItem2(props) {
 						<p>{name}</p>
 						<span>Price:BDT {price}</span>
 						<br />
-						<a href='#'>remove</a>
+						<a href='#' onClick={() => props.onRemoveCartItem(_id)}>
+							remove
+						</a>
 					</div>
 				</div>
 			</td>
@@ -44,7 +46,13 @@ export default function CartItem2(props) {
 					<RemoveCircleOutlineOutlinedIcon />
 				</button>
 
-				<input type='number' className='btn-primary rounded m-auto' value={qty} min='1' readOnly />
+				<input
+					type='number'
+					className='btn-primary rounded m-auto'
+					value={qty}
+					min='1'
+					readOnly
+				/>
 
 				<button
 					className='btn btn-success rounded m-1'
