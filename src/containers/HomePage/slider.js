@@ -88,7 +88,7 @@ export default function NowPlaying(props) {
 			<Card>
 				<Card.Body>
 					<Card.Title>
-						<h2>LATEST PRODUCT</h2>
+						<h2 className='m-2 p-2 text-center'>LATEST PRODUCT</h2>
 					</Card.Title>
 					<Slider {...settings}>
 						{product.products.map(function (product, index) {
@@ -148,33 +148,12 @@ export default function NowPlaying(props) {
 			<Card className='mt-5'>
 				<Card.Body>
 					<Card.Title>
-						<h2>LATEST PRODUCT</h2>
+						<h2 className='m-2 p-2 text-center'>LATEST PRODUCT</h2>
 					</Card.Title>
 					<Slider {...settings}>
 						{product.products.map(function (product, index) {
 							return (
-								// <div class='container'>
-								// <div class='row m-4'>
-								// 	{/* <div class='col-sm-6 col-lg-3 bg-primary'>One of three columns</div> */}
-								// 	<div
-								// 		className='col-lg col-sm-6 bg-primary text-center p-2 '
-								// 		style={{
-								// 			width: "260px",
-								// 			height: "300px",
-								// 			boxSizing: "border-box",
-								// 		}}>
-								// 		<img
-								// 			className='m-auto rounded bg-white'
-								// 			style={{ width: "95%", height: "200px" }}
-								// 			src={generatePublicUrl(
-								// 				product.productPictures[0]
-								// 					? product.productPictures[0].img
-								// 					: null
-								// 			)}
-								// 		/>
-								// 	</div>
-								// </div>
-								// </div>
+					
 
 								<div className='col-sm-6 col-lg-3 m-2'>
 									<Grid key={index} item className='col-sm-6 col-lg-3 m-2'>

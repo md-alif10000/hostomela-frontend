@@ -10,13 +10,11 @@ import { Button, SwipeableDrawer } from "@material-ui/core";
 import { register,registerOtp,googleLogin, facebookLogin } from "../../../actions/auth.action";
 import "./style2.css";
 
-import GoogleLogin from "react-google-login";
-import FacebookLogin from "react-facebook-login";
-
 import { useSelector, useDispatch } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import Header from "../../../components/Header/index";
 import Swal from "sweetalert2";
+import SocialLogin from "../socialLogin";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -180,7 +178,12 @@ export default function () {
 								/>
 							</div>
 							<div>
-								<input type='file' className='btn btn-success' placeholder='Choose Picture' onChange={(e)=>setProfilePicture(e.target.value)} />
+								<input
+									type='file'
+									className='btn btn-success'
+									placeholder='Choose Picture'
+									onChange={(e) => setProfilePicture(e.target.value)}
+								/>
 							</div>
 							<div className='input-container'>
 								<label className='label'>Password</label>
@@ -216,37 +219,7 @@ export default function () {
 									Login here
 								</Link>
 							</p>
-							<h2>OR</h2>
-							<p>Login With</p>
-							<div className='loginicon-container'>
-						
-								<div
-									style={{ display: "flex", justifyContent: "space-between" }}>
-									<div style={{ margin: "20px" }}>
-										<GoogleLogin
-											clientId='657189057409-g02l0tmglfd02pq1dcd4ns4dgv1465b5.apps.googleusercontent.com'
-											buttonText=''
-											onSuccess={responseSuccessGoogle}
-											onFailure={responseFailureGoogle}
-											cookiePolicy={"single_host_origin"}
-											style={{ width: "250px" }}
-										/>
-									</div>
-									<div style={{ margin: "20px" }}>
-										<FacebookLogin
-											appId='142413274468639'
-											autoLoad={false}
-											fields='name,email,picture'
-											callback={responseFacebook}
-											// cssClass='kep-login-facebook-[80]'
-											icon='fa-facebook'
-											style={{ width: "80px" }}
-											size='small'
-											textButton=''
-										/>
-									</div>
-								</div>
-							</div>
+							<SocialLogin />
 						</form>
 					</div>
 				</div>

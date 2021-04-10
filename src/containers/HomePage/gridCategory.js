@@ -1,15 +1,13 @@
 import React,{useState,useEffect} from "react";
 import{useSelector,useDispatch} from 'react-redux'
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
+
 import { Link } from "react-router-dom";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import Paper from "@material-ui/core/Paper";
+
+
+
 import {getAllCategory} from '../../actions/category.action'
-import { domain, generatePublicUrl } from "../../urlconfig";
+import { domain, generatePublicUrl,api } from "../../urlconfig";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -117,14 +115,15 @@ export default function GridCategory() {
 							display: "flex",
 							flexDirection: "column",
 						}}>
-						{console.log('Image',category.categoryImage)}
+						{console.log("Category", category)}
+						{console.log("Image url", `${domain}${category.image}`)}
 						<img
 							style={{
 								width: "100px",
 								height: "80px",
 								borderRadius: "10px",
 							}}
-							src={domain + `${category.image}`}
+							src={`${domain}${category.image}`}
 						/>
 						<h4 style={{ margin: "auto" }}>{category.name}</h4>
 					</div>

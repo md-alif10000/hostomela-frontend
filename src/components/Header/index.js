@@ -26,22 +26,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import FolderIcon from "@material-ui/icons/Folder";
-import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Input from "@material-ui/core/Input";
-import FilledInput from "@material-ui/core/FilledInput";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./style.css";
@@ -282,21 +270,14 @@ export default function Header(props) {
 	const category = useSelector((state) => state.category);
 	const auth = useSelector((state) => state.auth);
 	const { categories } = category;
-	// const categoryList = [];
-	// categories.map((category) => {
-	// 	if (category.children) {
-	// 		category.children.map((item) => {
-	// 			categoryList.push(item);
-	// 		});
-	// 	}
-	// });
+
 
 	const renderCategories = (categories) => {
 		let myCategories = [];
 
 		for (let category of categories) {
 			myCategories.push(
-				<a href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+				<a style={{fontSize:'14px'}} href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
 					<ListItem key={category.name} className='listItem'>
 						{category.parentId ? (
 							<a
@@ -310,13 +291,11 @@ export default function Header(props) {
 								className='sublistItem'
 								href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
 								<span>{category.name}</span>
-								<ArrowForwardIosIcon style={{ marginLeft: "30px" }} />
+								<ArrowForwardIosIcon style={{ marginLeft: "20px" }} />
 							</a>
 						)}
 
-						{/* {category.children ? (
-						<List>{renderCategories(category.children)}</List>
-					) : null} */}
+			
 					</ListItem>
 				</a>
 			);
