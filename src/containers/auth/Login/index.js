@@ -117,7 +117,7 @@ export default function Register(props) {
 						<div style={{ display: "flex", justifyContent: "space-between" }}>
 							<div style={{ margin: "20px" }}>
 								<GoogleLogin
-									clientId='657189057409-g02l0tmglfd02pq1dcd4ns4dgv1465b5.apps.googleusercontent.com'
+									clientId='161216550543-5a1u9upt7odjarlg9j2cef9gbbbk9ict.apps.googleusercontent.com'
 									buttonText=''
 									onSuccess={responseSuccessGoogle}
 									onFailure={responseFailureGoogle}
