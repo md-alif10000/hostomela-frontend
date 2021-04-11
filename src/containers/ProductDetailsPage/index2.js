@@ -151,8 +151,6 @@ export default function ProductDetails2(props) {
 										<img src={generatePublicUrl(image.img)} alt='' />
 									</div>
 								))}
-
-
 							</div>
 						</div>
 					</div>
@@ -192,26 +190,52 @@ export default function ProductDetails2(props) {
 								Add To Cart
 							</a>
 						</form>
-						<h3>Product Detail</h3>
-						<p>{product.productDetails.desc}</p>
+						{/* <h3>Product Detail</h3>
+						<p>{product.productDetails.desc}</p> */}
 					</div>
 				</div>
 			</section>
 
 			<div className='container text-lg' style={{ fontSize: "20px" }}>
 				<div className={classes.root}>
-					<AppBar position='static' style={{ fontSize: "20px" }}>
+					<AppBar
+						position='static'
+						style={{
+							backgroundImage:
+								"linear-gradient(315deg, #bc52d1 0%, #5f0a87 74%)",
+
+							backgroundColor: "#bc52d1",
+							boxShadow: " -2px 1px 2px 2px #ec96fd",
+							fontSize: "20px",
+						}}>
 						<Tabs
+							className='bold-600'
+							style={{ fontSize: "18px" }}
 							value={value}
 							onChange={handleChange}
 							aria-label='simple tabs example'>
-							<Tab label='Details' {...a11yProps(0)} />
-							<Tab label='Reviews' {...a11yProps(1)} />
-							<Tab label='Submit Reviews' {...a11yProps(2)} />
+							<Tab
+								className='bold-600'
+								style={{ fontSize: "18px" }}
+								label='Details'
+								{...a11yProps(0)}
+							/>
+							<Tab
+								className='bold-600'
+								style={{ fontSize: "18px" }}
+								label='Reviews'
+								{...a11yProps(1)}
+							/>
+							<Tab
+								className='bold-600'
+								style={{ fontSize: "14px" }}
+								label='Submit Reviews'
+								{...a11yProps(2)}
+							/>
 						</Tabs>
 					</AppBar>
 					<TabPanel value={value} index={0}>
-						<p>{product.productDetails.desc}</p>
+						<p style={{ fontSize: "16px" }}>{product.productDetails.desc}</p>
 					</TabPanel>
 
 					<TabPanel value={value} index={1}>

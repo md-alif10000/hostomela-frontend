@@ -1,9 +1,14 @@
-*{
-    font-family: 'Roboto',sans-serif;
-}
+
 
 body{
-    background: url(https://cdn.pixabay.com/photo/2017/12/13/16/40/background-3017167_1280.jpg);
+    /* background: url('https://image.freepik.com/free-photo/blurred-gradient-background-pink-color_58702-1643.jpg');
+    background-repeat: repeat; */
+
+/* 
+ background-image: linear-gradient(315deg, #c28581 0%, #e469fd 74%); 
+
+background-color:#bc52d1;  */
+background-color: #fff;
 }
 .flexRow{
     display: flex;
@@ -19,13 +24,24 @@ body{
     justify-content: space-around;
 }
 .c-primary{
-    background-color: #fce00d;
+    background-color: #b643cd;
 }
 .t-primary{
+  color:#ffff
     
 }
-
-
+.t-secondary{
+  color: #b643cd;
+}
+.bold-500{
+  font-weight: 500;
+}
+.bold-600{
+  font-weight: 600;
+}
+.bold-700{
+  font-weight: 700;
+}
 
 /* Footer CSS */
 

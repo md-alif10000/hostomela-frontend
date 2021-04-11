@@ -128,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
 			easing: theme.transitions.easing.easeOut,
 			duration: theme.transitions.duration.enteringScreen,
 		}),
+
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
@@ -141,6 +142,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 	drawerPaper: {
 		width: drawerWidth,
+		backgroundColor: "#a4508b",
+		backgroundImage: "linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)",
+		fontWeight: "700",
+		color: "white",
 	},
 	drawerHeader: {
 		display: "flex",
@@ -149,6 +154,9 @@ const useStyles = makeStyles((theme) => ({
 		// necessary for content to be below app bar
 		...theme.mixins.toolbar,
 		justifyContent: "flex-end",
+		backgroundImage: "linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)",
+		fontWeight: "700",
+		color: "white",
 	},
 	content: {
 		flexGrow: 1,
@@ -311,7 +319,12 @@ export default function Header(props) {
 				<AppBar
 					position={props.fixed ? "fixed" : "static"}
 					className='appbar1'
-					style={{ backgroundColor: "#fce00d", color: "#4f4d41" }}>
+					style={{
+						backgroundColor: "#a4508b",
+						backgroundImage: "linear-gradient(326deg, #bc52d1 0%, #a031b6 74%)",
+						fontWeight: "700",
+						color: "#fce00d",
+					}}>
 					<div className='headerContainer'>
 						<Toolbar>
 							{/* <div style={{ display: "flex", justifyContent: "space-betwwen" }}> */}
@@ -359,7 +372,7 @@ export default function Header(props) {
 										badgeContent={auth.user.balance}
 										color='secondary'
 										style={{ fontSize: "18px" }}>
-										<Link to='/account' style={{color:'green'}}>
+										<Link to='/account' style={{ color: "green" }}>
 											<AccountBalanceWalletIcon style={{ fontSize: "30" }} />
 											Wallet <span>{auth.user.balance}.00-৳</span>
 										</Link>
