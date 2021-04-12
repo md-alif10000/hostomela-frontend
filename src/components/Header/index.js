@@ -9,7 +9,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+
 import Badge from "@material-ui/core/Badge";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -19,7 +19,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -327,8 +326,7 @@ export default function Header(props) {
 					}}>
 					<div className='headerContainer'>
 						<Toolbar>
-							{/* <div style={{ display: "flex", justifyContent: "space-betwwen" }}> */}
-							{/* <div> */}
+				
 							<IconButton
 								color='inherit'
 								aria-label='open drawer'
@@ -337,8 +335,7 @@ export default function Header(props) {
 								className={clsx(classes.menuButton, open && classes.hide)}>
 								<MenuIcon style={{ fontSize: "25" }} />
 							</IconButton>
-							{/* </div> */}
-							{/* <div> */}
+				
 							<Typography className={classes.title} variant='h6' noWrap>
 								Material-UI
 							</Typography>
