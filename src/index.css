@@ -15,6 +15,15 @@ code {
     monospace;
 }
 
+
+
+
+.loader{
+  justify-content: center;
+  text-align: center;
+  margin: 5%;
+  
+}
 /*Header Css*/
 
 
@@ -36,7 +45,7 @@ code {
 	border-bottom: 2px solid black;
 	padding: 3px;
 	margin-right: 10px;
-
+  color: #f6f7fb;
 
 
 }
@@ -45,6 +54,7 @@ code {
 	transform: translate(1.2);
 	background-color:rgb(216, 216, 19);
 	margin: 0px 15px;
+  color: rgb(48, 46, 46);
 	
 }
 

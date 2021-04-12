@@ -11,6 +11,7 @@ import { generatePublicUrl } from "../../urlconfig.js";
 import { addToCart } from "../../actions/cart.action";
 import { Redirect } from "react-router";
 import Slider from "react-slick";
+import Loader from "react-loader-spinner";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -115,6 +116,18 @@ export default function ProductDetails2(props) {
 	if (Object.keys(product.productDetails).length === 0) {
 		return null;
 	}
+
+	if(product.loading){
+			return (
+				<div className='container loader'>
+					<Loader type='Circles' color='#00BFFF' height={80} width={80} />
+				</div>
+			);
+			
+			
+		
+	}
+
 
 	return (
 		<Layout>

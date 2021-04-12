@@ -326,7 +326,6 @@ export default function Header(props) {
 					}}>
 					<div className='headerContainer'>
 						<Toolbar>
-				
 							<IconButton
 								color='inherit'
 								aria-label='open drawer'
@@ -335,9 +334,9 @@ export default function Header(props) {
 								className={clsx(classes.menuButton, open && classes.hide)}>
 								<MenuIcon style={{ fontSize: "25" }} />
 							</IconButton>
-				
+
 							<Typography className={classes.title} variant='h6' noWrap>
-								Material-UI
+								Hostomela
 							</Typography>
 
 							<div
@@ -445,42 +444,21 @@ export default function Header(props) {
 							: null}
 					</List>
 					<Divider />
-					<List>
-						{["All mail", "Trash", "Spam"].map((text, index) => (
-							<ListItem button key={text}>
+					<List className='font-18 t-primary'>
+						<Link to='/account' className='font-18 t-primary'>
+							<ListItem button>
 								<ListItemIcon>
-									{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+									<AccountCircle />
 								</ListItemIcon>
-								<ListItemText primary={text} />
+								<ListItemText
+									primary={"My Account"}
+									className='font-18 t-primary'
+								/>
 							</ListItem>
-						))}
+						</Link>
 					</List>
 				</Drawer>
-				{/* <BottomNavigation
-				value={value}
-				onChange={handleChange}
-				className={classes.root}>
-				<BottomNavigationAction
-					label='Recents'
-					value='recents'
-					icon={<RestoreIcon />}
-				/>
-				<BottomNavigationAction
-					label='Favorites'
-					value='favorites'
-					icon={<FavoriteIcon />}
-				/>
-				<BottomNavigationAction
-					label='Nearby'
-					value='nearby'
-					icon={<LocationOnIcon />}
-				/>
-				<BottomNavigationAction
-					label='Folder'
-					value='folder'
-					icon={<FolderIcon />}
-				/>
-			</BottomNavigation> */}
+
 				{renderMobileMenu}
 
 				{renderMenu}

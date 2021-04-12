@@ -6,8 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import { logout } from "../../actions/auth.action";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import "./style2.css";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
@@ -43,15 +43,19 @@ export default function Header3() {
 				<div className='headerContainer'>
 					<Toolbar>
 						<IconButton
-							edge='start'
-							className={classes.menuButton}
-							color='inherit'
-							aria-label='menu'>
-							<MenuIcon />
+							edge='end'
+							aria-label='account of current user'
+							aria-haspopup='true'
+							color='inherit'>
+							<Link to='/account'>
+								<AccountCircle style={{ fontSize: "30" }} />
+							</Link>
 						</IconButton>
+
 						<Typography variant='h6' className={classes.title}>
-							News
+							<Link to='/account'> Account</Link>
 						</Typography>
+
 						{auth.user.name ? (
 							<>
 								<h4>Hi,{auth.user.name}</h4>

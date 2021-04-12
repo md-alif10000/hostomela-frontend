@@ -18,6 +18,7 @@ import Account from "../src/containers/account";
 import AboutUs from "./containers/AboutUs";
 import ContactUs from "./containers/ContactUs";
 import { getAllCategory } from "./actions";
+
 function App() {
 	const dispatch = useDispatch();
 	const auth = useSelector((state) => state.auth);
