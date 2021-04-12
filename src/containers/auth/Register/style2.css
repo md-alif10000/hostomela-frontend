@@ -13,9 +13,9 @@
     text-align: center;
     border: 2px solid gray;
     cursor: pointer;
-    width: 80%;
+    width: 90%;
     font-size: 18px;
-    background-color: #bdbdbd;
+    background-color: #d1d1d1;
     /* color: rgb(151, 151, 31); */
   
 }
@@ -50,14 +50,11 @@ color: white;
 
 .login-container{
     max-width: 350px;
-    margin:10px auto;
-    
+    margin: 10px auto;
     justify-content: center;
     text-align: center;
-    padding-top: 20px;
     color: white;
     border-radius: 20px;
-    background-color: #fcfcfc;
     box-shadow: 2px 2px 2px 3px #cc6e9f;
     background-color: #d4418e;
 background-image: linear-gradient(315deg, #d4418e 0%, #0652c5 74%);
@@ -90,7 +87,7 @@ background-image: linear-gradient(315deg, #d4418e 0%, #0652c5 74%);
 .icon:hover{
     transform: scale(1.1);
     transition: 1;
-    box-shadow: 1px 2px 2px 1px gray;
+    box-shadow: 1px 2px 2px 1px  #da368a;
 }
 
 

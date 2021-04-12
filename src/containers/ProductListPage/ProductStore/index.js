@@ -82,9 +82,13 @@ export default function ProductStore(props) {
 	return (
 		<>
 			<div className='productPageContainer'>
-				{subCategories ? (
+				{subCategories.length > 0 ? (
 					<Grid container className={classes.root} spacing={2}>
-						<h3 className='productCategoryHeader'>Categories</h3>
+						<h3 className='productCategoryHeader'>
+							<span className='p-3 rounded t-primary c-primary-gradiant'>
+								Categories
+							</span>{" "}
+						</h3>
 						<hr />
 						<Grid item xs={12}>
 							<Grid container justify='center' spacing={spacing}>
@@ -105,7 +109,7 @@ export default function ProductStore(props) {
 														height: "80px",
 														borderRadius: "10px",
 													}}
-													src={domain+`${category.categoryImage}`}
+													src={domain + `${category.categoryImage}`}
 												/>
 												<h4 style={{ margin: "auto" }}>{category.name}</h4>
 											</div>
@@ -118,7 +122,11 @@ export default function ProductStore(props) {
 				) : null}
 
 				<Grid container className={classes.root} spacing={2}>
-					<h3 className='productCategoryHeader'>Products</h3>
+					<h3 className='productCategoryHeader'>
+						<span className='p-3 rounded t-primary c-primary-gradiant'>
+							Products
+						</span>
+					</h3>
 					<Grid item xs={12}>
 						<Grid container justify='center' spacing={spacing}>
 							{product.products.map((product, index) => (

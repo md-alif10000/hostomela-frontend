@@ -32,9 +32,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	paper: {
+		backgroundColor: '#d4418e',
+backgroundImage: 'linear-gradient(315deg, #d4418e 0%, #0652c5 74%)',
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(3),
-		padding: theme.spacing(2),
+		padding: theme.spacing(0),
 		[theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
 			marginTop: theme.spacing(6),
 			marginBottom: theme.spacing(6),
@@ -42,7 +44,16 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	stepper: {
-		padding: theme.spacing(3, 0, 5),
+		borderRadius:'20px',
+		fontSize:'18px',
+		color:'#ffff',
+		 backgroundImage: 'linear-gradient(315deg, #bc52d1 0%, #871d9c 74%)',
+  
+  backgroundColor:'#bc52d1',
+  boxShadow: '-2px 2px 3px 2px #ec96fd',
+  margin:'20px 0'
+		
+		// padding: theme.spacing(3, 0, 5),
 	},
 	buttons: {
 		display: "flex",
@@ -284,12 +295,14 @@ export default function () {
 				<main className={classes.layout}>
 					<Paper className={classes.paper}>
 						<Typography component='h1' variant='h4' align='center'>
-							<h3>Register</h3>
+							<h3 className='t-primary'>Register</h3>
 						</Typography>
 						<Stepper activeStep={activeStep} className={classes.stepper}>
 							{steps.map((label) => (
 								<Step key={label}>
-									<StepLabel>{label}</StepLabel>
+									<StepLabel>
+										<span className='font-14 t-primary'>{label}</span>{" "}
+									</StepLabel>
 								</Step>
 							))}
 						</Stepper>

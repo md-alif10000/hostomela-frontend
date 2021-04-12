@@ -70,31 +70,34 @@ text-align: center;
 }
 
 .account-container{
-    margin: 180px;
+    margin: 0px;
 }
 
 
-@media screen and (max-width:1500px){
+/* @media screen and (min-width:1000px){
     .account-container{
         margin: 150px;
         padding: 0px;
         margin-top: 70px;
     }
-}
-@media screen and (max-width:1000px){
+} */
+/* @media screen and (max-width:1000px){
     .account-container{
         margin: 80px;
         padding: 0px;
         margin-top: 70px;
     }
 }
+
 @media screen and (max-width:600px){
     .account-container{
         margin: 0px;
         padding: 0px;
         margin-top: 70px;
     }
-}
+} */
+
+
 
 
 

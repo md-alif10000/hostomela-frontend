@@ -26,6 +26,13 @@ background-color: #fff;
 .c-primary{
     background-color: #b643cd;
 }
+.c-primary-gradiant{
+  background-image: linear-gradient(315deg, #bc52d1 0%, #871d9c 74%); 
+  
+  background-color:#bc52d1;  
+  box-shadow: -2px 2px 3px 2px #ec96fd;
+
+}
 .t-primary{
   color:#ffff
     
