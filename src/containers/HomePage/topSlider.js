@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './style.css'
 
 
 export default function TopSlider() {
@@ -7,7 +8,7 @@ export default function TopSlider() {
 		<div>
 			<div
 				id='carouselExampleDark'
-				className='carousel carousel-dark slide'
+				className='carousel carousel-dark slide slider-container'
 				data-bs-ride='carousel'>
 				<div className='carousel-indicators'>
 					<button

@@ -8,12 +8,19 @@ import { getOrders } from "../../actions";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
 import "./style.css";
+import { generatePublicUrl } from "../../urlconfig";
 
 
 export default function Account(props) {
 	const auth = useSelector((state) => state.auth);
 	const user = useSelector((state) => state.user);
 	const cart = useSelector((state) => state.cart);
+	
+	const dp = auth.user.profilePicture
+		? auth.user.profilePicture.slice(0, 4) == "http"
+			? auth.user.profilePicture
+			: generatePublicUrl(auth.user.profilePicture)
+		: " https://bootdey.com/img/Content/avatar/avatar7.png";
 	const dispatch = useDispatch()
 
 	const userLogout=()=>{
@@ -32,15 +39,15 @@ export default function Account(props) {
 	return (
 		<>
 			<Header fixed></Header>
-			<div className='conatiner mt-5'>
-				<div className='main-body container pt-3'>
+			<div className='account-container mt-5'>
+				<div className='main-body  pt-3'>
 					<div className='row gutters-sm mt-5'>
 						<div className='col-md-4 mb-3'>
-							<div className='card'>
+							<div className='card rounded-3'>
 								<div className='card-body'>
-									<div className='d-flex flex-column align-items-center text-center'>
+									<div className='d-flex flex-column align-items-center text-center rounded-3'>
 										<img
-											src='https://bootdey.com/img/Content/avatar/avatar7.png'
+											src={dp}
 											alt='Admin'
 											className='rounded-circle'
 											width='150'
@@ -63,7 +70,7 @@ export default function Account(props) {
 									</div>
 								</div>
 							</div>
-							<div className='card mt-3'>
+							<div className='card mt-3 rounded-3'>
 								<ul className='list-group list-group-flush'>
 									<li className='list-group-item d-flex justify-content-between align-items-center flex-wrap'>
 										<h6 className='mb-0'>
@@ -173,7 +180,7 @@ export default function Account(props) {
 								</ul>
 							</div>
 						</div>
-						<div className='col-md-8'>
+						<div className='col-md-8 rounded-3'>
 							<div className='card mb-3'>
 								<div className='card-body'>
 									<div className='row'>
@@ -232,16 +239,7 @@ export default function Account(props) {
 													{user.orders.length ? user.orders.length : 0}
 												</div>
 											</Link>
-											<Link to='/cart' style={{ width: "100%" }}>
-												<div className='smallDiv'>
-													<LocalGroceryStoreIcon
-														style={{ fontSize: "25px", margin: "5px" }}
-													/>{" "}
-													In Cart -
-													{cart.cartItems.length ? cart.cartItems.length : 0}
-													(items)
-												</div>
-											</Link>
+
 											<br />
 										</div>
 										<div className='card-body ' style={{ display: "flex" }}>
@@ -262,13 +260,15 @@ export default function Account(props) {
 								<div className='col-sm-6 mb-3'>
 									<div className='card h-100'>
 										<div className='card-body' style={{ display: "flex" }}>
-											<Link to='/account/recharge' style={{ width: "100%" }}>
-												<div className=' smallDiv'>Mobile Recharge</div>
-											</Link>
-										</div>
-										<div className='card-body' style={{ display: "flex" }}>
-											<Link to='/account/recharge/history' style={{ width: "100%" }}>
-												<div className='smallDiv'>Recharge History</div>
+											<Link to='/cart' style={{ width: "100%" }}>
+												<div className='smallDiv'>
+													<LocalGroceryStoreIcon
+														style={{ fontSize: "25px", margin: "5px" }}
+													/>{" "}
+													In Cart -
+													{cart.cartItems.length ? cart.cartItems.length : 0}
+													(items)
+												</div>
 											</Link>
 										</div>
 									</div>

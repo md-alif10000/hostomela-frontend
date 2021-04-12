@@ -1,0 +1,30 @@
+.product-details-container{
+    margin: 0px 180px
+}
+
+
+
+
+@media screen and (max-width:1300px) {
+    .product-details-container{
+        margin: 0px 30px
+        
+    }
+    
+}
+@media screen and (max-width:1000px) {
+    .product-details-container{
+        margin: 0px 30px
+        
+    }
+    
+}
+
+@media screen and (max-width:600px) {
+    .product-details-container{
+        margin:0px 0px
+        
+    }
+    
+}
+

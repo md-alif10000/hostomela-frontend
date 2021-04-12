@@ -9,6 +9,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import ViewListTwoToneIcon from "@material-ui/icons/ViewListTwoTone";
+import AssignmentTwoToneIcon from "@material-ui/icons/AssignmentTwoTone";
 
 import Badge from "@material-ui/core/Badge";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
@@ -452,6 +454,78 @@ export default function Header(props) {
 								</ListItemIcon>
 								<ListItemText
 									primary={"My Account"}
+									className='font-18 t-primary'
+								/>
+							</ListItem>
+						</Link>
+						{auth.authenticate ? (
+							<span>
+								<Link to='/account/orders' className='font-18 t-primary'>
+									<ListItem button>
+										<ListItemIcon>
+											<ViewListTwoToneIcon />
+										</ListItemIcon>
+										<ListItemText
+											primary={"My Orders"}
+											className='font-18 t-primary'
+										/>
+									</ListItem>
+								</Link>
+							</span>
+						) : null}
+
+						<Link to='/about-us' className='font-18 t-primary'>
+							<ListItem button>
+								<ListItemIcon>
+									<AccountCircle />
+								</ListItemIcon>
+								<ListItemText
+									primary={"About Us"}
+									className='font-18 t-primary'
+								/>
+							</ListItem>
+						</Link>
+						<Link to='/contact-us' className='font-18 t-primary'>
+							<ListItem button>
+								<ListItemIcon>
+									<AssignmentTwoToneIcon />
+								</ListItemIcon>
+								<ListItemText
+									primary={"Contact Us"}
+									className='font-18 t-primary'
+								/>
+							</ListItem>
+						</Link>
+						<Link to='/terms&conditions' className='font-18 t-primary'>
+							<ListItem button>
+								<ListItemIcon>
+									<AssignmentTwoToneIcon />
+								</ListItemIcon>
+								<ListItemText
+									primary={"Terms & Conditions"}
+									className='font-18 t-primary'
+								/>
+							</ListItem>
+						</Link>
+						<Link to='/privacy-policy' className='font-18 t-primary'>
+							<ListItem button>
+								<ListItemIcon>
+									<AssignmentTwoToneIcon />
+								</ListItemIcon>
+								<ListItemText
+									primary={"Privacy Policy"}
+									className='font-18 t-primary'
+								/>
+							</ListItem>
+						</Link>
+						<Link to='/return-policy' className='font-18 t-primary'>
+							<ListItem button>
+								<ListItemIcon>
+									{" "}
+									<AssignmentTwoToneIcon />
+								</ListItemIcon>
+								<ListItemText
+									primary={"Return Pilicy"}
 									className='font-18 t-primary'
 								/>
 							</ListItem>

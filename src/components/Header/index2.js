@@ -11,6 +11,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import "./style2.css";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
+import{generatePublicUrl} from '../../urlconfig'
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -28,6 +29,13 @@ export default function Header3() {
 
 	const auth = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
+
+
+		const dp = auth.user.profilePicture
+			? auth.user.profilePicture.slice(0, 4) == "http"
+				? auth.user.profilePicture
+				: generatePublicUrl(auth.user.profilePicture)
+			: " https://bootdey.com/img/Content/avatar/avatar7.png";
 
 	const userLogout = () => {
 		dispatch(logout());
@@ -58,7 +66,19 @@ export default function Header3() {
 
 						{auth.user.name ? (
 							<>
-								<h4>Hi,{auth.user.name}</h4>
+								<Link to='/account' className='d-flex'>
+									
+										<h4>Hi,{auth.user.name}</h4>
+										<img
+											src={dp}
+											alt='Admin'
+											className='rounded-circle m-2 border border-danger'
+											width='40'
+											style={{ cursor: "pointer" }}
+										/>
+								
+								</Link>
+
 								<Button onClick={userLogout} color='inherit'>
 									<Link to='/'>
 										<Button
