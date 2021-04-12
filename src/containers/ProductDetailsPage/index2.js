@@ -20,6 +20,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { Button } from "@material-ui/core";
 import Review from "./review";
+import SliderImage from "react-zoom-slider";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -91,28 +92,25 @@ export default function ProductDetails2(props) {
 		dispatch(addReview({ productId, review, rating }));
 	};
 
-	const settings = {
-		customPaging: function (i) {
-			return (
-				<a>
-					{/* <img
-											src={generatePublicUrl(
-												product.productDetails.productPictures[i+1].img
-											)}
-										/> */}
-				</a>
-			);
-		},
-		dots: true,
-		dotsClass: "slick-dots slick-thumb",
-		infinite: true,
-		speed: 500,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		autoplay: true,
-		speed: 2000,
-		autoplaySpeed: 2000,
-	};
+
+
+
+
+	const data = [
+  {
+    image: 'https://cdn.tgdd.vn/Products/Images/42/209800/oppo-reno2-f-xanh-1-org.jpg',
+    text: 'img1'
+  },
+  {
+    image: 'https://cdn.tgdd.vn/Products/Images/42/209800/oppo-reno2-f-xanh-4-org.jpg',
+    text: 'img2'
+  },
+  {
+    image: 'https://cdn.tgdd.vn/Products/Images/42/209800/oppo-reno2-f-xanh-10-org.jpg',
+    text: 'img3'
+  },
+
+];
 
 	if (Object.keys(product.productDetails).length === 0) {
 		return null;
@@ -120,22 +118,43 @@ export default function ProductDetails2(props) {
 
 	return (
 		<Layout>
-			<section className='section product-detail m-0 p-1'>
-				<div className='details container'>
-					<div>
-						{/* <Slider {...settings}>
-								{
-									product.productDetails.productPictures.map((image,index)=>
-										
-										<div className='imgContainer'>
-											<img  src={generatePublicUrl(image.img)} />
-										</div>
+			<section className='section product-detail  p-1 '>
+				<div className=' row bg-white p-3 '>
+					<div className='col-lg-6 col-sm-12 text-center '>
+						<span className='t-secondary'>Home/Product Details/ {product.productDetails.name}</span>
+						<SliderImage
+							data={data}
+							width='100%'
+							showDescription={true}
+							direction='right'
+						/>
+					</div>
+					<div className='col-lg-6 col-sm-12 text-center right'>
+						<h3>{product.productDetails.name}</h3>
+						<div className=''>
+							<span className='bolder'>৳ </span> {product.productDetails.price}
+						</div>
 
-									)
-								}
-								
-							
-							</Slider> */}
+						<form className='form'>
+							<input type='text' placeholder='1' />
+							<a
+								style={{ backgroundColor: "fce00d" }}
+								onClick={() => {
+									const { _id, name, price } = product.productDetails;
+									const img = product.productDetails.productPictures[0].img;
+									dispatch(addToCart({ _id, name, price, img }));
+									// <Redirect to='/cart' />;
+									props.history.push("/cart");
+								}}
+								className='addToCart'>
+								Add To Cart
+							</a>
+						</form>
+					</div>
+				</div>
+
+				{/* <div className='details container'>
+					<div>
 						<div class='left'>
 							<div class='main'>
 								<img
@@ -190,10 +209,9 @@ export default function ProductDetails2(props) {
 								Add To Cart
 							</a>
 						</form>
-						{/* <h3>Product Detail</h3>
-						<p>{product.productDetails.desc}</p> */}
+				
 					</div>
-				</div>
+				</div> */}
 			</section>
 
 			<div className='container text-lg' style={{ fontSize: "20px" }}>
