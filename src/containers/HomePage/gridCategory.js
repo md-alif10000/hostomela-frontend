@@ -115,8 +115,7 @@ export default function GridCategory() {
 							display: "flex",
 							flexDirection: "column",
 						}}>
-						{console.log("Category", category)}
-						{console.log("Image url", `${domain}${category.image}`)}
+						
 						<img
 							style={{
 								width: "100px",
