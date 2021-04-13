@@ -9,6 +9,7 @@ import {
 	login,
 } from "../../../actions/auth.action";
 import SocialLogin from "../socialLogin";
+import Loader from "../../../components/Loader";
 
 
 
@@ -39,6 +40,9 @@ export default function Register(props) {
 	
 
 	if (auth.authenticate) return <Redirect to='/' />;
+	
+	if(auth.authenticating) return <Loader/>
+
 	return (
 		<div>
 			<Header />

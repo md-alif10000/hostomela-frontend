@@ -5,7 +5,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
-import CartPage3 from "../../CartPage/index3";
+import CartPage3 from "../../CartPage";
 
 const products = [
 	{ name: "Product 1", desc: "A nice thing", price: "$9.99" },

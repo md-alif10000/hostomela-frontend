@@ -6,9 +6,9 @@ import Header from "../../components/Header/index";
 	import { Redirect } from "react-router-dom";
 
 import { generatePublicUrl } from "../../urlconfig";
-import "./style2.css";
+import "./style.css";
 
-export default function OrderPage2(props) {
+export default function OrderPage(props) {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
 	const auth = useSelector(state => state.auth)

@@ -5,15 +5,15 @@ import HomePage from "./containers/HomePage";
 import ProductListPage from "./containers/ProductListPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { isUserLoggedIn } from "./actions/auth.action";
-import ProductDetailsPage2 from "./containers/ProductDetailsPage/index2";
+import ProductDetailsPage from "./containers/ProductDetailsPage";
 import Login from "./containers/auth/Login/index";
-import Register from "./containers/auth/Register/index4";
+import Register from "./containers/auth/Register";
 import ChangePassword from "./containers/auth/RESET_PASS";
-import CheckoutPage2 from "./containers/CheckoutPage/option2/Checkout";
+import CheckoutPage from "./containers/CheckoutPage/option2/Checkout";
 import { updateCart } from "./actions/cart.action";
-import OrderPage from "./containers/OrderPage/index2";
-import OrderDetailsPage from "./containers/OrderDetailsPage/index2";
-import CartPage3 from "./containers/CartPage/index3";
+import OrderPage from "./containers/OrderPage/index";
+import OrderDetailsPage from "./containers/OrderDetailsPage/index";
+import CartPage from "./containers/CartPage";
 import Account from "../src/containers/account";
 import AboutUs from "./containers/AboutUs";
 import ContactUs from "./containers/ContactUs";
@@ -22,6 +22,7 @@ import { getAllCategory } from "./actions";
 function App() {
 	const dispatch = useDispatch();
 	const auth = useSelector((state) => state.auth);
+
 
 	useEffect(() => {
 		if (!auth.authenticate) {
@@ -35,13 +36,14 @@ function App() {
 	useEffect(() => {
 		dispatch(getAllCategory());
 	}, []);
+
 	return (
 		<div className='App'>
 			<Router>
 				<Switch>
 					<Route path='/' exact component={HomePage} />
-					<Route path='/cart' component={CartPage3} />
-					<Route path='/checkout' component={CheckoutPage2} />
+					<Route path='/cart' component={CartPage} />
+					<Route path='/checkout' component={CheckoutPage} />
 
 					<Route path='/login' component={Login} />
 					<Route path='/register' component={Register} />
@@ -54,7 +56,7 @@ function App() {
 
 					<Route
 						path='/:productSlug/:productId/p'
-						component={ProductDetailsPage2}
+						component={ProductDetailsPage}
 					/>
 					<Route path='/:slug' component={ProductListPage} />
 				</Switch>

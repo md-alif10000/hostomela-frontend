@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../../../actions/cart.action";
 import "./style.css";
 import { api, generatePublicUrl, domain } from "../../../urlconfig";
+import Loader from "../../../components/Loader";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -78,6 +79,11 @@ export default function ProductStore(props) {
 		dispatch(getProductsBySlug(match.params.slug));
 		dispatch(getSubCategory(parentId));
 	}, []);
+
+
+
+	if(product.loading) return <Loader/>
+	
 
 	return (
 		<>

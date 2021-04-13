@@ -5,16 +5,17 @@ import Card from "../../components/UI/Card";
 import Price from "../../components/UI/Price/Price";
 import { generatePublicUrl } from "../../urlconfig";
 import {Redirect} from 'react-router-dom'
-import item from "../HomePage/item";
 import "./style2.css";
 import './style.css'
-import Header3 from "../../components/Header/index2";
+import Header from "../../components/Header/index2";
+import Loader from "../../components/Loader";
 
 export default function OrderDetailsPage(props) {
 	const dispatch = useDispatch();
 	const orderDetails = useSelector((state) => state.user.orderDetails);
 	const auth = useSelector(state => state.auth)
 	const orderId = props.match.params.orderId;
+	const user = useSelector(state => state.user)
 
 	useEffect(() => {
 		// console.log({ props });
@@ -57,9 +58,13 @@ export default function OrderDetailsPage(props) {
 		return null;
 	}
 	if (!auth.authenticate) return <Redirect to='/' />;
+
+	if(user.orderDetails) return <Loader/>
+	
+
 	return (
 		<>
-			<Header3 />
+			<Header />
 			<div className='container m-auto p-0 text-center'>
 				<article className='card'>
 					<header className='card-header'> My Orders / Tracking </header>

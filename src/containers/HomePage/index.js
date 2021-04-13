@@ -18,6 +18,8 @@ import { List } from '@material-ui/core'
 import NowPlaying from './slider'
 import Footer from '../../components/Footer'
 import TopSlider from './topSlider'
+import Loader from '../../components/Loader'
+import cartReducer from '../../reducers/cart.reducer'
 
 
 
@@ -27,6 +29,7 @@ export default function HomePage(props) {
 const dispatch = useDispatch()
 
    const category = useSelector(state => state.category)
+   const cart = useSelector(state => state.cart)
 
 
 
@@ -34,6 +37,14 @@ useEffect(() => {
 	
 	dispatch(getProducts())
 }, [])
+
+
+if(category.loading){
+	return <Loader/>
+}
+if (cart.updatingCart) {
+	return <Loader />;
+}
 
     
     return (

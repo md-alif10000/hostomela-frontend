@@ -7,10 +7,11 @@ import {
 	removeCartItem,
 } from "../../actions/cart.action";
 import { validateCoupon } from "../../actions/user.action";
-import "./style2.css";
-import CartItem2 from "./CartItem/index2";
+import "./style.css";
+import CartItem2 from "./CartItem";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
+import Loader from "../../components/Loader";
 
 export const TotalPrice = (props) => {
 	const [couponInput, setCouponInput] = useState(false);
@@ -165,9 +166,15 @@ export default function CartPage3(props) {
 		);
 	}
 
-	console.log(cart.cartItems);
 
-	if (cart.cartItems.length < 0) {
+	
+if (cart.updatingCart) {
+	return <Loader />;
+}
+
+	
+
+	if (cart.cartItems.length == 0) {
 		return (
 			<>
 				<Header fixed />

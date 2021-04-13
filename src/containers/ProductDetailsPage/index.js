@@ -11,7 +11,7 @@ import { generatePublicUrl } from "../../urlconfig.js";
 import { addToCart } from "../../actions/cart.action";
 import { Redirect } from "react-router";
 import Slider from "react-slick";
-import Loader from "react-loader-spinner";
+
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -22,6 +22,7 @@ import Box from "@material-ui/core/Box";
 import { Button } from "@material-ui/core";
 import Review from "./review";
 import SliderImage from "react-zoom-slider";
+import Loader from '../../components/Loader'
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -74,6 +75,7 @@ export default function ProductDetails2(props) {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const product = useSelector((state) => state.product);
+	const cart = useSelector(state => state.cart)
 	const { reviews } = product.productDetails;
 	useEffect(() => {
 		let { productId } = props.match.params;
@@ -96,8 +98,16 @@ export default function ProductDetails2(props) {
 
 
 
+ const data=[]
 
-	const data = product.productDetails.productPictures
+	const Imagedata =product.productDetails.productPictures == undefined
+			? null : product.productDetails.productPictures.map((img) => {
+				var {_id,image}=img
+				var image = generatePublicUrl(image);
+					let imageInfo= {_id,image}
+					data.push(imageInfo)
+			  })
+			 
 
 	console.log(data)
 
@@ -106,13 +116,14 @@ export default function ProductDetails2(props) {
 	}
 
 	if(product.loading){
-			return (
-				<div className='container loader'>
-					<Loader type='Circles' color='#00BFFF' height={80} width={80} />
-				</div>
+			return (<Loader/>
+			
 			);
 					
 	}
+		if (cart.updatingCart) {
+			return <Loader />;
+		}
 
 	return (
 		<Layout>

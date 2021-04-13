@@ -8,13 +8,14 @@ import StepLabel from "@material-ui/core/StepLabel";
 import { Link } from "react-router-dom";
 import { Button, SwipeableDrawer } from "@material-ui/core";
 import { register,registerOtp,googleLogin, facebookLogin } from "../../../actions/auth.action";
-import "./style2.css";
+import "./style.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import Header from "../../../components/Header/index";
 import Swal from "sweetalert2";
 import SocialLogin from "../socialLogin";
+import Loader from "../../../components/Loader";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -286,6 +287,8 @@ export default function () {
 	};
 
 	if (auth.authenticate) return <Redirect to='/' />;
+	
+	if(auth.authenticating) return <Loader/>
 
 	return (
 		<React.Fragment>

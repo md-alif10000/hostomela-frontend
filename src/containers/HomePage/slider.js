@@ -105,7 +105,7 @@ export default function NowPlaying(props) {
 															className='productImg'
 															src={generatePublicUrl(
 																product.productPictures[0]
-																	? product.productPictures[0].img
+																	? product.productPictures[0].image
 																	: null
 															)}
 														/>
@@ -122,9 +122,10 @@ export default function NowPlaying(props) {
 															<ShoppingCartIcon
 																onClick={() => {
 																	const { _id, name, price } = product;
-																	const img = product.productPictures[0].img;
+																	const image =
+																		product.productPictures[0].image;
 																	dispatch(
-																		addToCart({ _id, name, price, img })
+																		addToCart({ _id, name, price, image })
 																	);
 																	// props.history.push("/cart");
 																}}
@@ -167,7 +168,7 @@ export default function NowPlaying(props) {
 															className='productImg'
 															src={generatePublicUrl(
 																product.productPictures[0]
-																	? product.productPictures[0].img
+																	? product.productPictures[0].image
 																	: null
 															)}
 														/>
@@ -184,9 +185,10 @@ export default function NowPlaying(props) {
 															<ShoppingCartIcon
 																onClick={() => {
 																	const { _id, name, price } = product;
-																	const img = product.productPictures[0].img;
+																	const image =
+																		product.productPictures[0].image;
 																	dispatch(
-																		addToCart({ _id, name, price, img })
+																		addToCart({ _id, name, price, image })
 																	);
 																	// props.history.push("/cart");
 																}}
