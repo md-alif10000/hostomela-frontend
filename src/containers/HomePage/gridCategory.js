@@ -103,33 +103,34 @@ export default function GridCategory() {
 	return (
 		// <Grid container className={classes.root} spacing={2}>
 		// 	<Grid item xs={12}>
-		<Slider {...settings}>
-			{/* <Grid container justify='center' spacing={spacing}> */}
-			{myCategories.map((category) => (
-				<Link
-					to={`/${category.slug}?cid=${category._id}&type=${category.type}`}
-					style={{ textDecoration: "none" }}>
-					<div
-						className='categorybox'
-						style={{
-							display: "flex",
-							flexDirection: "column",
-						}}>
-						
-						<img
+		<div className='card'>
+			<Slider {...settings}>
+				{/* <Grid container justify='center' spacing={spacing}> */}
+				{myCategories.map((category) => (
+					<Link
+						to={`/${category.slug}?cid=${category._id}&type=${category.type}`}
+						style={{ textDecoration: "none" }}>
+						<div
+							className='categorybox'
 							style={{
-								width: "100px",
-								height: "80px",
-								borderRadius: "10px",
-							}}
-							src={`${domain}${category.image}`}
-						/>
-						<h4 style={{ margin: "auto" }}>{category.name}</h4>
-					</div>
-				</Link>
-			))}
-			{/* </Grid> */}
-		</Slider>
+								display: "flex",
+								flexDirection: "column",
+							}}>
+							<img
+								style={{
+									width: "100px",
+									height: "80px",
+									borderRadius: "10px",
+								}}
+								src={`${domain}${category.image}`}
+							/>
+							<h4 style={{ margin: "auto" }}>{category.name}</h4>
+						</div>
+					</Link>
+				))}
+				{/* </Grid> */}
+			</Slider>
+		</div>
 		// 	</Grid>
 		// </Grid>
 	);

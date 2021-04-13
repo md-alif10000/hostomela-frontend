@@ -15,6 +15,8 @@
 .categorybox{
     align-items: center;
     text-align: center;
+    border-radius: 10px;
+    border:3px solid #bc52d1
 }
 .paperContainer{
     align-items: center;
@@ -26,7 +28,7 @@
 .paperContainer:hover{
     transform: scale(1.1);
     transition: 1;
-    box-shadow: 2px 1px 2px 1px gray;
+    box-shadow: 2px 1px 2px 1px #c769da;
 }
 .productImg{
     align-items: center;

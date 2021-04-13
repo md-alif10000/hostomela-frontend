@@ -88,44 +88,46 @@ export default function ProductStore(props) {
 	return (
 		<>
 			<div className='productPageContainer'>
-				{subCategories.length > 0 ? (
-					<Grid container className={classes.root} spacing={2}>
-						<h3 className='productCategoryHeader'>
-							<span className='p-3 rounded t-primary c-primary-gradiant'>
-								Categories
-							</span>{" "}
-						</h3>
-						<hr />
-						<Grid item xs={12}>
-							<Grid container justify='center' spacing={spacing}>
-								{subCategories.map((category) => (
-									<div className='mx-sm-1 mx-lg-4'>
-										<a
-											className='categoryLink'
-											href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-											<div
-												className='categorybox'
-												style={{
-													display: "flex",
-													flexDirection: "column",
-												}}>
-												<img
+				<div className='card p-3 m-3'>
+					{subCategories.length > 0 ? (
+						<Grid container className={classes.root} spacing={2}>
+							<h3 className='productCategoryHeader'>
+								<span className='p-3 rounded t-primary c-primary-gradiant'>
+									Categories
+								</span>{" "}
+							</h3>
+							<hr />
+							<Grid item xs={12}>
+								<Grid container justify='center' spacing={spacing}>
+									{subCategories.map((category) => (
+										<div className='mx-sm-1 mx-lg-4 m-3 '>
+											<a
+												className='categoryLink'
+												href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+												<div
+													className='categorybox'
 													style={{
-														width: "100px",
-														height: "80px",
-														borderRadius: "10px",
-													}}
-													src={domain + `${category.categoryImage}`}
-												/>
-												<h4 style={{ margin: "auto" }}>{category.name}</h4>
-											</div>
-										</a>
-									</div>
-								))}
+														display: "flex",
+														flexDirection: "column",
+													}}>
+													<img
+														style={{
+															width: "100px",
+															height: "80px",
+															borderRadius: "10px",
+														}}
+														src={domain + `${category.categoryImage}`}
+													/>
+													<h4 style={{ margin: "auto" }}>{category.name}</h4>
+												</div>
+											</a>
+										</div>
+									))}
+								</Grid>
 							</Grid>
 						</Grid>
-					</Grid>
-				) : null}
+					) : null}
+				</div>
 
 				<Grid container className={classes.root} spacing={2}>
 					<h3 className='productCategoryHeader'>
