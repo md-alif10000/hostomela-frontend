@@ -40,7 +40,7 @@ export const addToCart = (product, newQty = 1) => {
 		};
 
 		if (auth.authenticate) {
-			console.log("Product qty if auth", qty);
+			
 			dispatch({ type: cartConstants.ADD_TO_CART_REQUEST });
 			const payload = {
 				cartItems: [
@@ -50,7 +50,7 @@ export const addToCart = (product, newQty = 1) => {
 					},
 				],
 			};
-			console.log(payload);
+
 			const res = await axios.post(`/user/cart/addtocart`, payload);
 			console.log(res);
 			if (res.status === 201) {
@@ -60,7 +60,7 @@ export const addToCart = (product, newQty = 1) => {
 			localStorage.setItem("cart", JSON.stringify(cartItems));
 		}
 
-		// console.log("addToCart::", cartItems);
+
 
 		dispatch({
 			type: cartConstants.ADD_TO_CART_SUCCESS,

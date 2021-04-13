@@ -4,8 +4,8 @@ import "./design.css";
 import RemoveCircleOutlineOutlinedIcon from "@material-ui/icons/RemoveCircleOutlineOutlined";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
-export default function CartItem2(props) {
-	const { _id, name, price, img } = props.cartItem;
+export default function CartItem(props) {
+	const { _id, name, price, image } = props.cartItem;
 	const [qty, setQty] = useState(props.cartItem.qty);
 
 	const onQuantityIncrement = () => {
@@ -18,7 +18,7 @@ export default function CartItem2(props) {
 		setQty(qty - 1);
 		props.onQuantityDec(_id, qty - 1);
 	};
-	console.log(img);
+	
 
 	return (
 		<tr>
@@ -26,14 +26,14 @@ export default function CartItem2(props) {
 				<div class='cart-info'>
 					<img
 						style={{ height: "60px", width: "auto" }}
-						src={generatePublicUrl(img)}
+						src={generatePublicUrl(image)}
 						alt=''
 					/>
 					<div>
 						<p>{name}</p>
 						<span>Price:BDT {price}</span>
 						<br />
-						<a href='#' onClick={() => props.onRemoveCartItem(_id)}>
+						<a href='/cart' onClick={() => props.onRemoveCartItem(_id)}>
 							remove
 						</a>
 					</div>

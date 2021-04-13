@@ -18,7 +18,7 @@
   }
   
   .cart-info span {
-	color: var(--grey2);
+	color: #ffff
   }
   
   th {
@@ -48,6 +48,8 @@
 	width: 8rem;
 	height: 8rem;
 	margin-right: 1rem;
+	border-radius: 15px;
+	border:2px solid white
   }
   
   .total-price {
@@ -88,15 +90,20 @@
   }
   
   
-.updateQtyBtn{
-	width: 30px;
-	height: 30px;
-	margin: 5px;
-	text-align: center;
-	justify-content: center;
-	background-color: rgb(221, 218, 19);
-	border-radius: 50px;
-	align-items: center;
 
+.cartpage-container{
+    margin: 0px;
 }
+
+
+@media screen and (min-width:1000px) {
+    .cartpage-container{
+        margin: 150px;
+    }
+    
+}
+
+
+
+
  

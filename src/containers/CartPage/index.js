@@ -8,7 +8,7 @@ import {
 } from "../../actions/cart.action";
 import { validateCoupon } from "../../actions/user.action";
 import "./style.css";
-import CartItem2 from "./CartItem";
+import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
 import Loader from "../../components/Loader";
@@ -135,15 +135,15 @@ export default function CartPage3(props) {
 	}, [auth.authenticate]);
 
 	const onQuantityIncrement = (_id, qty) => {
-		const { name, price, img } = cartItems[_id];
+		const { name, price, image } = cartItems[_id];
 
-		dispatch(addToCart({ _id, name, price, img }, 1));
+		dispatch(addToCart({ _id, name, price, image }, 1));
 	};
 
 	const onQuantityDecrement = (_id, qty) => {
-		const { name, price, img } = cartItems[_id];
+		const { name, price, image } = cartItems[_id];
 
-		dispatch(addToCart({ _id, name, price, img }, -1));
+		dispatch(addToCart({ _id, name, price, image }, -1));
 	};
 
 	const onRemoveCartItem = (_id) => {
@@ -154,7 +154,7 @@ export default function CartPage3(props) {
 		return (
 			<>
 				{Object.keys(cartItems).map((key, index) => (
-					<CartItem2
+					<CartItem
 						key={index}
 						cartItem={cartItems[key]}
 						onQuantityInc={onQuantityIncrement}
@@ -184,11 +184,11 @@ if (cart.updatingCart) {
 							<div class='card'>
 								<div class='card-body cart'>
 									<div class='col-sm-12 empty-cart-cls text-center'>
-										<img
-											src='https://i.imgur.com/dCdflKN.png'
+										<image
+											src='https://i.imageur.com/dCdflKN.png'
 											width='170'
 											height='170'
-											class='img-fluid mb-3 mr-3'
+											class='image-fluid mb-3 mr-3'
 										/>
 										<h3>
 											<strong>Your Cart is Empty</strong>
@@ -211,7 +211,7 @@ if (cart.updatingCart) {
 	} else {
 		return (
 			<Layout>
-				<div className='container mt-1 pt-1 cart'>
+				<div className='cartpage-container mt-1 pt-1 cart'>
 					<table>
 						<tr>
 							<th>Product</th>
@@ -219,7 +219,7 @@ if (cart.updatingCart) {
 							<th>Subtotal</th>
 						</tr>
 						{Object.keys(cartItems).map((key, index) => (
-							<CartItem2
+							<CartItem
 								key={index}
 								cartItem={cartItems[key]}
 								onQuantityInc={onQuantityIncrement}
