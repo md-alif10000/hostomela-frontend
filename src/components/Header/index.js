@@ -340,8 +340,11 @@ export default function Header(props) {
 							<Typography className={classes.title} variant='h6' noWrap>
 								Hostomela
 							</Typography>
+							<div className='searchContainer'>
+								<input className='searchInput' type='text'/>
+							</div>
 
-							<div
+							{/* <div
 								style={{ width: "600px", display: "flex" }}
 								className='searchbox'>
 								<FormControl fullWidth className={classes.margin}>
@@ -360,7 +363,7 @@ export default function Header(props) {
 									style={{ backgroundColor: "#595643", borderRadius: "5px" }}>
 									<SearchIcon />
 								</button>
-							</div>
+							</div> */}
 							<div className={classes.grow} />
 							<div className={classes.sectionDesktop}>
 								<IconButton

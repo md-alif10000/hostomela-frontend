@@ -59,7 +59,7 @@ export default function OrderDetailsPage(props) {
 	}
 	if (!auth.authenticate) return <Redirect to='/' />;
 
-	if(user.orderDetails) return <Loader/>
+
 	
 
 	return (

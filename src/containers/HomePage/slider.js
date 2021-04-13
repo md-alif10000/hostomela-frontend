@@ -154,8 +154,6 @@ export default function NowPlaying(props) {
 					<Slider {...settings}>
 						{product.products.map(function (product, index) {
 							return (
-					
-
 								<div className='col-sm-6 col-lg-3 m-2'>
 									<Grid key={index} item className='col-sm-6 col-lg-3 m-2'>
 										<div className='paperContainer'>
@@ -166,11 +164,12 @@ export default function NowPlaying(props) {
 													<div style={{ backgroundColor: "#dbdbdb" }}>
 														<img
 															className='productImg'
-															src={generatePublicUrl(
-																product.productPictures[0]
-																	? product.productPictures[0].image
-																	: null
-															)}
+															src='https://medias.utsavfashion.com/media/catalog/product/cache/1/image/500x/040ec09b1e35df139433887a97daa66f/p/r/printed-satin-georgette-saree-in-dark-blue-v1-sfva2298.jpg'
+															// src={generatePublicUrl(
+															// 	product.productPictures[0]
+															// 		? product.productPictures[0].image
+															// 		: null
+															// )}
 														/>
 														<p style={{ color: "#cf9415", fontWeight: "bold" }}>
 															<span>৳</span> {product.price}
