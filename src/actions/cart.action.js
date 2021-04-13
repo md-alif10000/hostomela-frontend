@@ -52,7 +52,7 @@ export const addToCart = (product, newQty = 1) => {
 			};
 
 			const res = await axios.post(`/user/cart/addtocart`, payload);
-			console.log(res);
+		
 			if (res.status === 201) {
 				dispatch(getCartItems());
 			}

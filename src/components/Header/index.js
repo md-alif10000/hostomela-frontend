@@ -340,8 +340,9 @@ export default function Header(props) {
 							<Typography className={classes.title} variant='h6' noWrap>
 								Hostomela
 							</Typography>
-							<div className='searchContainer'>
-								<input className='searchInput' type='text'/>
+							<div className='searchContainer d-flex'>
+								<input className='searchInput' maxLength='40' type='text'/>
+								<SearchIcon className='searchIcon' style={{ fontSize: "26" }} />
 							</div>
 
 							{/* <div
