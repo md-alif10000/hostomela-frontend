@@ -1,11 +1,7 @@
 import React,{useState,useEffect} from "react";
 import{useSelector,useDispatch} from 'react-redux'
 import { makeStyles } from "@material-ui/core/styles";
-
 import { Link } from "react-router-dom";
-
-
-
 import {getAllCategory} from '../../actions/category.action'
 import { domain, generatePublicUrl,api } from "../../urlconfig";
 import Slider from "react-slick";
@@ -101,13 +97,13 @@ export default function GridCategory() {
             
 
 	return (
-		// <Grid container className={classes.root} spacing={2}>
-		// 	<Grid item xs={12}>
+	
 		<div className='card'>
 			<Slider {...settings}>
-				{/* <Grid container justify='center' spacing={spacing}> */}
+		
 				{myCategories.map((category) => (
 					<Link
+					className='m-3'
 						to={`/${category.slug}?cid=${category._id}&type=${category.type}`}
 						style={{ textDecoration: "none" }}>
 						<div
@@ -128,10 +124,10 @@ export default function GridCategory() {
 						</div>
 					</Link>
 				))}
-				{/* </Grid> */}
+		
 			</Slider>
 		</div>
-		// 	</Grid>
-		// </Grid>
+
+
 	);
 }

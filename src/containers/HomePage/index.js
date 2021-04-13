@@ -67,36 +67,7 @@ if (cart.updatingCart) {
 					</div>
 
 					<div className='gridCategoryContainer'>
-						{/* <img style={{width:'100%',height:'100%'}} src={generatePublicUrl(category.img)} /> */}
-						{/* <Paper className={classes.paper}> */}
-						<div style={{ textAlign: "center" }}>
-							<Link
-								to='/digital_zone'
-								style={{
-									textDecoration: "none",
-									margin: "auto",
-									textAlign: "center",
-								}}>
-								<div
-									className='categorybox'
-									style={{
-										display: "inline-block",
-										// flexDirection: "column",
-									}}>
-									<img
-										style={{
-											width: "100px",
-											height: "80px",
-											borderRadius: "10px",
-										}}
-										src='https://cdn.jagonews24.com/media/imgAllNew/BG/2018September/b-20181010173052.jpg'
-									/>
-									<h4 style={{ margin: "auto" }}>Digital Zone</h4>
-								</div>
-							</Link>
-						</div>
-
-						{/* </Paper> */}
+					
 
 						<GridCategory />
 					</div>
