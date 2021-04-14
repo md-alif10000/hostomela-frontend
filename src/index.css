@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap');
-font-family: 'El Messiri', sans-serif;
+
 
 
 
@@ -425,13 +425,14 @@ color:white
   }
   
   .card {
+    height: 500px;
    
       border: 0;
-      -webkit-transition: all .3s ease;
+      /* -webkit-transition: all .3s ease; */
       transition: all .3s ease;
       letter-spacing: .5px;
       border-radius: 8px;
-      -webkit-box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+      /* -webkit-box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05); */
       box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05)
   }
   

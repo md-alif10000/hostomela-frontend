@@ -29,6 +29,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./style.css";
 import { Link } from "react-router-dom";
+import Social from "../Social";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -299,7 +300,6 @@ export default function Header(props) {
 							<div className='logoContainer' className={classes.logoContainer}>
 								<Logo width='200px' height='50px' />
 							</div>
-							
 
 							<div className='searchContainer d-flex'>
 								<input className='searchInput' maxLength='40' type='text' />
@@ -474,6 +474,9 @@ export default function Header(props) {
 								/>
 							</ListItem>
 						</Link>
+						<div className='m-3 p-3'>
+							<Social title='Follow us on' />
+						</div>
 					</List>
 				</Drawer>
 

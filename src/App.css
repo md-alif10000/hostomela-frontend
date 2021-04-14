@@ -132,5 +132,6 @@ background-color: #fff;
   a{
     text-decoration: none;
     /* color: rgb(216, 215, 215); */
+    cursor: pointer;
   
   }

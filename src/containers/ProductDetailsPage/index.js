@@ -109,6 +109,22 @@ export default function ProductDetails2(props) {
 
 	console.log(data);
 
+	const demoData = [
+		{
+			image:
+				"https://i0.wp.com/www.hostomela.com/wp-content/uploads/2020/10/wp-1604165165596.jpg?fit=960%2C1280&ssl=1",
+		},
+		{
+			image:
+				"https://i1.wp.com/www.hostomela.com/wp-content/uploads/2020/10/wp-1604165165781.jpg?fit=960%2C1280&ssl=1",
+		},
+		,
+		{
+			image:
+				"https://i0.wp.com/www.hostomela.com/wp-content/uploads/2020/10/wp-1604165165735.jpg?fit=736%2C1280&ssl=1",
+		},
+	];
+
 	if (Object.keys(product.productDetails).length === 0) {
 		return null;
 	}
@@ -130,7 +146,7 @@ export default function ProductDetails2(props) {
 								Home/Product Details/ {product.productDetails.name}
 							</span>
 							<SliderImage
-								data={data}
+								data={demoData}
 								width='100%'
 								showDescription={true}
 								direction='right'

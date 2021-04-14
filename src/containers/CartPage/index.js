@@ -12,6 +12,7 @@ import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
 import Loader from "../../components/Loader";
+import EmptyCart from "./EmptyCart";
 
 export const TotalPrice = (props) => {
 	const [couponInput, setCouponInput] = useState(false);
@@ -171,44 +172,20 @@ export default function CartPage3(props) {
 if (cart.updatingCart) {
 	return <Loader />;
 }
+const itemsArray=[]
+Object.keys(cart.cartItems).map((item)=>{
+	itemsArray.push(item)
 
+})
+console.log(itemsArray)
 	
+ console.log(cart.cartItems)
+	if (itemsArray.length == 0) {
+		return <EmptyCart />;
+	} 
 
-	if (cart.cartItems.length == 0) {
-		return (
-			<>
-				<Header fixed />
-				<div class='container-fluid mt-100'>
-					<div class='row'>
-						<div class='col-md-12'>
-							<div class='card'>
-								<div class='card-body cart'>
-									<div class='col-sm-12 empty-cart-cls text-center'>
-										<image
-											src='https://i.imageur.com/dCdflKN.png'
-											width='170'
-											height='170'
-											class='image-fluid mb-3 mr-3'
-										/>
-										<h3>
-											<strong>Your Cart is Empty</strong>
-										</h3>
-										<h4>Add something to make me happy :)</h4>{" "}
-										<a
-											href='/'
-											class='btn btn-primary cart-btn-transform m-3'
-											data-abc='true'>
-											<h2> Continue shopping</h2>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</>
-		);
-	} else {
+
+
 		return (
 			<Layout>
 				<div className='cartpage-container mt-1 pt-1 cart'>
@@ -233,5 +210,5 @@ if (cart.updatingCart) {
 				</div>
 			</Layout>
 		);
-	}
+
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.css'
 import {Link} from 'react-router-dom'
+import Social from '../Social'
 
 export default function Footer() {
     return (
@@ -53,6 +54,10 @@ export default function Footer() {
 							</div>
 							<div className='payment-methods'>
 								<img src='./images/payment.png' alt='' />
+							</div>
+							<div className='m-3 p-3'>
+								{" "}
+								<Social title='Follow us on' />
 							</div>
 						</div>
 					</div>
