@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 	menuButton: {
 		marginRight: theme.spacing(2),
 	},
-	title: {
+	logoContainer: {
 		display: "none",
 		[theme.breakpoints.up("sm")]: {
 			display: "block",
@@ -296,12 +296,10 @@ export default function Header(props) {
 								<MenuIcon style={{ fontSize: "25" }} />
 							</IconButton>
 
-						
-								<div className='logoContainer' className={classes.title}>
-									<Logo/>
-				
-								</div>
-						
+							<div className='logoContainer' className={classes.logoContainer}>
+								<Logo width='200px' height='50px' />
+							</div>
+							
 
 							<div className='searchContainer d-flex'>
 								<input className='searchInput' maxLength='40' type='text' />

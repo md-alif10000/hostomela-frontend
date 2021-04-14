@@ -208,12 +208,11 @@ export default function ProductDetails2(props) {
 						<TabPanel value={value} index={1}>
 							{reviews.map((review, index) => {
 								let Picture = review.userId.profilePicture;
-					
+
 								let userImage =
-									Picture.slice(0,4) == "http"
+									Picture.slice(0, 4) == "http"
 										? Picture
 										: generatePublicUrl(Picture);
-							
 
 								return (
 									<Review
@@ -256,11 +255,11 @@ export default function ProductDetails2(props) {
 											id: "age-native-simple",
 										}}>
 										<option aria-label='None' value='' />
-										<option value={5}>Five Star</option>
-										<option value={4}>Four Star</option>
-										<option value={3}>Three Star</option>
-										<option value={2}>Two Star</option>
-										<option value={1}>One Star</option>
+										<option value={5}>⭐⭐⭐⭐⭐ </option>
+										<option value={4}>⭐⭐⭐⭐</option>
+										<option value={3}>⭐⭐⭐</option>
+										<option value={2}>⭐⭐</option>
+										<option value={1}>⭐</option>
 									</Select>
 								</FormControl>
 							</div>

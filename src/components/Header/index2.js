@@ -83,7 +83,7 @@ export default function Header3() {
 						</div>
 
 						{auth.user.name ? (
-							<div>
+							<div className={classes.toolbar}>
 								<Link to='/account' className='d-flex'>
 									<h4>Hi,{auth.user.name}</h4>
 									<img
