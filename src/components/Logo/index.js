@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../../images/logo/hostomelaLogo.png'
 
 export default function Logo(props) {
 	const width = props.width ? props.width : "200px";
@@ -6,7 +7,7 @@ export default function Logo(props) {
 	return (
 		<div>
 			<img
-				src='./hostomelaLogo.png'
+				src={logo}
 				className='logo'
 				width={width}
 				height={height}
