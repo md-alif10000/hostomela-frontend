@@ -22,7 +22,7 @@ import Box from "@material-ui/core/Box";
 import { Button } from "@material-ui/core";
 import Review from "./review";
 import SliderImage from "react-zoom-slider";
-import Loader from '../../components/Loader'
+import Loader from "../../components/Loader";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -75,7 +75,7 @@ export default function ProductDetails2(props) {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const product = useSelector((state) => state.product);
-	const cart = useSelector(state => state.cart)
+	const cart = useSelector((state) => state.cart);
 	const { reviews } = product.productDetails;
 	useEffect(() => {
 		let { productId } = props.match.params;
@@ -95,35 +95,30 @@ export default function ProductDetails2(props) {
 		dispatch(addReview({ productId, review, rating }));
 	};
 
+	const data = [];
 
+	const Imagedata =
+		product.productDetails.productPictures == undefined
+			? null
+			: product.productDetails.productPictures.map((img) => {
+					var { _id, image } = img;
+					var image = generatePublicUrl(image);
+					let imageInfo = { _id, image };
+					data.push(imageInfo);
+			  });
 
-
- const data=[]
-
-	const Imagedata =product.productDetails.productPictures == undefined
-			? null : product.productDetails.productPictures.map((img) => {
-				var {_id,image}=img
-				var image = generatePublicUrl(image);
-					let imageInfo= {_id,image}
-					data.push(imageInfo)
-			  })
-			 
-
-	console.log(data)
+	console.log(data);
 
 	if (Object.keys(product.productDetails).length === 0) {
 		return null;
 	}
 
-	if(product.loading){
-			return (<Loader/>
-			
-			);
-					
+	if (product.loading) {
+		return <Loader />;
 	}
-		if (cart.updatingCart) {
-			return <Loader />;
-		}
+	if (cart.updatingCart) {
+		return <Loader />;
+	}
 
 	return (
 		<Layout>
@@ -154,7 +149,8 @@ export default function ProductDetails2(props) {
 									style={{ backgroundColor: "fce00d" }}
 									onClick={() => {
 										const { _id, name, price } = product.productDetails;
-										const image = product.productDetails.productPictures[0].image;
+										const image =
+											product.productDetails.productPictures[0].image;
 										dispatch(addToCart({ _id, name, price, image }));
 										// <Redirect to='/cart' />;
 										props.history.push("/cart");
@@ -210,14 +206,25 @@ export default function ProductDetails2(props) {
 						</TabPanel>
 
 						<TabPanel value={value} index={1}>
-							{console.log(reviews)}
-							{reviews.map((review, index) => (
-								<Review
-									name={review.userId.name}
-									review={review.review}
-									rating={review.rating}
-								/>
-							))}
+							{reviews.map((review, index) => {
+								let Picture = review.userId.profilePicture;
+					
+								let userImage =
+									Picture.slice(0,4) == "http"
+										? Picture
+										: generatePublicUrl(Picture);
+							
+
+								return (
+									<Review
+										name={review.userId.name}
+										review={review.review}
+										rating={review.rating}
+										date={review.date ? review.date : null}
+										userPicture={userImage}
+									/>
+								);
+							})}
 						</TabPanel>
 						<TabPanel value={value} index={2}>
 							<div>
