@@ -12,6 +12,7 @@ import "./style2.css";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import{generatePublicUrl} from '../../urlconfig'
+import Logo from "../Logo";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
@@ -22,6 +23,17 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		flexGrow: 1,
 	},
+	logoContainer: {
+		display: "block",
+		[theme.breakpoints.up("sm")]: {
+			display: "none",
+		},
+	},
+	toolbar:{
+		display:'flex',
+		justifyContent:'space-between',
+		alignItems:'center'
+	}
 }));
 
 export default function Header3() {
@@ -49,34 +61,38 @@ export default function Header3() {
 		<div className={classes.root}>
 			<AppBar position='staic' style={{ backgroundColor: "#595643" }}>
 				<div className='headerContainer'>
-					<Toolbar>
-						<IconButton
-							edge='end'
-							aria-label='account of current user'
-							aria-haspopup='true'
-							color='inherit'>
-							<Link to='/account'>
-								<AccountCircle style={{ fontSize: "30" }} />
-							</Link>
-						</IconButton>
+					<Toolbar className={classes.toolbar}>
+						<div className={classes.toolbar}>
+							<IconButton
+								edge='end'
+								aria-label='account of current user'
+								aria-haspopup='true'
+								color='inherit'>
+								<Link to='/account'>
+									<AccountCircle style={{ fontSize: "30" }} />
+								</Link>
+							</IconButton>
 
-						<Typography variant='h6' className={classes.title}>
-							<Link to='/account'> Account</Link>
-						</Typography>
+							<Typography variant='h6' className={classes.title}>
+								<Link to='/account'> Account</Link>
+							</Typography>
+						</div>
+
+						<div className={classes.logoContainer}>
+							<Logo width='120px' height="30px"/>
+						</div>
 
 						{auth.user.name ? (
-							<>
+							<div>
 								<Link to='/account' className='d-flex'>
-									
-										<h4>Hi,{auth.user.name}</h4>
-										<img
-											src={dp}
-											alt='Admin'
-											className='rounded-circle m-2 border border-danger'
-											width='40'
-											style={{ cursor: "pointer" }}
-										/>
-								
+									<h4>Hi,{auth.user.name}</h4>
+									<img
+										src={dp}
+										alt='Admin'
+										className='rounded-circle m-2 border border-danger'
+										width='40'
+										style={{ cursor: "pointer" }}
+									/>
 								</Link>
 
 								<Button onClick={userLogout} color='inherit'>
@@ -92,7 +108,7 @@ export default function Header3() {
 										</Button>
 									</Link>
 								</Button>
-							</>
+							</div>
 						) : (
 							<Button onClick={toLogin} color='inherit'>
 								<Link to='/login'>

@@ -8,10 +8,8 @@ import { fade, makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import ViewListTwoToneIcon from "@material-ui/icons/ViewListTwoTone";
 import AssignmentTwoToneIcon from "@material-ui/icons/AssignmentTwoTone";
-
 import Badge from "@material-ui/core/Badge";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -24,13 +22,9 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-
+import Logo from '../Logo/index'
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./style.css";
@@ -51,22 +45,7 @@ const useStyles = makeStyles((theme) => ({
 			display: "block",
 		},
 	},
-	search: {
-		backgroundColor: "white",
-		position: "relative",
-		borderRadius: theme.shape.borderRadius,
-		backgroundColor: fade(theme.palette.common.white, 0.6),
-		"&:hover": {
-			backgroundColor: fade(theme.palette.common.white, 0.7),
-		},
-		marginRight: theme.spacing(2),
-		marginLeft: 0,
-		width: "100%",
-		[theme.breakpoints.up("sm")]: {
-			marginLeft: theme.spacing(3),
-			width: "auto",
-		},
-	},
+
 	searchIcon: {
 		padding: theme.spacing(0, 2),
 		height: "100%",
@@ -76,28 +55,8 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		justifyContent: "center",
 	},
-	inputRoot: {
-		color: "#595643",
-		width: "600px",
-		overflow: "hidden",
-		fontSize: "17px",
-		[theme.breakpoints.up("sm")]: {
-			width: "220px",
-		},
-	},
-	inputInput: {
-		padding: theme.spacing(0, 0, 0, 0),
-		// vertical padding + font size from searchIcon
-		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-		transition: theme.transitions.create("width"),
-		width: "100%",
-		[theme.breakpoints.up("md")]: {
-			width: "20ch",
-		},
-		[theme.breakpoints.up("sm")]: {
-			width: "220px",
-		},
-	},
+
+
 	sectionDesktop: {
 		display: "none",
 		[theme.breakpoints.up("md")]: {
@@ -337,34 +296,18 @@ export default function Header(props) {
 								<MenuIcon style={{ fontSize: "25" }} />
 							</IconButton>
 
-							<Typography className={classes.title} variant='h6' noWrap>
-								Hostomela
-							</Typography>
+						
+								<div className='logoContainer' className={classes.title}>
+									<Logo/>
+				
+								</div>
+						
+
 							<div className='searchContainer d-flex'>
-								<input className='searchInput' maxLength='40' type='text'/>
+								<input className='searchInput' maxLength='40' type='text' />
 								<SearchIcon className='searchIcon' style={{ fontSize: "26" }} />
 							</div>
 
-							{/* <div
-								style={{ width: "600px", display: "flex" }}
-								className='searchbox'>
-								<FormControl fullWidth className={classes.margin}>
-									<Input
-										fullWidth
-										placeholder='Search here'
-										id='input-with-icon-adornment'
-										startAdornment={
-											<InputAdornment position='start'>
-												<SearchIcon />
-											</InputAdornment>
-										}
-									/>
-								</FormControl>
-								<button
-									style={{ backgroundColor: "#595643", borderRadius: "5px" }}>
-									<SearchIcon />
-								</button>
-							</div> */}
 							<div className={classes.grow} />
 							<div className={classes.sectionDesktop}>
 								<IconButton
@@ -419,7 +362,6 @@ export default function Header(props) {
 									</Badge>
 								</IconButton>
 							</div>
-							{/* </div> */}
 						</Toolbar>
 					</div>
 				</AppBar>

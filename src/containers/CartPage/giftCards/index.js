@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button } from "@material-ui/core";
-import PinDropIcon from "@material-ui/icons/PinDrop";
 import "./style.css";
 import Header from "../../../components/Header/index";
 import { getSearchedTicket } from "../../../actions/ticket.action";
