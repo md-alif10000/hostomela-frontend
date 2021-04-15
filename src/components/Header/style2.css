@@ -7,10 +7,10 @@
 .account-text{
 
 }
-/* @media screen and (min-width:1300px){
+@media screen and (min-width:1300px){
 
     .headerContainer{
-        margin: 0 100px
+        margin: 0 80px
     }
     .input{
         width: 700px;
@@ -23,7 +23,7 @@
     }
     
 
-} */
+}
 
 @media screen and (max-width:600px){
     .account-text{
