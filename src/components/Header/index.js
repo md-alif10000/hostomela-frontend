@@ -373,6 +373,9 @@ export default function Header(props) {
 						paper: classes.drawerPaper,
 					}}>
 					<div className={classes.drawerHeader}>
+						<div className=''>
+							<Logo width="130px" height="30px"/>
+						</div>
 						<IconButton onClick={handleDrawerClose}>
 							{theme.direction === "ltr" ? (
 								<ChevronLeftIcon />

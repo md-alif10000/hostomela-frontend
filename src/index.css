@@ -425,7 +425,6 @@ color:white
   }
   
   .card {
-    height: 500px;
    
       border: 0;
       /* -webkit-transition: all .3s ease; */
@@ -434,6 +433,10 @@ color:white
       border-radius: 8px;
       /* -webkit-box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05); */
       box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05)
+  }
+
+  .empty-cart-container{
+    height: 500px;
   }
   
   .card .card-header {

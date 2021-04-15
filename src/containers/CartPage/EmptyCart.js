@@ -5,7 +5,7 @@ export default function EmptyCart() {
     return (
 			<div>
 				<Header fixed />
-				<div className='p-0 '>
+				<div className='p-0 empty-cart-container'>
 					<div className='row'>
 						<div className='col-md-12'>
 							<div className='card'>
