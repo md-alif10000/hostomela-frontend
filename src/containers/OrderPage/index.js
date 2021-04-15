@@ -30,73 +30,72 @@ export default function OrderPage(props) {
 	if (!auth.authenticate) return <Redirect to='/' />;
 	return (
 		<>
-		<Header fixed/>
-		<div className=' tableContainer'>
-			<table class='table table-striped table-dark'>
-				<thead>
-					<tr>
-						<th scope='col'>No</th>
-						<th scope='col'>Product Name</th>
-						<th scope='col'>Payment Method</th>
-						<th scope='col'>Order Status</th>
+			<Header fixed />
+			<div className=' tableContainer mt-70'>
+				<table class='table table-striped table-dark'>
+					<thead>
+						<tr>
+							<th scope='col'>No</th>
+							<th scope='col'>Product Name</th>
+							<th scope='col'>Payment Method</th>
+							<th scope='col'>Order Status</th>
 
-						<th scope='col'>Total Amount</th>
-					</tr>
-				</thead>
-				<tbody>
-					{user.orders.map((order, index) => {
-						return (
-							<tr>
-								<td>{index}</td>
+							<th scope='col'>Total Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						{user.orders.map((order, index) => {
+							return (
+								<tr>
+									<td>{index}</td>
 
-								{/* <th scope='row'>1</th> */}
+									{/* <th scope='row'>1</th> */}
 
-								<td>
-									{order.items.map((item, index) => {
-										return (
-											<Link
-												to={`/order_details/${order._id}`}
-												style={{ textDecoration: "none" }}>
-												<div style={{ display: "flex" }}>
-													<span>({index + 1})-</span>
-													<img
-														className='orderImg'
-														src={generatePublicUrl(
-															item.productId.productPictures[0].image
-														)}
-													/>
-													{item.productId.name} <br />
-												</div>
-											</Link>
-										);
-									})}
-								</td>
-								<td>{order.paymentType}</td>
-								<td>
-                                  {getStatus(order)}
-                                
-                                    
-                                  </td>
+									<td>
+										{order.items.map((item, index) => {
+											return (
+												<Link
+													to={`/order_details/${order._id}`}
+													style={{ textDecoration: "none" }}>
+													<div style={{ display: "flex" }}>
+														<span>({index + 1})-</span>
+														<img
+															className='orderImg'
+															src={generatePublicUrl(
+																item.productId.productPictures[0].image
+															)}
+														/>
+														{item.productId.name} <br />
+													</div>
+												</Link>
+											);
+										})}
+									</td>
+									<td>{order.paymentType}</td>
+									<td>{getStatus(order)}</td>
 
-								{console.log(order)}
-								<td>
-									{order.items.map((item, index) => {
-										return <p>*{item.payablePrice} x {item.purchasedQty} pcs</p>;
-									})}
-									Total Price=
-									{Object.keys(order.items).reduce((totalPrice, key) => {
-										const { payablePrice } = order.items[key];
-										const {purchasedQty}=order.items[key]
-										return totalPrice + payablePrice * purchasedQty;
-									}, 0)}
-								</td>
-							</tr>
-						);
-					})}
-					
-				</tbody>
-			</table>
-		</div>
+									{console.log(order)}
+									<td>
+										{order.items.map((item, index) => {
+											return (
+												<p>
+													*{item.payablePrice} x {item.purchasedQty} pcs
+												</p>
+											);
+										})}
+										Total Price=
+										{Object.keys(order.items).reduce((totalPrice, key) => {
+											const { payablePrice } = order.items[key];
+											const { purchasedQty } = order.items[key];
+											return totalPrice + payablePrice * purchasedQty;
+										}, 0)}
+									</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
+			</div>
 		</>
 	);
 }

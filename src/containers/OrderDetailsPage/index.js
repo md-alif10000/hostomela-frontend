@@ -65,7 +65,7 @@ export default function OrderDetailsPage(props) {
 	return (
 		<>
 			<Header fixed/>
-			<div className='container m-auto p-0 text-center'>
+			<div className='container m-auto p-0 text-center mt-70'>
 				<article className='card'>
 					<header className='card-header'> My Orders / Tracking </header>
 					<div className='card-body'>

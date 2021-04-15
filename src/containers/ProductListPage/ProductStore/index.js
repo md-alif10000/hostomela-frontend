@@ -87,7 +87,7 @@ export default function ProductStore(props) {
 
 	return (
 		<>
-			<div className='productPageContainer'>
+			<div className='productPageContainer mt-70'>
 				<div className='card p-3 m-3'>
 					{subCategories.length > 0 ? (
 						<Grid container className={classes.root} spacing={2}>

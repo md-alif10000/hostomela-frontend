@@ -38,8 +38,8 @@ if(category.loading){
     
     return (
 			<Layout>
-				<div className=' main'>
-					<div className='' style={{ display: "flex" }}>
+				<div className='main '>
+					<div className='mt-70' style={{ display: "flex" }}>
 						<div className='col-md-12 col-sm-12 col-lg-2 category'>
 							<h3>Our Categories</h3>
 							<hr className='hr' />
@@ -51,13 +51,11 @@ if(category.loading){
 							</ul>
 						</div>
 						<div className='col-md-12 col-sm-12 col-lg-9 m-1 slider-container m-3'>
-						<TopSlider/>
+							<TopSlider />
 						</div>
 					</div>
 
 					<div className='gridCategoryContainer'>
-					
-
 						<GridCategory />
 					</div>
 

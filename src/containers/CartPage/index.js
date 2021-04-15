@@ -210,7 +210,7 @@ console.log(itemsArray)
 
 		return (
 			<Layout>
-				<div className='cartpage-container mt-1 pt-1 cart'>
+				<div className='cartpage-container mt-70 pt-1 cart'>
 					<table>
 						<tr>
 							<th>Product</th>

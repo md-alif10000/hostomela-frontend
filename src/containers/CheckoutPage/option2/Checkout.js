@@ -465,9 +465,9 @@ export default function Checkout(props) {
 		if (!auth.authenticate) return <Redirect to='/login'></Redirect>;
 	return (
 		<React.Fragment>
-			<div className='mainContainer'>
+			<div className='mainContainer mt-70'>
 				{/* <CssBaseline /> */}
-				<Header fixed/>
+				<Header fixed />
 				<main className={classes.layout}>
 					<Paper className={classes.paper}>
 						<Typography component='h1' variant='h4' align='center'>

@@ -138,7 +138,7 @@ export default function ProductDetails2(props) {
 
 	return (
 		<Layout>
-			<div className='product-details-container'>
+			<div className='product-details-container mt-70'>
 				<section className='section product-detail  p-1 '>
 					<div className=' row bg-white p-3 '>
 						<div className='col-lg-6 col-sm-12 text-center '>
