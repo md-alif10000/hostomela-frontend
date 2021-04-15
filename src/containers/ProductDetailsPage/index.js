@@ -153,31 +153,55 @@ export default function ProductDetails2(props) {
 							/>
 						</div>
 						<div className='col-lg-6 col-sm-12 text-center right'>
-							<h3>{product.productDetails.name}</h3>
-							<div className=''>
-								<span className='bolder'>৳ </span>{" "}
-								{product.productDetails.price}
+							<div>
+								<h3>{product.productDetails.name}</h3>
+								<div className=''>
+									<span className='bolder'>৳ </span>{" "}
+									{product.productDetails.price}
+								</div>
+
+								<form className='form'>
+									{/* <input type='text' placeholder='1' /> */}
+									<a
+										style={{ backgroundColor: "#fce00d" }}
+										onClick={() => {
+											const { _id, name, price } = product.productDetails;
+											const image =
+												product.productDetails.productPictures[0].image;
+											dispatch(addToCart({ _id, name, price, image }));
+											// <Redirect to='/cart' />;
+											props.history.push("/cart");
+										}}
+										className='addToCart'>
+										Add To Cart
+									</a>
+								</form>
 							</div>
 
-							<form className='form'>
-								<input type='text' placeholder='1' />
-								<a
-									style={{ backgroundColor: "fce00d" }}
-									onClick={() => {
-										const { _id, name, price } = product.productDetails;
-										const image =
-											product.productDetails.productPictures[0].image;
-										dispatch(addToCart({ _id, name, price, image }));
-										// <Redirect to='/cart' />;
-										props.history.push("/cart");
-									}}
-									className='addToCart'>
-									Add To Cart
-								</a>
-							</form>
+							<div
+								className='text-left'
+								style={{ textAlign: "left", textDecoration: "none" }}>
+								<ul>
+									<li>⦿Banarasi Pure Silk Saree in Navy Blue</li>
+									<li>⦿Beautifully woven with Zari in Floral Motifs</li>
+									<li>
+										⦿ Available with an Unstitched Pure Banarasi Silk Blouse in
+										Black
+									</li>
+									<li>⦿Free Services: Fall and Edging (Pico)</li>
+									<li>
+										⦿ Do Note: Accessories worn by model is for presentation
+										purpose
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</section>
+				<div className='row'>
+					<div className='col-lg-6 col-md-6 col-sm-12'></div>
+					<div className='col-lg-6 col-md-6 col-sm-12'></div>
+				</div>
 
 				<div className=' text-lg' style={{ fontSize: "20px" }}>
 					<div className={classes.root}>
