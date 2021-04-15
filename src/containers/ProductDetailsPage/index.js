@@ -182,13 +182,13 @@ export default function ProductDetails2(props) {
 								className='text-left font-12'
 								style={{ textAlign: "left", textDecoration: "none" }}>
 								<ul>
-									<li>⦿Banarasi Pure Silk Saree in Navy Blue</li>
-									<li>⦿Beautifully woven with Zari in Floral Motifs</li>
+									<li>⦿ Banarasi Pure Silk Saree in Navy Blue</li>
+									<li>⦿ Beautifully woven with Zari in Floral Motifs</li>
 									<li>
 										⦿ Available with an Unstitched Pure Banarasi Silk Blouse in
 										Black
 									</li>
-									<li>⦿Free Services: Fall and Edging (Pico)</li>
+									<li>⦿ Free Services: Fall and Edging (Pico)</li>
 									<li>
 										⦿ Do Note: Accessories worn by model is for presentation
 										purpose
@@ -198,6 +198,7 @@ export default function ProductDetails2(props) {
 						</div>
 					</div>
 				</section>
+
 				<div className='row'>
 					<div className='col-lg-6 col-md-6 col-sm-12'></div>
 					<div className='col-lg-6 col-md-6 col-sm-12'></div>

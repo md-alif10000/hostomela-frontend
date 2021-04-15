@@ -1,25 +1,14 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import Header from '../../components/Header'
 import Layout from '../../components/Layout'
-import MenuHeader from '../../components/MenuHeader'
-import {Carousel as Caro} from 'react-responsive-carousel'
-import  Carousel from "react-elastic-carousel"
-import Grid from "@material-ui/core/Grid";
-import { Link } from "react-router-dom";
-
 import './style.css'
-import Item from './item.js'
 import GridCategory from './gridCategory'
-
 import {renderCategories} from '../renderCategories'
 import {getProducts} from '../../actions/product.action'
-import { List } from '@material-ui/core'
 import NowPlaying from './slider'
 import Footer from '../../components/Footer'
 import TopSlider from './topSlider'
 import Loader from '../../components/Loader'
-import cartReducer from '../../reducers/cart.reducer'
 
 
 

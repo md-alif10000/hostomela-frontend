@@ -26,6 +26,7 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import Logo from '../Logo/index'
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import CloseIcon from "@material-ui/icons/Close";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./style.css";
 import { Link } from "react-router-dom";
@@ -141,8 +142,15 @@ export default function Header(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
+	const [searchInput,setSearchInput]=useState(false);
 	const cart = useSelector((state) => state.cart);
-	const cartCount = <h3>{Object.keys(cart.cartItems).length}</h3>; ;
+	const cartCount = <h3>{Object.keys(cart.cartItems).length}</h3>; 
+
+	const searchInputHandler=(e)=>{
+		e.preventDefault()
+		if(searchInput)setSearchInput(false)
+		else{setSearchInput(true)}
+	}
 
 
 	const handleDrawerOpen = () => {
@@ -296,14 +304,53 @@ export default function Header(props) {
 								className={clsx(classes.menuButton, open && classes.hide)}>
 								<MenuIcon style={{ fontSize: "25" }} />
 							</IconButton>
-
-							<div className='logoContainer' className={classes.logoContainer}>
-								<Logo width='200px' height='50px' />
+							<div className='desktop-view'>
+								<div className={searchInput ? classes.hide : "logoContainer"}>
+									<Logo width='200px' height='50px' />
+								</div>
+								<div className='searchContainer d-flex'>
+									<input className={"searchInput"} maxLength='40' type='text' />
+									<SearchIcon
+										className='searchIcon'
+										// onClick={(e) => searchInputHandler(e)}
+										style={{ fontSize: "26" }}
+									/>
+								</div>
 							</div>
 
-							<div className='searchContainer d-flex'>
-								<input className='searchInput' maxLength='40' type='text' />
-								<SearchIcon className='searchIcon' style={{ fontSize: "26" }} />
+							<div className='mobile-view'>
+								<div className={searchInput ? classes.hide : "logoContainer"}>
+									<Logo width='200px' height='50px' />
+								</div>
+
+								<div
+									className={
+										searchInput ? "searchContainer d-flex" : classes.hide
+									}>
+									<input
+										className={searchInput ? "searchInput" : classes.hide}
+										maxLength='40'
+										type='text'
+									/>
+									<SearchIcon
+										className='searchIcon'
+										onClick={(e) => searchInputHandler(e)}
+										style={{ fontSize: "26" }}
+									/>
+								</div>
+								{searchInput ? (
+									<CloseIcon
+										className='searchIcon'
+										onClick={(e) => searchInputHandler(e)}
+										style={{ fontSize: "26" }}
+									/>
+								) : (
+									<SearchIcon
+										className=''
+										onClick={(e) => searchInputHandler(e)}
+										style={{ fontSize: "26" }}
+									/>
+								)}
 							</div>
 
 							<div className={classes.grow} />
@@ -374,7 +421,7 @@ export default function Header(props) {
 					}}>
 					<div className={classes.drawerHeader}>
 						<div className=''>
-							<Logo width="130px" height="30px"/>
+							<Logo width='130px' height='30px' />
 						</div>
 						<IconButton onClick={handleDrawerClose}>
 							{theme.direction === "ltr" ? (
