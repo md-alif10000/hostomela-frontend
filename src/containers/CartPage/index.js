@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
 import Loader from "../../components/Loader";
 import EmptyCart from "./EmptyCart";
+import {deliveryCharge} from '../../utils/getParams'
 import './style.css'
 
 export const TotalPrice = (props) => {
@@ -41,7 +42,7 @@ export const TotalPrice = (props) => {
 		? afterDeliveryCharge * (coupon.amount * (1 / 100))
 		: null;
 	const afterDiscount = coupon
-		? afterDeliveryCharge - couponDiscont + 50
+		? afterDeliveryCharge - couponDiscont + deliveryCharge
 		: null;
 
 	return (
@@ -60,7 +61,7 @@ export const TotalPrice = (props) => {
 				<tr>
 					<td>Delivery Charge</td>
 					<td>
-						50 <strong> ৳</strong>
+						{deliveryCharge} <strong> ৳</strong>
 					</td>
 				</tr>
 				<tr>
@@ -69,7 +70,7 @@ export const TotalPrice = (props) => {
 						{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
 							const { price, qty } = cart.cartItems[key];
 							return totalPrice + price * qty;
-						}, 50)}{" "}
+						}, deliveryCharge)}{" "}
 						<strong> ৳</strong>
 					</td>
 				</tr>

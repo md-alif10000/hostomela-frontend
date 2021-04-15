@@ -42,9 +42,9 @@ useEffect(() => {
 if(category.loading){
 	return <Loader/>
 }
-if (cart.updatingCart) {
-	return <Loader />;
-}
+// if (cart.updatingCart) {
+// 	return <Loader />;
+// }
 
     
     return (

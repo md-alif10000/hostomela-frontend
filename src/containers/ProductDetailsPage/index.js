@@ -179,7 +179,7 @@ export default function ProductDetails2(props) {
 							</div>
 
 							<div
-								className='text-left'
+								className='text-left font-12'
 								style={{ textAlign: "left", textDecoration: "none" }}>
 								<ul>
 									<li>⦿Banarasi Pure Silk Saree in Navy Blue</li>

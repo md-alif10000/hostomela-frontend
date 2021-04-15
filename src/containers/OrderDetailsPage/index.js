@@ -111,7 +111,7 @@ export default function OrderDetailsPage(props) {
 										<div className='delItemImgContainer'>
 											<img
 												src={generatePublicUrl(
-													item.productId.productPictures[0].img
+													item.productId.productPictures[0].image
 												)}
 												alt=''
 											/>

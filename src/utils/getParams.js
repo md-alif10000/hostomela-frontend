@@ -14,3 +14,4 @@ export default (query) => {
 	}
 	// return {};
 };
+export const deliveryCharge=50

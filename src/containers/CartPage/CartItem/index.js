@@ -33,9 +33,8 @@ export default function CartItem(props) {
 						<p>{name}</p>
 						<span>Price:BDT {price}</span>
 						<br />
-						<a href='/cart' onClick={() => props.onRemoveCartItem(_id)}>
-							remove
-						</a>
+						<span className='t-secondary pointer' style={{color:'red'}} onClick={() => props.onRemoveCartItem(_id)}>remove</span>
+					
 					</div>
 				</div>
 			</td>

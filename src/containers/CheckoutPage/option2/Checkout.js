@@ -22,6 +22,7 @@ import { Button, SwipeableDrawer } from "@material-ui/core";
 import "./style.css";
 import { Redirect } from "react-router";
 import Header from "../../../components/Header/index";
+import { deliveryCharge } from "../../../utils/getParams";
 
 function Copyright() {
 	return (
@@ -106,7 +107,7 @@ export default function Checkout(props) {
 	//Order confirm hooksssss............
 	const [confirmOrder, setConfirmOrder] = useState("");
 	const onConfirmOrder = () => {
-		var totalAmount = Object.keys(cart.cartItems).reduce(
+		var TotalAmount = Object.keys(cart.cartItems).reduce(
 			(totalPrice, key) => {
 				const { price, qty } = cart.cartItems[key];
 				return totalPrice + price * qty;
@@ -114,7 +115,12 @@ export default function Checkout(props) {
 			0
 		);
 
-	var totalAmount=(coupon.type == 'percentage'? totalAmount*(1-couponAmount):totalAmount-couponAmount) + 50
+		var totalAmount = coupon
+			? coupon.type == "percentage"
+				? TotalAmount * (1 - couponAmount)
+				: totalAmount - couponAmount + deliveryCharge
+			: (TotalAmount + deliveryCharge);
+
 	console.log("latest total",totalAmount)
 
 
@@ -130,7 +136,7 @@ export default function Checkout(props) {
 			items,
 			paymentStatus: "pending",
 			paymentType,
-			coupon:coupon._id
+			coupon:coupon ? coupon._id:null
 		};
 
 		console.log(payload);
