@@ -62,7 +62,7 @@ export default function OrderPage(props) {
 													<img
 														className='orderImg'
 														src={generatePublicUrl(
-															item.productId.productPictures[0].img
+															item.productId.productPictures[0].image
 														)}
 													/>
 													{item.productId.name} <br />
@@ -81,53 +81,19 @@ export default function OrderPage(props) {
 								{console.log(order)}
 								<td>
 									{order.items.map((item, index) => {
-										return <p>*{item.payablePrice}</p>;
+										return <p>*{item.payablePrice} x {item.purchasedQty} pcs</p>;
 									})}
 									Total Price=
 									{Object.keys(order.items).reduce((totalPrice, key) => {
 										const { payablePrice } = order.items[key];
-										return totalPrice + payablePrice;
+										const {purchasedQty}=order.items[key]
+										return totalPrice + payablePrice * purchasedQty;
 									}, 0)}
 								</td>
 							</tr>
 						);
 					})}
-					{/* <tr>
-							<th scope='row'>1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						{user.orders.map((order) => {
-							return order.items.map((item) => (
-								<Card style={{ display: "block", margin: "5px 0" }}>
-									<Link
-										to={`/order_details/${order._id}`}
-										className='orderItemContainer'>
-										<div className='orderImgContainer'>
-											<img
-												className='orderImg'
-												src={generatePublicUrl(
-													item.productId.productPictures[0].img
-												)}
-											/>
-										</div>
-										<div className='orderRow'>
-											<div
-												style={{ textDecoration: "none" }}
-												className='orderName'>
-												{item.productId.name}
-											</div>
-											<div className='orderPrice'>
-												<BiRupee style={{ textDecoration: "none" }} />
-												{item.payablePrice}
-											</div>
-											<div>{order.paymentStatus}</div>
-										</div>
-									</Link>
-								</Card>
-							));
-						})} */}
+					
 				</tbody>
 			</table>
 		</div>

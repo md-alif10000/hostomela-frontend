@@ -4,8 +4,10 @@
     font-size: 20px;
 }
 
+.account-text{
 
-@media screen and (min-width:1300px){
+}
+/* @media screen and (min-width:1300px){
 
     .headerContainer{
         margin: 0 100px
@@ -21,8 +23,12 @@
     }
     
 
+} */
+
+@media screen and (max-width:600px){
+    .account-text{
+        display: none;
+    }
+    
 }
 
-@media screen and (max-width:1300px){
-
-}

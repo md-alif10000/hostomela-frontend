@@ -7,12 +7,13 @@ import {
 	removeCartItem,
 } from "../../actions/cart.action";
 import { validateCoupon } from "../../actions/user.action";
-import "./style.css";
+
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
 import Loader from "../../components/Loader";
 import EmptyCart from "./EmptyCart";
+import './style.css'
 
 export const TotalPrice = (props) => {
 	const [couponInput, setCouponInput] = useState(false);
@@ -25,6 +26,7 @@ export const TotalPrice = (props) => {
 	const couponValidation = (e) => {
 		e.preventDefault();
 		dispatch(validateCoupon({ couponName }));
+		setCouponInput(false)
 	};
 
 	const afterDeliveryCharge = Object.keys(cart.cartItems).reduce(
@@ -51,12 +53,15 @@ export const TotalPrice = (props) => {
 						{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
 							const { price, qty } = cart.cartItems[key];
 							return totalPrice + price * qty;
-						}, 0)}
+						}, 0)}{" "}
+						<strong> ৳</strong>
 					</td>
 				</tr>
 				<tr>
 					<td>Delivery Charge</td>
-					<td>50</td>
+					<td>
+						50 <strong> ৳</strong>
+					</td>
 				</tr>
 				<tr>
 					<td>Total</td>
@@ -64,18 +69,27 @@ export const TotalPrice = (props) => {
 						{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
 							const { price, qty } = cart.cartItems[key];
 							return totalPrice + price * qty;
-						}, 50)}
+						}, 50)}{" "}
+						<strong> ৳</strong>
 					</td>
 				</tr>
 				{coupon ? (
 					<>
 						<tr>
 							<td>Coupon--{coupon.name}</td>
-							<td>{couponDiscont}</td>
+							<td>
+								<span>Discount{" -->"} </span>{" "}
+								<span>
+									{couponDiscont}
+									<strong> ৳</strong>
+								</span>
+							</td>
 						</tr>
 						<tr>
 							<td>Total--</td>
-							<td>{afterDiscount}</td>
+							<td>
+								{afterDiscount} <strong> ৳</strong>
+							</td>
 						</tr>
 					</>
 				) : null}
@@ -92,17 +106,24 @@ export const TotalPrice = (props) => {
 			{couponInput ? (
 				<div className='d-flex'>
 					<input
-						className='m-3 input d'
+						className='m-3 coupon-input d'
 						maxLength='15'
 						type='txt'
 						placeholder='Enter your coupon code'
 						onChange={(e) => setCouponName(e.target.value)}
 					/>
 					<button
-						className='btn btn-danger btn-lg m-2'
+						className='btn c-primary t-primary btn-lg m-2'
 						onClick={(e) => couponValidation(e)}>
 						Submit
 					</button>
+					{couponInput ? (
+						<button
+							className='btn btn-danger btn-lg m-2'
+							onClick={(e) => setCouponInput(false)}>
+							Cancel
+						</button>
+					) : null}
 				</div>
 			) : null}
 			{props.nextStep ? null : (

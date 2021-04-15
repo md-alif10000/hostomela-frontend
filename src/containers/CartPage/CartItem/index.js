@@ -60,7 +60,9 @@ export default function CartItem(props) {
 					<AddCircleOutlineIcon />
 				</button>
 			</td>
-			<td>Subtotal:{qty * price}</td>
+			<td>
+				Subtotal:{qty * price} <strong> ৳</strong>
+			</td>
 		</tr>
 	);
 }

@@ -69,12 +69,12 @@ export default function Header3() {
 								aria-haspopup='true'
 								color='inherit'>
 								<Link to='/account'>
-									<AccountCircle style={{ fontSize: "30" }} />
+									<AccountCircle style={{ fontSize: "25" }} />
 								</Link>
 							</IconButton>
 
-							<Typography variant='h6' className={classes.title}>
-								<Link to='/account'> Account</Link>
+							<Typography variant='h6' className={classes.title,'account-text'}>
+								<Link to='/account'>Account</Link>
 							</Typography>
 						</div>
 
