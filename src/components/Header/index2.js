@@ -59,7 +59,12 @@ export default function Header3() {
 	};
 	return (
 		<div className={classes.root}>
-			<AppBar position='staic' style={{ backgroundColor: "#595643" }}>
+			<AppBar
+				position='staic'
+				style={{
+					backgroundColor: "#d4418e",
+					backgroundImage: "linear-gradient(315deg,  #0652c5  0%,#a031b6 74%)",
+				}}>
 				<div className='headerContainer'>
 					<Toolbar className={classes.toolbar}>
 						<div className={classes.toolbar}>
@@ -73,13 +78,15 @@ export default function Header3() {
 								</Link>
 							</IconButton>
 
-							<Typography variant='h6' className={classes.title,'account-text'}>
+							<Typography
+								variant='h6'
+								className={(classes.title, "account-text")}>
 								<Link to='/account'>Account</Link>
 							</Typography>
 						</div>
 
 						<div className={classes.logoContainer}>
-							<Logo width='120px' height="30px"/>
+							<Logo width='120px' height='30px' />
 						</div>
 
 						{auth.user.name ? (
