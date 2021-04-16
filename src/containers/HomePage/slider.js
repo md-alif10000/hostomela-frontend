@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../../actions/cart.action";
 import "./style.css";
 import { api, generatePublicUrl } from "../../urlconfig";
+import Product from "../../components/Product";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -44,22 +45,19 @@ export default function NowPlaying(props) {
 		dots: false,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 4,
+		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
 		speed: 6000,
 		autoplaySpeed: 6000,
 		pauseOnHover: true,
-		// nextArrow: <ArrowForwardIcon style={{color:'blue',fontSize:'30px'}} />,
-		// prevArrow: <ArrowBackIcon />,
 		className: "center",
 		centerMode: true,
-		// rows: 2,
 		responsive: [
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: 4,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 					infinite: true,
 					dots: true,
@@ -68,15 +66,15 @@ export default function NowPlaying(props) {
 			{
 				breakpoint: 600,
 				settings: {
-					slidesToShow: 2,
+					slidesToShow: 1,
 					slidesToScroll: 1,
 					initialSlide: 3,
 				},
 			},
 			{
-				breakpoint: 480,
+				breakpoint: 380,
 				settings: {
-					slidesToShow: 2,
+					slidesToShow: 1,
 					slidesToScroll: 1,
 				},
 			},
@@ -91,121 +89,65 @@ export default function NowPlaying(props) {
 						<h2 className='m-2 p-2 text-center'>LATEST PRODUCT</h2>
 					</Card.Title>
 					<Slider {...settings}>
-						{product.products.map(function (product, index) {
-							return (
-								<div className='col-sm-6 col-lg-3 m-2'>
-									<Grid key={index} item className='col-sm-6 col-lg-3 m-2'>
-										<div className='paperContainer'>
-											<Link to={`/${product.slug}/${product._id}/p`}>
-												<Paper
-													className={classes.paper}
-													style={{ display: "flex", flexDirection: "column" }}>
-													<div style={{ backgroundColor: "#dbdbdb" }}>
-														<img
-															className='productImg'
-															src={generatePublicUrl(
-																product.productPictures[0]
-																	? product.productPictures[0].image
-																	: null
-															)}
-														/>
-														<p style={{ color: "#cf9415", fontWeight: "bold" }}>
-															<span>৳</span> {product.price}
-														</p>
-														<p style={{ fontSize: "13px" }}>
-															{product.name.slice(0, 20)}
-														</p>
-													</div>
+					
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										link={`/${product.slug}/${product._id}/p`}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+									/>
+								);
+							})}
 
-													<div>
-														<span className='cartIconContainer'>
-															<ShoppingCartIcon
-																onClick={() => {
-																	const { _id, name, price } = product;
-																	const image =
-																		product.productPictures[0].image;
-																	dispatch(
-																		addToCart({ _id, name, price, image })
-																	);
-																	// props.history.push("/cart");
-																}}
-																style={{ fontSize: "30" }}
-																className='cartIcon'
-															/>
-														</span>
-													</div>
-												</Paper>
-											</Link>
-										</div>
-									</Grid>
-								</div>
-							);
-						})}
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										link={`/${product.slug}/${product._id}/p`}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+									/>
+								);
+							})}
+				
 					</Slider>
 					{/* // </Container> */}
 				</Card.Body>
 			</Card>
 
-			<Card className='mt-5'>
-				<Card.Body>
-					<Card.Title>
-						<h2 className='m-2 p-2 text-center'>LATEST PRODUCT</h2>
-					</Card.Title>
-					<Slider {...settings}>
-						{product.products.map(function (product, index) {
-							return (
-								<div className='col-sm-6 col-lg-3 m-2'>
-									<Grid key={index} item className='col-sm-6 col-lg-3 m-2'>
-										<div className='paperContainer'>
-											<Link to={`/${product.slug}/${product._id}/p`}>
-												<Paper
-													className={classes.paper}
-													style={{ display: "flex", flexDirection: "column" }}>
-													<div style={{ backgroundColor: "#dbdbdb" }}>
-														<img
-															className='productImg'
-															src='https://medias.utsavfashion.com/media/catalog/product/cache/1/image/500x/040ec09b1e35df139433887a97daa66f/p/r/printed-satin-georgette-saree-in-dark-blue-v1-sfva2298.jpg'
-															// src={generatePublicUrl(
-															// 	product.productPictures[0]
-															// 		? product.productPictures[0].image
-															// 		: null
-															// )}
-														/>
-														<p style={{ color: "#cf9415", fontWeight: "bold" }}>
-															<span>৳</span> {product.price}
-														</p>
-														<p style={{ fontSize: "13px" }}>
-															{product.name.slice(0, 20)}
-														</p>
-													</div>
-
-													<div>
-														<span className='cartIconContainer'>
-															<ShoppingCartIcon
-																onClick={() => {
-																	const { _id, name, price } = product;
-																	const image =
-																		product.productPictures[0].image;
-																	dispatch(
-																		addToCart({ _id, name, price, image })
-																	);
-																	// props.history.push("/cart");
-																}}
-																style={{ fontSize: "30" }}
-																className='cartIcon'
-															/>
-														</span>
-													</div>
-												</Paper>
-											</Link>
-										</div>
-									</Grid>
-								</div>
-							);
-						})}
-					</Slider>
-				</Card.Body>
-			</Card>
+			{/* <Card className='mt-5'> */}
+			<div>
+				{/* <Slider {...settings}> */}
+				{product.products.map(function (product, index) {
+					return (
+						<Product
+							name={product.name.slice(0, 20)}
+							rating={product.rating}
+							price={product.price}
+							image={generatePublicUrl(
+								product.productPictures[0]
+									? product.productPictures[0].image
+									: null
+							)}
+							link={`/${product.slug}/${product._id}/p`}
+						/>
+					);
+				})}
+				{/* </Slider> */}
+			</div>
+			{/* </Card> */}
 		</>
 	);
 }
