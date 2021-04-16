@@ -284,7 +284,7 @@ color:white
   
   /* Cart Page */
   .cart {
-    margin: 0 auto;
+    
     display: flex;
     flex-direction: column;
     color: black;
@@ -320,7 +320,7 @@ color:white
     
     td {
     /* padding: 1rem 0.5rem; */
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
 
 
@@ -357,7 +357,7 @@ color:white
    /* border: 2px solid white;
    border-radius: 10px; */
     }
-      /*
+     
     .total-price {
     display: flex;
     justify-content: flex-end;
@@ -365,7 +365,7 @@ color:white
     flex-direction: column;
     margin-top: 2rem;
     }
-    
+     /*
     .total-price a {
     display: inline-block;
     color: var(--white);
@@ -385,11 +385,11 @@ color:white
       align-items: center;
     }
     
-    .total-price table {
+     .total-price table {
     border-top: 3px solid var(--primary);
     width: 100%;
     max-width: 35rem;
-    }
+    } 
     
     td:last-child {
     text-align: right;
@@ -405,12 +405,35 @@ color:white
     }
     }
     
+    
   
   
     /* Empty cart css */
   
-  
-  
+    .total-price table {
+      border-top: 3px solid var(--primary);
+      width: 100%;
+      max-width: 35rem;
+      } 
+     .total-price-table{
+       width: 100%;
+
+     }
+
+     .coupon-container{
+      border-top: 3px solid var(--primary);
+      width: 100%;
+      max-width: 55rem;
+      background-color: #c7c9cf;
+
+     }
+
+
+
+
+
+
+
   .mt-100 {
       margin-top: 50px;
     width: 90%;

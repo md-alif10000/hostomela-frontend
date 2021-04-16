@@ -47,7 +47,7 @@ export const TotalPrice = (props) => {
 
 	return (
 		<div className='total-price text-left'>
-			<table>
+			<table className='total-price-table'>
 				<tr>
 					<td>Subtotal</td>
 					<td>
@@ -95,38 +95,40 @@ export const TotalPrice = (props) => {
 					</>
 				) : null}
 			</table>
-
-			{couponInput ? null : (
-				<button
-					className='btn btn-success btn-lg m-3'
-					onClick={(e) => setCouponInput(true)}>
-					Add Coupon
-				</button>
-			)}
-
-			{couponInput ? (
-				<div className='d-flex'>
-					<input
-						className='m-3 coupon-input d'
-						maxLength='15'
-						type='txt'
-						placeholder='Enter your coupon code'
-						onChange={(e) => setCouponName(e.target.value)}
-					/>
+			<div className='coupon-container'>
+				{couponInput ? null : (
 					<button
-						className='btn c-primary t-primary btn-lg m-2'
-						onClick={(e) => couponValidation(e)}>
-						Submit
+						className='btn btn-success btn-lg m-3'
+						onClick={(e) => setCouponInput(true)}>
+						Add Coupon
 					</button>
-					{couponInput ? (
+				)}
+
+				{couponInput ? (
+					<div className='d-flex'>
+						<input
+							className='m-3 coupon-input d'
+							maxLength='15'
+							type='txt'
+							placeholder='Enter your coupon code'
+							onChange={(e) => setCouponName(e.target.value)}
+						/>
 						<button
-							className='btn btn-danger btn-lg m-2'
-							onClick={(e) => setCouponInput(false)}>
-							Cancel
+							className='btn c-primary t-primary btn-lg m-2'
+							onClick={(e) => couponValidation(e)}>
+							Submit
 						</button>
-					) : null}
-				</div>
-			) : null}
+						{couponInput ? (
+							<button
+								className='btn btn-danger btn-lg m-2'
+								onClick={(e) => setCouponInput(false)}>
+								Cancel
+							</button>
+						) : null}
+					</div>
+				) : null}
+			</div>
+
 			{props.nextStep ? null : (
 				<Link
 					to='/checkout'
@@ -199,12 +201,11 @@ Object.keys(cart.cartItems).map((item)=>{
 	itemsArray.push(item)
 
 })
-console.log(itemsArray)
-	
- console.log(cart.cartItems)
-	if (itemsArray.length == 0) {
-		return <EmptyCart />;
-	} 
+
+
+	// if (itemsArray.length == 0) {
+	// 	return <EmptyCart />;
+	// } 
 
 
 

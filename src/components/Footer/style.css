@@ -1,7 +1,7 @@
 .footer {
     background-color: var(--black);
-    padding: 6rem 1rem;
-    line-height: 3rem;
+    padding: 2rem 1rem;
+    /* line-height: 3rem; */
   }
   
   .footer-center span {
@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     color: var(--white);
+    margin: 0;
   }
   
   .footer-center a:link,

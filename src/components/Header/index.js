@@ -468,50 +468,7 @@ export default function Header(props) {
 							</span>
 						) : null}
 
-						<Link to='/about-us' className='font-18 t-primary'>
-							<ListItem button>
-								<ListItemIcon>
-									<AccountCircle />
-								</ListItemIcon>
-								<ListItemText
-									primary={"About Us"}
-									className='font-18 t-primary'
-								/>
-							</ListItem>
-						</Link>
-						<Link to='/contact-us' className='font-18 t-primary'>
-							<ListItem button>
-								<ListItemIcon>
-									<AssignmentTwoToneIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={"Contact Us"}
-									className='font-18 t-primary'
-								/>
-							</ListItem>
-						</Link>
-						<Link to='/terms&conditions' className='font-18 t-primary'>
-							<ListItem button>
-								<ListItemIcon>
-									<AssignmentTwoToneIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={"Terms & Conditions"}
-									className='font-18 t-primary'
-								/>
-							</ListItem>
-						</Link>
-						<Link to='/privacy-policy' className='font-18 t-primary'>
-							<ListItem button>
-								<ListItemIcon>
-									<AssignmentTwoToneIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={"Privacy Policy"}
-									className='font-18 t-primary'
-								/>
-							</ListItem>
-						</Link>
+					
 						<Link to='/return-policy' className='font-18 t-primary'>
 							<ListItem button>
 								<ListItemIcon>

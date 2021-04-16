@@ -6,31 +6,26 @@ import Social from '../Social'
 export default function Footer() {
     return (
 			<footer id='footer' className='section footer'>
-				<div className='container'>
+				<div className='container m-1'>
 					<div className='footer-container'>
 						<div className='footer-center'>
 							<h3>EXTRAS</h3>
 							<Link to='#'>Brands</Link>
-							<Link to='#'>Gift Certificates</Link>
-							<Link to='#'>Affiliate</Link>
-							<Link to='#'>Specials</Link>
-							<Link to='#'>Site Map</Link>
+							{/* <Link to='#'>Gift Certificates</Link> */}
+							<Link to='/about-us'>About Us</Link>
+							<Link to='/contact-us'>Contact Us</Link>
 						</div>
 						<div className='footer-center'>
 							<h3>INFORMATION</h3>
-							<Link to='/about-us'>About Us</Link>
 							<Link to='/privacy-policy'>Privacy Policy</Link>
 							<Link to='/terms&conditions'>Terms & Conditions</Link>
-							<Link to='/contact-us'>Contact Us</Link>
-							<Link to='#'>Site Map</Link>
+							<Link to='/return-policy'>Return Policy</Link>
 						</div>
 						<div className='footer-center'>
 							<h3>MY ACCOUNT</h3>
 							<Link to='/account'>My Account</Link>
 							<Link to='/acccount/orders'>Order History</Link>
 							<Link to='#'>Wish List</Link>
-							<Link to='/newsletter'>Newsletter</Link>
-							<Link to='#'>Returns</Link>
 						</div>
 						<div className='footer-center'>
 							<h3>CONTACT US</h3>
@@ -55,10 +50,10 @@ export default function Footer() {
 							<div className='payment-methods'>
 								<img src='./images/payment.png' alt='' />
 							</div>
-							<div className='m-3 p-3'>
+							{/* <div className='m-3 p-3'> */}
 								{" "}
-								<Social title='Follow us on' />
-							</div>
+								{/* <Social title='Follow us on' /> */}
+							{/* </div> */}
 						</div>
 					</div>
 				</div>
