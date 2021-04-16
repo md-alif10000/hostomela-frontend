@@ -1,7 +1,7 @@
 .footer {
     background-color: var(--black);
     padding: 2rem 1rem;
-    /* line-height: 3rem; */
+    line-height: 3rem;
   }
   
   .footer-center span {
@@ -12,14 +12,14 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     color: var(--white);
-    margin: 0;
+    margin: 10px;
   }
   
   .footer-center a:link,
   .footer-center a:visited {
     display: block;
     color: #f1f1f1;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     transition: 0.6s;
   }
   
@@ -29,7 +29,7 @@
   
   .footer-center div {
     color: #f1f1f1;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   
   .footer-center h3 {
@@ -54,4 +54,9 @@
       grid-template-columns: 1fr;
       row-gap: 2rem;
     }
+  }
+
+  @media screen and (max-width:500px){
+    .footer{font-size: 12px;}
+    
   }

@@ -88,8 +88,8 @@ export default function ProductStore(props) {
 	return (
 		<>
 			<div className='productPageContainer mt-70'>
-				<div className='card p-3 m-3'>
-					{subCategories.length > 0 ? (
+				{subCategories.length > 0 ? (
+					<div className='card p-3 m-3'>
 						<Grid container className={classes.root} spacing={2}>
 							<h3 className='productCategoryHeader'>
 								<span className='p-3 rounded t-primary c-primary-gradiant'>
@@ -126,8 +126,8 @@ export default function ProductStore(props) {
 								</Grid>
 							</Grid>
 						</Grid>
-					) : null}
-				</div>
+					</div>
+				) : null}
 
 				<Grid container className={classes.root} spacing={2}>
 					<h3 className='productCategoryHeader'>

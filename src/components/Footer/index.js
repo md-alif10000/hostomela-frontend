@@ -6,7 +6,7 @@ import Social from '../Social'
 export default function Footer() {
     return (
 			<footer id='footer' className='section footer'>
-				<div className='container m-1'>
+				<div className='container my-0'>
 					<div className='footer-container'>
 						<div className='footer-center'>
 							<h3>EXTRAS</h3>
