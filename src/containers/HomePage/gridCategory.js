@@ -69,11 +69,11 @@ export default function GridCategory() {
 						settings: {
 							slidesToShow: 4,
 							slidesToScroll: 1,
-							initialSlide: 3,
+							initialSlide: 4,
 						},
 					},
 					{
-						breakpoint: 580,
+						breakpoint: 480,
 						settings: {
 							slidesToShow: 3,
 							slidesToScroll: 1,
@@ -87,9 +87,9 @@ export default function GridCategory() {
             const myCategories = [];
             categories.map((category,index)=>{
 
-             category.children.map((child,index)=>{
-                 myCategories.push(child)
-             })
+            //  category.children.map((child,index)=>{
+                 myCategories.push(category);
+            //  })
               
             })
 
@@ -97,37 +97,24 @@ export default function GridCategory() {
             
 
 	return (
-	
 		<div className='card'>
 			<Slider {...settings}>
-		
 				{myCategories.map((category) => (
 					<Link
-					className='m-3'
-						to={`/${category.slug}?cid=${category._id}&type=${category.type}`}
-						style={{ textDecoration: "none" }}>
-						<div
-							className='categorybox'
-							style={{
-								display: "flex",
-								flexDirection: "column",
-							}}>
+						className='m-3'
+						to={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+						<div className='categoryLink'>
 							<img
-								style={{
-									width: "100px",
-									height: "80px",
-									borderRadius: "10px",
-								}}
+								className='rounded-circle rounded-category-image'
+								// src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs7rEoPHBN7kL7cfUXLuZnpwCSvUQztwewzA&usqp=CAU'
 								src={`${domain}${category.image}`}
+								
 							/>
-							<h4 style={{ margin: "auto" }}>{category.name}</h4>
+							<p className='font-12'>{category.name}</p>
 						</div>
 					</Link>
 				))}
-		
 			</Slider>
 		</div>
-
-
 	);
 }

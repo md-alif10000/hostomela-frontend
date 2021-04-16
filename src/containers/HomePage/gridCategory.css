@@ -13,3 +13,26 @@
     box-shadow: 2px 2px 1px 1px #c76cda;
 }
 
+.categoryLink{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rounded-category-image{
+    width: 70px;
+    height: 70px;
+    border: 2px solid #ae54c0 ;
+    box-shadow:-2px 1px 2px 2px #ea8cfd;
+
+}
+
+@media screen and (max-width:600px){
+    .rounded-category-image{
+        width: 50px;
+        height: 50px;
+    }
+    
+}

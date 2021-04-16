@@ -100,28 +100,18 @@ export default function ProductStore(props) {
 							<Grid item xs={12}>
 								<Grid container justify='center' spacing={spacing}>
 									{subCategories.map((category) => (
-										<div className='mx-sm-1 mx-lg-4 m-3 '>
-											<a
-												className='categoryLink'
-												href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-												<div
-													className='categorybox'
-													style={{
-														display: "flex",
-														flexDirection: "column",
-													}}>
-													<img
-														style={{
-															width: "100px",
-															height: "80px",
-															borderRadius: "10px",
-														}}
-														src={domain + `${category.categoryImage}`}
-													/>
-													<h4 style={{ margin: "auto" }}>{category.name}</h4>
-												</div>
-											</a>
-										</div>
+										<a
+											className='m-3'
+											href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+											<div className='categoryLink'>
+												<img
+													className='rounded-circle rounded-category-image'
+													// src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs7rEoPHBN7kL7cfUXLuZnpwCSvUQztwewzA&usqp=CAU'
+													src={domain + `${category.categoryImage}`}
+												/>
+												<p className='font-12'>{category.name}</p>
+											</div>
+										</a>
 									))}
 								</Grid>
 							</Grid>
@@ -129,59 +119,75 @@ export default function ProductStore(props) {
 					</div>
 				) : null}
 
-				<Grid container className={classes.root} spacing={2}>
-					<h3 className='productCategoryHeader'>
-						<span className='p-3 rounded t-primary c-primary-gradiant'>
-							Products
-						</span>
-					</h3>
-					<Grid item xs={12}>
-						<Grid container justify='center' spacing={spacing}>
-							{product.products.map((product, index) => (
-								<Grid key={index} item>
-									<div className='paperContainer'>
-										<Link to={`/${product.slug}/${product._id}/p`}>
-											<Paper
-												className={classes.paper}
-												style={{ display: "flex", flexDirection: "column" }}>
-												<div style={{ backgroundColor: "#dbdbdb" }}>
-													<img
-														className='productImg'
-														src={generatePublicUrl(
-															product.productPictures[0]
-																? product.productPictures[0].img
-																: null
-														)}
-													/>
-													<p style={{ color: "#cf9415", fontWeight: "bold" }}>
-														<span>৳</span> {product.price}
-													</p>
-													<p style={{ fontSize: "13px" }}>
-														{product.name.slice(0, 20)}
-													</p>
-												</div>
+				<Grid container className={(classes.root, "mt-60")} spacing={2}>
+					{product.length > 0 ? (
+						<span>
+							{" "}
+							<h3 className='productCategoryHeader'>
+								<span className='p-3 rounded t-primary c-primary-gradiant'>
+									Products
+								</span>
+							</h3>
+							<Grid item xs={12}>
+								<Grid container justify='center' spacing={spacing}>
+									{product.products.map((product, index) => (
+										<Grid key={index} item>
+											<div className='paperContainer'>
+												<Link to={`/${product.slug}/${product._id}/p`}>
+													<Paper
+														className={classes.paper}
+														style={{
+															display: "flex",
+															flexDirection: "column",
+														}}>
+														<div style={{ backgroundColor: "#dbdbdb" }}>
+															<img
+																className='productImg'
+																src={generatePublicUrl(
+																	product.productPictures[0]
+																		? product.productPictures[0].img
+																		: null
+																)}
+															/>
+															<p
+																style={{
+																	color: "#cf9415",
+																	fontWeight: "bold",
+																}}>
+																<span>৳</span> {product.price}
+															</p>
+															<p style={{ fontSize: "13px" }}>
+																{product.name.slice(0, 20)}
+															</p>
+														</div>
 
-												<div>
-													<span className='cartIconContainer'>
-														<ShoppingCartIcon
-															onClick={() => {
-																const { _id, name, price } = product;
-																const img = product.productPictures[0].img;
-																dispatch(addToCart({ _id, name, price, img }));
-																props.history.push("/cart");
-															}}
-															style={{ fontSize: "30" }}
-															className='cartIcon'
-														/>
-													</span>
-												</div>
-											</Paper>
-										</Link>
-									</div>
+														<div>
+															<span className='cartIconContainer'>
+																<ShoppingCartIcon
+																	onClick={() => {
+																		const { _id, name, price } = product;
+																		const img = product.productPictures[0].img;
+																		dispatch(
+																			addToCart({ _id, name, price, img })
+																		);
+																		props.history.push("/cart");
+																	}}
+																	style={{ fontSize: "30" }}
+																	className='cartIcon'
+																/>
+															</span>
+														</div>
+													</Paper>
+												</Link>
+											</div>
+										</Grid>
+									))}
 								</Grid>
-							))}
-						</Grid>
-					</Grid>
+							</Grid>{" "}
+						</span>
+					) : (
+						<h3 className='productCategoryHeader'>No Products Found</h3>
+					)}
 				</Grid>
 			</div>
 		</>

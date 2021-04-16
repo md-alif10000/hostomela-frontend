@@ -6,7 +6,7 @@ import { categoryConstants } from "./constants";
 
         dispatch({ type: categoryConstants.GET_ALL_CATEGORIES_REQUEST });
         const res = await axios.get(`category/getcategory`);
-        console.log(res);
+    
         if (res.status === 200) {
 
             const {categoryList}  = res.data;
@@ -31,7 +31,7 @@ export const getSubCategory=(parentId)=>{
     return async dispatch=>{
          dispatch({ type: categoryConstants.GET_SUB_CATEGORY_REQUEST });
 					const res = await axios.get(`subcategory/${parentId}`);
-					console.log(res);
+			
 					if (res.status == 200) {
 					
 						dispatch({

@@ -254,26 +254,27 @@ export default function Header(props) {
 
 		for (let category of categories) {
 			myCategories.push(
-				<a style={{fontSize:'14px'}} href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-					<ListItem key={category.name} className='listItem'>
-						{category.parentId ? (
-							<a
-								className='sublistItem'
-								href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-								<ListItemText primary={category.name} />
-								<ArrowForwardIosIcon />
-							</a>
-						) : (
-							<a
-								className='sublistItem'
-								href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-								<span>{category.name}</span>
-								<ArrowForwardIosIcon style={{ marginLeft: "20px" }} />
-							</a>
-						)}
-
-			
-					</ListItem>
+				<a
+					style={{ fontSize: "14px" }}
+					href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+					<div className='d-flex justify-sb'>
+						<ListItem key={category.name} className='listItem'>
+							{category.parentId ? (
+								<a
+									className='sublistItem'
+									href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+									<ListItemText primary={category.name} />
+								</a>
+							) : (
+								<a
+									className='sublistItem'
+									href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+									<span>{category.name}</span>
+								</a>
+							)}
+						</ListItem>
+						<ArrowForwardIosIcon style={{ marginLeft: "20px" }} />
+					</div>
 				</a>
 			);
 		}
