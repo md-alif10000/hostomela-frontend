@@ -34,10 +34,14 @@
   }
   
   td input {
-	width: 3rem;
-	height: 2.5rem;
-	padding: 0.5rem;
+	width: 4rem;
+	height: 4rem;
+	/* padding: 0.5rem; */
 	text-align: center;
+	font-size: 16px;
+	background-color:gray;
+	color: white;
+	border-radius: 10px;
   }
   
   td a {
@@ -105,7 +109,7 @@
 
 @media screen and (min-width:1000px) {
     .cartpage-container{
-        margin: 150px;
+        margin:70px  150px  ;
     }
     
 }

@@ -172,7 +172,7 @@ export default function ProductDetails2(props) {
 								<h3>{product.productDetails.name}</h3>
 								<div className=''>
 									<span className='bolder'>৳ </span>
-									{product.productDetails.price}
+									{Price}
 								</div>
 
 								<div className='m-3 p-3' style={{ fontSize: "16px" }}>
@@ -189,15 +189,18 @@ export default function ProductDetails2(props) {
 											<FormControlLabel
 												value='regular'
 												control={<Radio />}
-												label='Regular'
+												label={<h4>Regular</h4>}
 											/>
 											<FormControlLabel
 												value='stitch'
 												control={<Radio />}
-												label='Stitch (Ready to wear)+500 tk'
+											
+												label={<h4>Stitch (Ready to wear)+500 tk</h4>}
 											/>
 										</RadioGroup>
 									</FormControl>
+
+								
 								</div>
 
 								<a
@@ -249,7 +252,6 @@ export default function ProductDetails2(props) {
 							<p>
 								Any Question ? Just{" "}
 								<Link>
-								
 									<span className='t-secondary'>Ask</span>{" "}
 								</Link>
 							</p>

@@ -203,15 +203,15 @@ Object.keys(cart.cartItems).map((item)=>{
 })
 
 
-	// if (itemsArray.length == 0) {
-	// 	return <EmptyCart />;
-	// } 
+	if (itemsArray.length == 0) {
+		return <EmptyCart />;
+	} 
 
 
 
 		return (
 			<Layout>
-				<div className='cartpage-container  pt-1 cart'>
+				<div className='cartpage-container  pt-1 cart mt-60'>
 					<table>
 						<tr>
 							<th>Product</th>

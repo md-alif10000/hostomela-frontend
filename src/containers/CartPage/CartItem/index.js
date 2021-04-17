@@ -53,7 +53,7 @@ export default function CartItem(props) {
 
 				<input
 					type='number'
-					className='btn-primary rounded m-auto'
+					className='m-auto '
 					value={qty}
 					min='1'
 					readOnly
