@@ -17,7 +17,8 @@
   }
   
   .cart-info span {
-	color: #ffff
+	color: rgb(122, 119, 119);
+
   }
   
   th {
@@ -33,9 +34,10 @@
   }
   
   td input {
-	width: 5rem;
-	height: 3rem;
+	width: 3rem;
+	height: 2.5rem;
 	padding: 0.5rem;
+	text-align: center;
   }
   
   td a {
@@ -48,7 +50,7 @@
 	height: 8rem;
 	margin-right: 1rem;
 	border-radius: 15px;
-	border:2px solid white
+	border:3px solid orchid
   }
   
   .total-price {

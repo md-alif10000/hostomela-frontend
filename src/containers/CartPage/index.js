@@ -211,7 +211,7 @@ Object.keys(cart.cartItems).map((item)=>{
 
 		return (
 			<Layout>
-				<div className='cartpage-container mt-70 pt-1 cart'>
+				<div className='cartpage-container  pt-1 cart'>
 					<table>
 						<tr>
 							<th>Product</th>

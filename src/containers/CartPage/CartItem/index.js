@@ -29,12 +29,18 @@ export default function CartItem(props) {
 						src={generatePublicUrl(image)}
 						alt=''
 					/>
+					<span
+						className='t-secondary pointer font-14 my-auto'
+						style={{ color: "red" }}
+						onClick={() => props.onRemoveCartItem(_id)}>
+						remove
+					</span>
 					<div>
 						<p>{name}</p>
-						<span>Price:BDT {price}</span>
-						<br />
-						<span className='t-secondary pointer' style={{color:'red'}} onClick={() => props.onRemoveCartItem(_id)}>remove</span>
-					
+						<span className='font-12'>
+							Price:<strong> ৳</strong> {price}
+						</span>
+						{/* <br /> */}
 					</div>
 				</div>
 			</td>
@@ -59,8 +65,9 @@ export default function CartItem(props) {
 					<AddCircleOutlineIcon />
 				</button>
 			</td>
-			<td>
-				Subtotal:{qty * price} <strong> ৳</strong>
+			<td className='font-14'>
+				<span>Subtotal:{qty * price}</span>
+				<strong>৳</strong>
 			</td>
 		</tr>
 	);
