@@ -1,10 +1,11 @@
 import React from 'react'
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import './style.css'
 
 export default function Product(props) {
-    const {name,rating,image,price,link}=props
+    const {name,rating,image,price,link,onClick}=props
     return (
-			<div className='arrival__center'>
+			// <div className='arrival__center'>
 				<a href={link}>
 					<div className='product font-14 bold-400'>
 						<div className='img__container'>
@@ -22,11 +23,11 @@ export default function Product(props) {
 									<strong>৳</strong> {price}
 								</span>
 							</div>
-							<h3>{name}</h3>
-							<a href={link}>Add To Cart</a>
+							<h4>{name}</h4>
+							<a className='t-primary bold-600' onClick={onClick}> <ShoppingCartIcon/> Add To Cart</a>
 						</div>
 					</div>
 				</a>
-			</div>
+			// </div>
 		);
 }

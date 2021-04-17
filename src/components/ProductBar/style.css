@@ -1,0 +1,19 @@
+.product-bar-container{
+
+}
+.fixed-cart-button{
+    padding:  5px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: rgb(221, 214, 214);
+    color: black;
+    font-weight: 600;
+    margin:0 10px;
+    background-color: yellow;
+}
+
+@media screen and (min-width:900px){
+    .product-bar-container{
+        display: none;
+    }
+}

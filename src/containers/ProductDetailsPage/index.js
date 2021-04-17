@@ -3,14 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetailsById, addReview } from "../../actions";
 import Layout from "../../components/Layout";
 import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import "./style2.css";
 import { generatePublicUrl } from "../../urlconfig.js";
 import { addToCart } from "../../actions/cart.action";
 import { Redirect } from "react-router";
-import Slider from "react-slick";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
 
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,6 +28,9 @@ import { Button } from "@material-ui/core";
 import Review from "./review";
 import SliderImage from "react-zoom-slider";
 import Loader from "../../components/Loader";
+import ProductBar from "../../components/ProductBar";
+import { Link } from "react-router-dom";
+import Social from "../../components/Social";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -65,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProductDetails2(props) {
 	const [value, setValue] = React.useState(0);
+	var [stitch, setStitch] = useState("regular");
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -76,6 +85,12 @@ export default function ProductDetails2(props) {
 	const dispatch = useDispatch();
 	const product = useSelector((state) => state.product);
 	const cart = useSelector((state) => state.cart);
+
+	let Price =
+		stitch == "regular"
+			? product.productDetails.price
+			: product.productDetails.price + 500;
+
 	const { reviews } = product.productDetails;
 	useEffect(() => {
 		let { productId } = props.match.params;
@@ -138,10 +153,10 @@ export default function ProductDetails2(props) {
 
 	return (
 		<Layout>
-			<div className='product-details-container mt-70'>
+			<div className='product-details-container '>
 				<section className='section product-detail  p-1 '>
 					<div className=' row bg-white p-3 '>
-						<div className='col-lg-6 col-sm-12 text-center '>
+						<div className='col-lg-4 col-sm-12 text-center '>
 							<span className='t-secondary'>
 								Home/Product Details/ {product.productDetails.name}
 							</span>
@@ -152,34 +167,56 @@ export default function ProductDetails2(props) {
 								direction='right'
 							/>
 						</div>
-						<div className='col-lg-6 col-sm-12 text-center right'>
-							<div>
+						<div className='col-lg-4 col-sm-12 p-5  flexCol sb'>
+							<div className='pt-5'>
 								<h3>{product.productDetails.name}</h3>
 								<div className=''>
-									<span className='bolder'>৳ </span>{" "}
+									<span className='bolder'>৳ </span>
 									{product.productDetails.price}
 								</div>
 
-								<form className='form'>
-									{/* <input type='text' placeholder='1' /> */}
-									<a
-										style={{ backgroundColor: "#fce00d" }}
-										onClick={() => {
-											const { _id, name, price } = product.productDetails;
-											const image =
-												product.productDetails.productPictures[0].image;
-											dispatch(addToCart({ _id, name, price, image }));
-											// <Redirect to='/cart' />;
-											props.history.push("/cart");
-										}}
-										className='addToCart'>
-										Add To Cart
-									</a>
-								</form>
+								<div className='m-3 p-3' style={{ fontSize: "16px" }}>
+									<FormControl component='fieldset'>
+										<FormLabel>
+											<h3> More Options</h3>
+										</FormLabel>
+										<RadioGroup
+											aria-label='gender'
+											name='gender1'
+											selected
+											value={stitch}
+											onChange={(e) => setStitch(e.target.value)}>
+											<FormControlLabel
+												value='regular'
+												control={<Radio />}
+												label='Regular'
+											/>
+											<FormControlLabel
+												value='stitch'
+												control={<Radio />}
+												label='Stitch (Ready to wear)+500 tk'
+											/>
+										</RadioGroup>
+									</FormControl>
+								</div>
+
+								<a
+									onClick={() => {
+										console.log(Price);
+										const { _id, name } = product.productDetails;
+										const image =
+											product.productDetails.productPictures[0].image;
+										dispatch(addToCart({ _id, name, price: Price, image }));
+										// <Redirect to='/cart' />;
+										props.history.push("/cart");
+									}}
+									className='addToCart btn '>
+									<ShoppingCartIcon /> Add To Shopping Bag
+								</a>
 							</div>
 
 							<div
-								className='text-left font-12'
+								className='text-left font-14'
 								style={{ textAlign: "left", textDecoration: "none" }}>
 								<ul>
 									<li>⦿ Banarasi Pure Silk Saree in Navy Blue</li>
@@ -194,6 +231,31 @@ export default function ProductDetails2(props) {
 										purpose
 									</li>
 								</ul>
+							</div>
+						</div>
+
+						<div className='col-lg-4 col-sm-12 text-center policy-div'>
+							<p>
+								Know our{" "}
+								<Link>
+									<span className='t-secondary'>shipping</span>{" "}
+								</Link>{" "}
+								&{" "}
+								<Link>
+									<span className='t-secondary'>return policy</span>{" "}
+								</Link>
+							</p>
+							<hr />
+							<p>
+								Any Question ? Just{" "}
+								<Link>
+								
+									<span className='t-secondary'>Ask</span>{" "}
+								</Link>
+							</p>
+							<hr />
+							<div style={{ width: "200px" }}>
+								<Social title='Follow us on' />
 							</div>
 						</div>
 					</div>
@@ -314,6 +376,18 @@ export default function ProductDetails2(props) {
 						</TabPanel>
 					</div>
 				</div>
+				<ProductBar
+					price={Price}
+					onClick={(e) => {
+						e.preventDefault();
+						console.log(Price);
+						const { _id, name } = product.productDetails;
+						const image = product.productDetails.productPictures[0].image;
+						dispatch(addToCart({ _id, name, price: Price, image }));
+						// <Redirect to='/cart' />;
+						props.history.push("/cart");
+					}}
+				/>
 			</div>
 		</Layout>
 	);

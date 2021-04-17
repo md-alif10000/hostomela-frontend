@@ -116,6 +116,8 @@
     padding: 2rem 1rem;
     text-align: center;
     border: 2px solid rgb(230, 119, 226);
+    width: 200px;
+    margin: 1rem;
   }
   
   .product:hover {
@@ -159,6 +161,19 @@
     text-transform: uppercase;
     font-weight: 500;
     color: white;
+  }
+
+
+
+  @media screen and (max-width:420px){
+    .product{
+      width: 180px;
+    }
+  }
+  @media screen and (max-width:500px){
+    .product{
+      width: 170px;
+    }
   }
   
   @media only screen and (max-width: 567px) {

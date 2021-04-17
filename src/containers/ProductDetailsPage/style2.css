@@ -1,8 +1,22 @@
 .product-details-container{
-    margin: 0px 180px
+    margin: 60px 180px
 }
 
-
+.policy-div{
+    background-color: rgb(219, 215, 215);
+    font-size: 14px;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    max-height: 300px;
+    /* justify-content: center; */
+}
+.policy-div hr{
+    height: 2px;
+    width: 300px;
+}
 
 
 @media screen and (max-width:1300px) {

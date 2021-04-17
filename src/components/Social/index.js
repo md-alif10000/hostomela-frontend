@@ -9,7 +9,7 @@ import './style.css'
 export default function Social({title}) {
     return (
 			<div className='text-center'>
-				<h3 className='font-18 m-3'>{title}</h3>
+				<h4 className='font-18 m-3'>{title}</h4>
 				<div className='social-container'>
 					<Link>
 			
