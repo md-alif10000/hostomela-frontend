@@ -31,15 +31,15 @@ useEffect(() => {
 if(category.loading){
 	return <Loader/>
 }
-// if (cart.updatingCart) {
-// 	return <Loader />;
-// }
+if (cart.updatingCart) {
+	return <Loader />;
+}
 
     
     return (
 			<Layout>
-				<div className='main '>
-					<div className='mt-70' style={{ display: "flex" }}>
+				<div className='main'>
+					<div className='mt-60' style={{ display: "flex" }}>
 						<div className='col-md-12 col-sm-12 col-lg-2 category'>
 							<h3>Our Categories</h3>
 							<hr className='hr' />

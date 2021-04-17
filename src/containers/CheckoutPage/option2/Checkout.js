@@ -117,7 +117,7 @@ export default function Checkout(props) {
 
 		var totalAmount = coupon
 			? coupon.type == "percentage"
-				? TotalAmount * (1 - couponAmount)
+				? TotalAmount * (1 - couponAmount)+deliveryCharge
 				: totalAmount - couponAmount + deliveryCharge
 			: (TotalAmount + deliveryCharge);
 

@@ -1,6 +1,7 @@
 import { userConstants } from "./constants.js";
 import { cartConstants, couponConatants } from "./constants.js";
 import axios from "../helpers/axios";
+import Swal from 'sweetalert2'
 
 export const getAddress = () => {
 	return async (dispatch) => {
@@ -21,6 +22,7 @@ export const getAddress = () => {
 					type: userConstants.GET_USER_ADDRESS_FAILURE,
 					payload: { error },
 				});
+					Swal.fire("Opps..!", `${error}`, "error");
 			}
 		} catch (error) {
 			console.log(error);
@@ -73,6 +75,7 @@ export const addOrder = (payload) => {
 					type: userConstants.ADD_USER_ORDER_SUCCESS,
 					payload: { order },
 				});
+				Swal.fire("Great.!", `Order placed successfully`, "success");
 				const {
 					address: { address },
 				} = res.data;
@@ -86,6 +89,7 @@ export const addOrder = (payload) => {
 					type: userConstants.ADD_USER_ORDER_FAILURE,
 					payload: { error },
 				});
+				Swal.fire("Opps..!", `Order Failed`, "error");
 			}
 		} catch (error) {
 			console.log(error);
@@ -157,18 +161,27 @@ export const validateCoupon = (data) => {
 					type: couponConatants.VALIDATE_COUPON_SUCCESS,
 					payload: { coupon },
 				});
+				Swal.fire("Wow.!", `Coupon successfully added`, "Success");
 			} else {
-				const { error } = res.data;
+				const { error,message } = res.data;
 				if (res.status == 404) {
 					dispatch({
 						type: couponConatants.VALIDATE_COUPON_FAILURE,
 						payload: { error },
 					});
+					Swal.fire("Opps..!", `Invalid Coupon`, "error");
 				}
-				dispatch({
-					type: couponConatants.VALIDATE_COUPON_FAILURE,
-					payload: { error },
-				});
+				
+
+				if(res.status==400){
+						dispatch({
+							type: couponConatants.VALIDATE_COUPON_FAILURE,
+							payload: { error },
+						});
+						Swal.fire("Opps..!", `${message}`, "error");
+
+				}
+			
 			}
 		} catch (error) {
 			console.log(error);
