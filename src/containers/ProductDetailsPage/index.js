@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductDetails2(props) {
 	const [value, setValue] = React.useState(0);
 	var [stitch, setStitch] = useState("regular");
+	var stitching=stitch=='regular'? false :true
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -214,11 +215,12 @@ export default function ProductDetails2(props) {
 										const { _id, name } = product.productDetails;
 										const image =
 											product.productDetails.productPictures[0].image;
-										dispatch(addToCart({ _id, name, price: Price, image }));
+										dispatch(addToCart({ _id, name, price: Price, image,stitch:stitching }));
 										// <Redirect to='/cart' />;
 										props.history.push("/cart");
 									}}
 									className='addToCart btn '>
+										{console.log(stitching)}
 									<ShoppingCartIcon /> Add To Shopping Bag
 								</a>
 							</div>

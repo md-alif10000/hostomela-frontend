@@ -47,6 +47,7 @@ export const addToCart = (product, newQty = 1) => {
 					{
 						product: product._id,
 						quantity: qty,
+						stitch:product.stitch
 					},
 				],
 			};
