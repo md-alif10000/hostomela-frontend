@@ -215,32 +215,7 @@ export default function Header(props) {
 			transformOrigin={{ vertical: "top", horizontal: "right" }}
 			open={isMobileMenuOpen}
 			onClose={handleMobileMenuClose}>
-			<MenuItem>
-				<IconButton aria-label='show 4 new mails' color='inherit'>
-					<Badge badgeContent={4} color='secondary'>
-						<MailIcon />
-					</Badge>
-				</IconButton>
-				<p>Messages</p>
-			</MenuItem>
-			<MenuItem>
-				<IconButton aria-label='show 11 new notifications' color='inherit'>
-					<Badge badgeContent={11} color='secondary'>
-						<NotificationsIcon />
-					</Badge>
-				</IconButton>
-				<p>Notifications</p>
-			</MenuItem>
-			<MenuItem onClick={handleProfileMenuOpen}>
-				<IconButton
-					aria-label='account of current user'
-					aria-controls='primary-search-account-menu'
-					aria-haspopup='true'
-					color='inherit'>
-					<AccountCircle />
-				</IconButton>
-				<p>Profile</p>
-			</MenuItem>
+			
 		</Menu>
 	);
 
@@ -294,6 +269,7 @@ export default function Header(props) {
 						backgroundImage: "linear-gradient(326deg, #bc52d1 0%, #a031b6 74%)",
 						fontWeight: "700",
 						color: "#fce00d",
+					
 					}}>
 					<div className='headerContainer'>
 						<Toolbar>
@@ -356,7 +332,7 @@ export default function Header(props) {
 
 							<div className={classes.grow} />
 							<div className={classes.sectionDesktop}>
-								<IconButton
+								{/* <IconButton
 									aria-label='show 17 new notifications'
 									color='secondary'>
 									<Badge
@@ -368,7 +344,7 @@ export default function Header(props) {
 											Wallet <span>{auth.user.balance}.00-৳</span>
 										</Link>
 									</Badge>
-								</IconButton>
+								</IconButton> */}
 
 								<IconButton
 									aria-label='show 17 new notifications'
