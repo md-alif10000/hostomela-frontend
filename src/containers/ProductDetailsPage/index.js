@@ -183,9 +183,7 @@ export default function ProductDetails2(props) {
 
 								<div className='m-3 p-3' style={{ fontSize: "16px" }}>
 									<FormControl component='fieldset'>
-										<FormLabel>
-											<h3> More Options</h3>
-										</FormLabel>
+										<FormLabel></FormLabel>
 										<RadioGroup
 											aria-label='gender'
 											name='gender1'
@@ -193,6 +191,7 @@ export default function ProductDetails2(props) {
 											value={stitch}
 											onChange={(e) => setStitch(e.target.value)}>
 											<FormControlLabel
+												style={stitch == "regular" ? { display: "none" } :null }
 												value='regular'
 												control={<Radio />}
 												label={<h4>Regular</h4>}
@@ -200,13 +199,10 @@ export default function ProductDetails2(props) {
 											<FormControlLabel
 												value='stitch'
 												control={<Radio />}
-											
 												label={<h4>Stitch (Ready to wear)+500 tk</h4>}
 											/>
 										</RadioGroup>
 									</FormControl>
-
-								
 								</div>
 
 								<a
@@ -215,12 +211,20 @@ export default function ProductDetails2(props) {
 										const { _id, name } = product.productDetails;
 										const image =
 											product.productDetails.productPictures[0].image;
-										dispatch(addToCart({ _id, name, price: Price, image,stitch:stitching }));
+										dispatch(
+											addToCart({
+												_id,
+												name,
+												price: Price,
+												image,
+												stitch: stitching,
+											})
+										);
 										// <Redirect to='/cart' />;
 										props.history.push("/cart");
 									}}
 									className='addToCart btn '>
-										{console.log(stitching)}
+									{console.log(stitching)}
 									<ShoppingCartIcon /> Add To Shopping Bag
 								</a>
 							</div>
@@ -275,10 +279,8 @@ export default function ProductDetails2(props) {
 					<div className='col-lg-6 col-md-6 col-sm-12'></div>
 				</div>
 
+				<DetailsBar onSubmitReview={onSubmitReview} />
 
-				<DetailsBar onSubmitReview={onSubmitReview}/>
-
-			
 				<ProductBar
 					price={Price}
 					onClick={(e) => {
