@@ -73,7 +73,7 @@ export default function GridCategory() {
 						},
 					},
 					{
-						breakpoint: 480,
+						breakpoint: 400,
 						settings: {
 							slidesToShow: 3,
 							slidesToScroll: 1,

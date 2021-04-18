@@ -167,7 +167,7 @@
 
   @media screen and (max-width:320px){
     .product{
-      width: 140px;
+      width: 180px;
     }
   }
 
@@ -178,7 +178,7 @@
   }
   @media screen and (max-width:500px){
     .product{
-      width: 140px;
+      width: 160px;
     }
   }
   

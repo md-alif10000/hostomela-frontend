@@ -1,31 +1,85 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './style.css'
 import {Link} from 'react-router-dom'
 import Social from '../Social'
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 export default function Footer() {
+	const [link1, setLink1] = useState(false)
+		const [link2, setLink2] = useState(false);
+			const [link3, setLink3] = useState(false);
+
+	const handleFooterLink1=()=>{
+		if(link1) setLink1(false)
+		else{
+        setLink1(true);
+		}
+		
+	}
+		const handleFooterLink2 = () => {
+			if(link2) setLink2(false);
+			else{
+              setLink2(true);
+			}
+			
+		};
+
+			const handleFooterLink3 = () => {
+				if (link3) setLink3(false);
+				else{
+                   setLink3(true);
+				}
+				
+			};
+
+
+
+
     return (
 			<footer id='footer' className='section footer bg-dark'>
 				<div className='container my-0 '>
 					<div className='footer-container'>
 						<div className='footer-center'>
-							<h3>EXTRAS</h3>
-							<Link to='#'>Brands</Link>
-							{/* <Link to='#'>Gift Certificates</Link> */}
-							<Link to='/about-us'>About Us</Link>
-							<Link to='/contact-us'>Contact Us</Link>
+							<div className='link-header'>
+								<h3>EXTRAS</h3>
+								<span className='footer-arrow' onClick={handleFooterLink1}>
+									<KeyboardArrowDownIcon style={{ fontSize: "26px" }} />
+								</span>
+							</div>
+
+							<div className={link1 ? null : "footer-link-container"}>
+								<Link to='#'>Brands</Link>
+								<Link to='/about-us'>About Us</Link>
+								<Link to='/contact-us'>Contact Us</Link>
+							</div>
 						</div>
 						<div className='footer-center'>
-							<h3>INFORMATION</h3>
-							<Link to='/privacy-policy'>Privacy Policy</Link>
-							<Link to='/terms&conditions'>Terms & Conditions</Link>
-							<Link to='/return-policy'>Return Policy</Link>
+							<div className='link-header'>
+								{" "}
+								<h3>INFORMATION</h3>
+								<span className='footer-arrow' onClick={handleFooterLink2}>
+									<KeyboardArrowDownIcon style={{ fontSize: "26px" }} />
+								</span>
+							</div>
+
+							<div className={link2 ? null : "footer-link-container"}>
+								<Link to='/privacy-policy'>Privacy Policy</Link>
+								<Link to='/terms&conditions'>Terms & Conditions</Link>
+								<Link to='/return-policy'>Return Policy</Link>
+							</div>
 						</div>
 						<div className='footer-center'>
-							<h3>MY ACCOUNT</h3>
-							<Link to='/account'>My Account</Link>
-							<Link to='/acccount/orders'>Order History</Link>
-							<Link to='#'>Wish List</Link>
+							<div className='link-header'>
+								<h3>MY ACCOUNT</h3>
+								<span className='footer-arrow' onClick={handleFooterLink3}>
+									<KeyboardArrowDownIcon style={{ fontSize: "26px" }} />
+								</span>
+							</div>
+							<div className={link3 ? null : "footer-link-container"}>
+								<Link to='/account'>My Account</Link>
+								<Link to='/acccount/orders'>Order History</Link>
+								<Link to='#'>Wish List</Link>
+							</div>
 						</div>
 						<div className='footer-center'>
 							<h3>CONTACT US</h3>

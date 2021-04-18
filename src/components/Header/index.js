@@ -233,7 +233,7 @@ export default function Header(props) {
 				<a
 					style={{ fontSize: "14px" }}
 					href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-					<div className='d-flex justify-sb text-white'>
+					<div className='d-flex justify-sb text-white listItem-container'>
 						<ListItem key={category.name} className='listItem text-white'>
 							{category.parentId ? (
 								<a
@@ -424,12 +424,12 @@ export default function Header(props) {
 									<AccountCircle />
 								</ListItemIcon>
 								<ListItemText
-									primary={"My Account /"}
+									primary={<h5>My account /</h5>}
 									className='font-18 t-primary'
 								/>
-								<LockOpenIcon />
+								<LockOpenIcon style={{ fontSize: "20px" }} />
 								<ListItemText
-									primary={" Login"}
+									primary={<h5>Login</h5>}
 									className='font-18 t-primary'
 								/>
 							</ListItem>
@@ -450,18 +450,6 @@ export default function Header(props) {
 							</span>
 						) : null}
 
-						<Link to='/return-policy' className='font-18 t-primary'>
-							<ListItem button>
-								<ListItemIcon>
-									{" "}
-									<AssignmentTwoToneIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={"Return Pilicy"}
-									className='font-18 t-primary'
-								/>
-							</ListItem>
-						</Link>
 						<div className='m-3 p-3'>
 							<Social title='Follow us on' />
 						</div>

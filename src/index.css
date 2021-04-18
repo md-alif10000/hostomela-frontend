@@ -58,10 +58,13 @@ code {
 
 
 }
+.listItem-container:hover{
+	background-color:rgb(221, 50, 184);
+}
 .listItem:hover{
 	/* color: rgba(173, 173, 24, 0.966); */
 	transform: translate(1.2);
-	background-color:rgb(221, 50, 184);
+
 	/* margin: 0px 15px; */
 
 	

@@ -88,7 +88,7 @@ export default function NowPlaying(props) {
 			{
 				breakpoint: 320,
 				settings: {
-					slidesToShow: 2,
+					slidesToShow: 1,
 					slidesToScroll: 1,
 				},
 			},
