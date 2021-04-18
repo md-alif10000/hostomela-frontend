@@ -257,17 +257,17 @@ export default function Header(props) {
 				<a
 					style={{ fontSize: "14px" }}
 					href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-					<div className='d-flex justify-sb'>
-						<ListItem key={category.name} className='listItem'>
+					<div className='d-flex justify-sb text-white'>
+						<ListItem key={category.name} className='listItem text-white'>
 							{category.parentId ? (
 								<a
-									className='sublistItem'
+									className='sublistItem text-white'
 									href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
 									<ListItemText primary={category.name} />
 								</a>
 							) : (
 								<a
-									className='sublistItem'
+									className='sublistItem text-white'
 									href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
 									<span>{category.name}</span>
 								</a>

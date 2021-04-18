@@ -5,7 +5,7 @@ import Social from '../Social'
 
 export default function Footer() {
     return (
-			<footer id='footer' className='section footer bg-secondary'>
+			<footer id='footer' className='section footer bg-dark'>
 				<div className='container my-0 '>
 					<div className='footer-container'>
 						<div className='footer-center'>
