@@ -100,18 +100,6 @@ export default function DetailsBar({onSubmitReview}) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 	return (
 		<div className=' text-lg' style={{ fontSize: "20px" }}>
 			<div className={classes.root}>
@@ -139,16 +127,16 @@ export default function DetailsBar({onSubmitReview}) {
 						<Tab
 							className='bold-600'
 							style={{ fontSize: "14px" }}
-							label='Reviews'
+							label='Delivery'
 							{...a11yProps(1)}
 						/>
 						<Tab
 							className='bold-600'
 							style={{ fontSize: "14px" }}
-							label='Submit'
+							label='Polocy'
 							{...a11yProps(2)}
 						/>
-						<Tab
+						{/* <Tab
 							className='bold-600'
 							style={{ fontSize: "14px" }}
 							label='Delivery'
@@ -159,14 +147,14 @@ export default function DetailsBar({onSubmitReview}) {
 							style={{ fontSize: "14px" }}
 							label='Policy'
 							{...a11yProps(2)}
-						/>
+						/> */}
 					</Tabs>
 				</AppBar>
 				<TabPanel value={value} index={0}>
 					<p style={{ fontSize: "16px" }}>{product.productDetails.desc}</p>
 				</TabPanel>
 
-				<TabPanel value={value} index={1}>
+				{/* <TabPanel value={value} index={1}>
 					{reviews.map((review, index) => {
 						let Picture = review.userId.profilePicture;
 
@@ -185,8 +173,8 @@ export default function DetailsBar({onSubmitReview}) {
 							/>
 						);
 					})}
-				</TabPanel>
-				<TabPanel value={value} index={2}>
+				</TabPanel> */}
+				{/* <TabPanel value={value} index={2}>
 					<div>
 						<TextField
 							id='outlined-multiline-static'
@@ -232,11 +220,11 @@ export default function DetailsBar({onSubmitReview}) {
 							Submit your Review
 						</Button>
 					</div>
-				</TabPanel>
-				<TabPanel value={value} index={3}>
+				</TabPanel> */}
+				<TabPanel value={value} index={1}>
 					<p style={{ fontSize: "16px" }}>{product.productDetails.desc}</p>
 				</TabPanel>
-				<TabPanel value={value} index={4}>
+				<TabPanel value={value} index={2}>
 					<p style={{ fontSize: "16px" }}>{product.productDetails.desc}</p>
 				</TabPanel>
 			</div>

@@ -66,13 +66,13 @@ export default function NowPlaying(props) {
 			{
 				breakpoint: 800,
 				settings: {
-					slidesToShow: 3,
+					slidesToShow: 2,
 					slidesToScroll: 1,
 					initialSlide: 3,
 				},
 			},
 			{
-				breakpoint: 450,
+				breakpoint: 480,
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 1,
@@ -81,7 +81,7 @@ export default function NowPlaying(props) {
 			{
 				breakpoint: 420,
 				settings: {
-					slidesToShow: 2,
+					slidesToShow: 1,
 					slidesToScroll: 1,
 				},
 			},
@@ -136,14 +136,36 @@ export default function NowPlaying(props) {
 						{product.products.map(function (product, index) {
 							return (
 								<Product
-							onClick={() => {
-											const { _id, name, price } = product;
-											const image =
-												product.productPictures[0].image;
-											dispatch(addToCart({ _id, name, price, image }));
-											<Redirect to='/cart' />;
-											// props.history.push("/cart");
-										}}
+									name={product.name.slice(0, 20)}
+									rating={product.rating}
+									price={product.price}
+									link={`/${product.slug}/${product._id}/p`}
+									onClick={() => {
+										const { _id, name, price } = product;
+										const image = product.productPictures[0].image;
+										dispatch(addToCart({ _id, name, price, image }));
+										<Redirect to='/cart' />;
+										// props.history.push("/cart");
+									}}
+									image={generatePublicUrl(
+										product.productPictures[0]
+											? product.productPictures[0].image
+											: null
+									)}
+								/>
+							);
+						})}
+
+						{product.products.map(function (product, index) {
+							return (
+								<Product
+									onClick={() => {
+										const { _id, name, price } = product;
+										const image = product.productPictures[0].image;
+										dispatch(addToCart({ _id, name, price, image }));
+										<Redirect to='/cart' />;
+										// props.history.push("/cart");
+									}}
 									name={product.name.slice(0, 20)}
 									rating={product.rating}
 									price={product.price}
@@ -162,41 +184,57 @@ export default function NowPlaying(props) {
 			</Card>
 
 			<Card className='mt-5'>
-			<div>
-				<Slider {...settings}>
-				{product.products.map(function (product, index) {
-					return (
-						<Product
-							name={product.name.slice(0, 20)}
-							rating={product.rating}
-							price={product.price}
-							image={generatePublicUrl(
-								product.productPictures[0]
-									? product.productPictures[0].image
-									: null
-							)}
-							link={`/${product.slug}/${product._id}/p`}
-						/>
-					);
-				})}
+				<div>
+					<Slider {...settings}>
+						{product.products.map(function (product, index) {
+							return (
+								<Product
+									name={product.name.slice(0, 20)}
+									rating={product.rating}
+									price={product.price}
+									image={generatePublicUrl(
+										product.productPictures[0]
+											? product.productPictures[0].image
+											: null
+									)}
+									link={`/${product.slug}/${product._id}/p`}
+								/>
+							);
+						})}
 
-				{product.products.map(function (product, index) {
-					return (
-						<Product
-							name={product.name.slice(0, 20)}
-							rating={product.rating}
-							price={product.price}
-							image={generatePublicUrl(
-								product.productPictures[0]
-									? product.productPictures[0].image
-									: null
-							)}
-							link={`/${product.slug}/${product._id}/p`}
-						/>
-					);
-				})}
-				</Slider>
-			</div>
+						{product.products.map(function (product, index) {
+							return (
+								<Product
+									name={product.name.slice(0, 20)}
+									rating={product.rating}
+									price={product.price}
+									image={generatePublicUrl(
+										product.productPictures[0]
+											? product.productPictures[0].image
+											: null
+									)}
+									link={`/${product.slug}/${product._id}/p`}
+								/>
+							);
+						})}
+
+						{product.products.map(function (product, index) {
+							return (
+								<Product
+									name={product.name.slice(0, 20)}
+									rating={product.rating}
+									price={product.price}
+									image={generatePublicUrl(
+										product.productPictures[0]
+											? product.productPictures[0].image
+											: null
+									)}
+									link={`/${product.slug}/${product._id}/p`}
+								/>
+							);
+						})}
+					</Slider>
+				</div>
 			</Card>
 		</>
 	);

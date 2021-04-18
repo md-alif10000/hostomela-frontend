@@ -28,6 +28,7 @@ import Logo from '../Logo/index'
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import CloseIcon from "@material-ui/icons/Close";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
 import "./style.css";
 import { Link } from "react-router-dom";
 import Social from "../Social";
@@ -269,7 +270,6 @@ export default function Header(props) {
 						backgroundImage: "linear-gradient(326deg, #bc52d1 0%, #a031b6 74%)",
 						fontWeight: "700",
 						color: "#fce00d",
-					
 					}}>
 					<div className='headerContainer'>
 						<Toolbar>
@@ -424,7 +424,12 @@ export default function Header(props) {
 									<AccountCircle />
 								</ListItemIcon>
 								<ListItemText
-									primary={"My Account/Login"}
+									primary={"My Account /"}
+									className='font-18 t-primary'
+								/>
+								<LockOpenIcon />
+								<ListItemText
+									primary={" Login"}
 									className='font-18 t-primary'
 								/>
 							</ListItem>
@@ -445,7 +450,6 @@ export default function Header(props) {
 							</span>
 						) : null}
 
-					
 						<Link to='/return-policy' className='font-18 t-primary'>
 							<ListItem button>
 								<ListItemIcon>

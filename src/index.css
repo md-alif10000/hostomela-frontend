@@ -54,15 +54,16 @@ code {
 	padding: 3px;
 	margin-right: 10px;
   color: #f6f7fb;
+  transition: 0.4;
 
 
 }
 .listItem:hover{
 	/* color: rgba(173, 173, 24, 0.966); */
 	transform: translate(1.2);
-	background-color:rgb(216, 216, 19);
-	margin: 0px 15px;
-  color: rgb(48, 46, 46);
+	background-color:rgb(221, 50, 184);
+	/* margin: 0px 15px; */
+
 	
 }
 

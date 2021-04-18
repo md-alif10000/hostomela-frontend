@@ -6,6 +6,7 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
 export default function CartItem(props) {
 	const { _id, name, price, image } = props.cartItem;
+	console.log(props.cartItem)
 	const [qty, setQty] = useState(props.cartItem.qty);
 
 	const onQuantityIncrement = () => {
