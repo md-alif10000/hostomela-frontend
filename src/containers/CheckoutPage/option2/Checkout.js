@@ -21,7 +21,7 @@ import { Button, SwipeableDrawer } from "@material-ui/core";
 import "./style.css";
 import { Redirect } from "react-router";
 import Header from "../../../components/Header/index";
-import { deliveryCharge } from "../../../utils/getParams";
+
 
 function Copyright() {
 	return (
@@ -88,6 +88,9 @@ export default function Checkout(props) {
 	const auth = useSelector((state) => state.auth);
 	const cart = useSelector((state) => state.cart);
 	const coupon=JSON.parse(localStorage.getItem('coupon'))
+	var deliveryCharge = localStorage.getItem("deliveryCharge");
+	var deliveryCharge = deliveryCharge.parseInt()
+	
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
