@@ -97,7 +97,10 @@ export default function GridCategory() {
             
 
 	return (
-		<div className='card'>
+		<div className=' mx-0'>
+			<h3 className='category-header'>Categories</h3>
+			<hr/>
+			<hr/>
 			<Slider {...settings}>
 				{myCategories.map((category) => (
 					<Link
@@ -115,6 +118,7 @@ export default function GridCategory() {
 					</Link>
 				))}
 			</Slider>
+			<hr/>
 		</div>
 	);
 }

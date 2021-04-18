@@ -1,5 +1,5 @@
 .categorybox{
-    border:3px solid  #bc52d1;
+    /* border:3px solid  #bc52d1; */
     border-radius: 10px;
     /* background-image: linear-gradient(315deg, #bc52d1 0%, #871d9c 74%); 
   
@@ -7,10 +7,16 @@
 
 
 }
+.category-header{
+    margin:  auto 5px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+}
 .categorybox:hover{
     transform: scale(1.1);
     transition: 1;
-    box-shadow: 2px 2px 1px 1px #c76cda;
+    /* box-shadow: 2px 2px 1px 1px #c76cda; */
 }
 
 .categoryLink{
@@ -24,8 +30,8 @@
 .rounded-category-image{
     width: 70px;
     height: 70px;
-    border: 2px solid #ae54c0 ;
-    box-shadow:-2px 1px 2px 2px #ea8cfd;
+    /* border: 2px solid #ae54c0 ; */
+    /* box-shadow:-2px 1px 2px 2px #ea8cfd; */
 
 }
 

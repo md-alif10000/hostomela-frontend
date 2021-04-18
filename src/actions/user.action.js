@@ -179,9 +179,7 @@ export const validateCoupon = (data) => {
 							payload: { error },
 						});
 						Swal.fire("Opps..!", `${message}`, "error");
-
 				}
-			
 			}
 		} catch (error) {
 			console.log(error);

@@ -448,7 +448,7 @@ export default function Header(props) {
 									<AccountCircle />
 								</ListItemIcon>
 								<ListItemText
-									primary={"My Account"}
+									primary={"My Account/Login"}
 									className='font-18 t-primary'
 								/>
 							</ListItem>

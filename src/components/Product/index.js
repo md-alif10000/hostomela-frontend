@@ -24,7 +24,7 @@ export default function Product(props) {
 								</span>
 							</div>
 							<h4>{name}</h4>
-							<a className='t-primary bold-600' onClick={onClick}> <ShoppingCartIcon/> Add To Cart</a>
+							{/* <a className='t-primary bold-600' onClick={onClick}> <ShoppingCartIcon/> Add To Cart</a> */}
 						</div>
 					</div>
 				</a>

@@ -7,7 +7,7 @@ import { generatePublicUrl } from "../../urlconfig";
 import {Redirect} from 'react-router-dom'
 import "./style2.css";
 import './style.css'
-import Header from "../../components/Header/index2";
+import Header from "../../components/Header/index";
 import Loader from "../../components/Loader";
 
 export default function OrderDetailsPage(props) {
@@ -65,7 +65,7 @@ export default function OrderDetailsPage(props) {
 	return (
 		<>
 			<Header fixed/>
-			<div className='container m-auto p-0 text-center mt-70'>
+			<div className='container p-0 text-center mt-70 font-14'>
 				<article className='card'>
 					<header className='card-header'> My Orders / Tracking </header>
 					<div className='card-body'>

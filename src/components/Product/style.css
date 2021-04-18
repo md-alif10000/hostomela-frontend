@@ -115,7 +115,7 @@
     flex-direction: column;
     padding: 2rem 1rem;
     text-align: center;
-    border: 2px solid rgb(230, 119, 226);
+    /* border: 2px solid rgb(230, 119, 226); */
     width: 200px;
     margin: 1rem;
   }
@@ -128,6 +128,7 @@
     height: 25rem;
     overflow: hidden;
     margin: auto;
+    border: 3px solid rgb(206, 78, 202);
   }
   
   .img__container img {
@@ -163,7 +164,11 @@
     color: white;
   }
 
-
+  @media screen and (max-width:320px){
+    .product{
+      width: 140px;
+    }
+  }
 
   @media screen and (max-width:420px){
     .product{
@@ -172,7 +177,7 @@
   }
   @media screen and (max-width:500px){
     .product{
-      width: 170px;
+      width: 140px;
     }
   }
   

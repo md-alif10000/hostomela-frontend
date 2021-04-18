@@ -1,5 +1,6 @@
 import axios from "../helpers/axios.js";
 import { productConstants } from "./constants";
+import Swal from 'sweetalert2'
 
 export const getProductsBySlug = (slug) => {
 	return async (dispatch) => {
@@ -100,16 +101,20 @@ export const addReview=(details)=>{
 		dispatch({type:productConstants.ADD_REVIEW_REQUEST})
 		const res=await axios.post('/product/addReview',details)
 		if(res.status==201){
-			dispatch({type:productConstants.ADD_REVIEW_SUCCESS,
-			payload:res.data})
-			console.log(details)
-			let params=details
-			let payload={params}
-			dispatch(getProductDetailsById(payload));
+			dispatch({
+				type: productConstants.ADD_REVIEW_SUCCESS,
+				payload: res.data,
+			});
+			Swal.fire('Great.!','Successfully added review','success')
 
+			console.log(details);
+			let params = details;
+			let payload = { params };
+			dispatch(getProductDetailsById(payload));
 		}
 		if(res.status==400) {
 			dispatch({type:productConstants.ADD_REVIEW_FAILURE})
+			Swal.fire("Great.!", "Something went wrong", "error");
 
 		}
 	}

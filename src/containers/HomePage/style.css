@@ -121,9 +121,9 @@ font-weight: 700;
 }
 
 .slider-container{
-    border:2px solid #a4508b;
+    /* border:2px solid #a4508b; */
     border-radius: 25px;
-    box-shadow: 1px 2px 1px 2px #db54b3;
+    /* box-shadow: 1px 2px 1px 2px #db54b3; */
 }
 
 
