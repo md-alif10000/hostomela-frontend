@@ -14,6 +14,9 @@ import { addToCart } from "../../../actions/cart.action";
 import "./style.css";
 import { api, generatePublicUrl, domain } from "../../../urlconfig";
 import Loader from "../../../components/Loader";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -61,6 +64,45 @@ export default function ProductStore(props) {
 	const categories = category.categories;
 	const categoriesArray = [];
 
+	var settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 8,
+		slidesToScroll: 2,
+		autoplay: true,
+		speed: 6000,
+		autoplaySpeed: 6000,
+		pauseOnHover: true,
+
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					infinite: true,
+					dots: true,
+				},
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					initialSlide: 4,
+				},
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1,
+				},
+			},
+		],
+	};
+
 	// Object.keys(categories).map((cat,index)=>{
 	// 	categoriesArray.push(cat)
 	// })
@@ -80,43 +122,38 @@ export default function ProductStore(props) {
 		dispatch(getSubCategory(parentId));
 	}, []);
 
-
-
-	if(product.loading) return <Loader/>
-	
+	if (product.loading) return <Loader />;
 
 	return (
 		<>
 			<div className='productPageContainer mt-70'>
 				{subCategories.length > 0 ? (
-					<div className='card p-3 m-3'>
-						<Grid container className={classes.root} spacing={2}>
-							<h3 className='productCategoryHeader'>
-								<span className='p-3 rounded t-primary c-primary-gradiant'>
-									Categories
-								</span>{" "}
-							</h3>
-							<hr />
-							<Grid item xs={12}>
-								<Grid container justify='center' spacing={spacing}>
-									{subCategories.map((category) => (
-										<a
-											className='m-3'
-											href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-											<div className='categoryLink'>
-												<img
-													className='rounded-circle rounded-category-image'
-													// src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs7rEoPHBN7kL7cfUXLuZnpwCSvUQztwewzA&usqp=CAU'
-													src={domain + `${category.categoryImage}`}
-												/>
-												<p className='font-12'>{category.name}</p>
-											</div>
-										</a>
-									))}
-								</Grid>
-							</Grid>
-						</Grid>
-					</div>
+					<span>
+						<h3 className='productCategoryHeader text-center'>
+							<span className='p-1 rounded t-primary c-primary-gradiant'>
+								Categories
+							</span>
+						</h3>
+					</span>
+				) : null}
+				{subCategories.length > 0 ? (
+					<Slider {...settings}>
+						{subCategories.map((category) => (
+							<Link
+								className='m-3'
+								to={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+								<div className='categoryLink'>
+									<img
+										className='rounded-circle rounded-category-image'
+										// src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs7rEoPHBN7kL7cfUXLuZnpwCSvUQztwewzA&usqp=CAU'
+										src={`${domain}${category.categoryImage}`}
+									/>
+									<p className='font-12'>{category.name}</p>
+									{console.log(category)}
+								</div>
+							</Link>
+						))}
+					</Slider>
 				) : null}
 
 				<Grid container className={(classes.root, "mt-60")} spacing={2}>
@@ -124,7 +161,7 @@ export default function ProductStore(props) {
 						<span>
 							{" "}
 							<h3 className='productCategoryHeader'>
-								<span className='p-3 rounded t-primary c-primary-gradiant'>
+								<span className='p-1 rounded t-primary c-primary-gradiant'>
 									Products
 								</span>
 							</h3>

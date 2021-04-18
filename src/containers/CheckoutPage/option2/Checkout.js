@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -77,12 +76,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Checkout(props) {
 	const [paymentType, setPaymentType] = useState("");
-	const [shippingMethod, setShippingMethod] = useState('')
 	console.log(paymentType);
 	const user = useSelector((state) => state.user);
 	const selectedAddress = user.address.slice(user.address.length - 1)[0];
 
-	const steps = ["Shipping address", "Review your order",'Select Shipping Method', " Payment details"];
+	const steps = ["Shipping address", "Review your order", " Payment details"];
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = React.useState(0);
 	const dispatch = useDispatch();
@@ -162,8 +160,6 @@ export default function Checkout(props) {
 			case 1:
 				return <Review />;
 			case 2:
-				return <ShippingMethod/>
-			case 3:
 				return <PaymentForm />;
 			default:
 				throw new Error("Unknown step");
@@ -356,65 +352,7 @@ export default function Checkout(props) {
 		);
 	}
 
-	const ShippingMethod = () => {
-
-		const onSubmitShippingMethod=(e)=>{
-			e.preventDefault()
-			console.log(shippingMethod)
-			setActiveStep(activeStep+1)
-		}
-		return (
-			<React.Fragment>
-				<Typography variant='h6' gutterBottom>
-					Shipping Method
-				</Typography>
-				<Grid container spacing={3}>
-					<FormControl component='fieldset'>
-						{/* <FormLabel component='legend'>Payment Type</FormLabel> */}
-						<RadioGroup
-							aria-label='Payment Type'
-							name='gender1'
-							value={shippingMethod}
-							onChange={(e) => setShippingMethod(e.target.value)}>
-							<FormControlLabel
-								value='comilla-1-4'
-								control={<Radio />}
-								label='Comill City (1-4 day)'
-							/>
-							<FormControlLabel
-								value='dhaka-1-4'
-								control={<Radio />}
-								label='Dhaka (1-4 days)'
-							/>
-							<FormControlLabel
-								value='outside-1-10'
-								control={<Radio />}
-								label='Outside (1-4 days)'
-							/>
-							<FormControlLabel
-								value='grocery-comilla-1-3'
-								control={<Radio />}
-								label='Grocery in Comilla (1-3 days)'
-							/>
-							<FormControlLabel
-								value='grocery-comilla-1'
-								control={<Radio />}
-								label='Grocery in Comilla (Titas,Homna,Meghna,Daudkandi--1 Day)'
-							/>
-						</RadioGroup>
-					</FormControl>
-
-				
-					<Button
-						fullWidth
-						style={{ color: "black", backgroundColor: "#f0c800" }}
-						onClick={(e) => onSubmitShippingMethod(e)}>
-						<h5>Next Step</h5>
-					</Button>
-				</Grid>
-			</React.Fragment>
-		);
-	};
+	
 
 	function PaymentForm() {
 		return (

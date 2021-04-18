@@ -7,7 +7,7 @@ import {
 	removeCartItem,
 } from "../../actions/cart.action";
 import { validateCoupon } from "../../actions/user.action";
-
+import TotalPrice from './totalPrice'
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/index";
@@ -16,131 +16,7 @@ import EmptyCart from "./EmptyCart";
 import {deliveryCharge} from '../../utils/getParams'
 import './style.css'
 
-export const TotalPrice = (props) => {
-	const [couponInput, setCouponInput] = useState(false);
-	const [couponName, setCouponName] = useState("");
-	const cart = useSelector((state) => state.cart);
-	const dispatch = useDispatch();
 
-	const coupon = JSON.parse(localStorage.getItem("coupon"));
-
-	const couponValidation = (e) => {
-		e.preventDefault();
-		dispatch(validateCoupon({ couponName }));
-		setCouponInput(false)
-	};
-
-	const afterDeliveryCharge = Object.keys(cart.cartItems).reduce(
-		(totalPrice, key) => {
-			const { price, qty } = cart.cartItems[key];
-			return totalPrice + price * qty;
-		},
-		0
-	);
-
-	const couponDiscont = coupon
-		? afterDeliveryCharge * (coupon.amount * (1 / 100))
-		: null;
-	const afterDiscount = coupon
-		? afterDeliveryCharge - couponDiscont + deliveryCharge
-		: null;
-
-	return (
-		<div className='total-price text-left'>
-			<table className='total-price-table'>
-				<tr>
-					<td>Subtotal</td>
-					<td>
-						{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-							const { price, qty } = cart.cartItems[key];
-							return totalPrice + price * qty;
-						}, 0)}{" "}
-						<strong> ৳</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>Delivery Charge</td>
-					<td>
-						{deliveryCharge} <strong> ৳</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>Total</td>
-					<td>
-						{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-							const { price, qty } = cart.cartItems[key];
-							return totalPrice + price * qty;
-						}, deliveryCharge)}{" "}
-						<strong> ৳</strong>
-					</td>
-				</tr>
-				{coupon ? (
-					<>
-						<tr>
-							<td>Coupon--{coupon.name}</td>
-							<td>
-								<span>Discount{" -->"} </span>{" "}
-								<span>
-									{couponDiscont}
-									<strong> ৳</strong>
-								</span>
-							</td>
-						</tr>
-						<tr>
-							<td>Total--</td>
-							<td>
-								{afterDiscount} <strong> ৳</strong>
-							</td>
-						</tr>
-					</>
-				) : null}
-			</table>
-			<div className='coupon-container'>
-				{couponInput ? null : (
-					<button
-						className='btn btn-success btn-lg m-3'
-						onClick={(e) => setCouponInput(true)}>
-						Add Coupon
-					</button>
-				)}
-
-				{couponInput ? (
-					<div className='d-flex'>
-						<input
-							className='m-3 coupon-input d'
-							maxLength='15'
-							type='txt'
-							placeholder='Enter your coupon code'
-							onChange={(e) => setCouponName(e.target.value)}
-						/>
-						<button
-							className='btn c-primary t-primary btn-lg m-2'
-							onClick={(e) => couponValidation(e)}>
-							Submit
-						</button>
-						{couponInput ? (
-							<button
-								className='btn btn-danger btn-lg m-2'
-								onClick={(e) => setCouponInput(false)}>
-								Cancel
-							</button>
-						) : null}
-					</div>
-				) : null}
-			</div>
-
-			{props.nextStep ? null : (
-				<Link
-					to='/checkout'
-					className='checkout-btn'
-					// onClick={() => <Redirect to='/checkout' />}
-				>
-					<h4>Proceed To Checkout</h4>
-				</Link>
-			)}
-		</div>
-	);
-};
 
 export default function CartPage3(props) {
 	const cart = useSelector((state) => state.cart);
