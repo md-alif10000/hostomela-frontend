@@ -89,7 +89,7 @@ export default function Checkout(props) {
 	const cart = useSelector((state) => state.cart);
 	const coupon=JSON.parse(localStorage.getItem('coupon'))
 	var deliveryCharge = localStorage.getItem("deliveryCharge");
-	var deliveryCharge = deliveryCharge.parseInt()
+	var deliveryCharge = parseInt(deliveryCharge);
 	
 
 	const handleNext = () => {
@@ -433,7 +433,7 @@ export default function Checkout(props) {
 										send you an update when your order has shipped.
 									</Typography>
 									<Link to='/account/orders'>
-										<Button color='orange'>Go to order page</Button>
+										<Button color='orange' className='bg-primary text-white'>Go to order page</Button>
 									</Link>
 								</React.Fragment>
 							) : (
