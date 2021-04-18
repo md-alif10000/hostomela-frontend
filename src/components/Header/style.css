@@ -1,6 +1,9 @@
+.headerContainer{
 
+}
 .searchContainer{
     width: 100%;
+    max-width: 700px;
     height: 40px;
     background-color: rgb(209, 122, 226);
     padding: 1px 3px;
@@ -51,6 +54,16 @@ background-image: linear-gradient(315deg, #d4418e 0%, #0652c5 74%);
     }
     .mobile-view{
         display: none;
+    }
+    .headerContainer{
+        padding:0px 50px ;
+    }
+    
+}
+@media screen and (min-width:1200px) {
+
+    .headerContainer{
+        padding:0px 100px ;
     }
     
 }

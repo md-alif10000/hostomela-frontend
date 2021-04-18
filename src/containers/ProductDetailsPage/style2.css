@@ -1,7 +1,13 @@
 .product-details-container{
     margin: 60px 180px
 }
+.react-slider__areaZoom{
+    
+}
+.react-slider__picture img{
+    max-height: 450px;
 
+}
 .policy-div{
     background-color: rgb(219, 215, 215);
     font-size: 14px;

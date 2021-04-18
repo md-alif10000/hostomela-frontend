@@ -162,7 +162,7 @@ export default function ProductDetails2(props) {
 			<div className='product-details-container '>
 				<section className='section product-detail  p-1 '>
 					<div className=' row bg-white p-3 '>
-						<div className='col-lg-4 col-sm-12 text-center '>
+						<div className='col-lg-4 col-sm-12 text-center ' >
 							<span className='t-secondary'>
 								Home/Product Details/ {product.productDetails.name}
 							</span>
@@ -230,7 +230,7 @@ export default function ProductDetails2(props) {
 							</div>
 
 							<div
-								className='text-left font-14'
+								className='text-left font-16'
 								style={{ textAlign: "left", textDecoration: "none" }}>
 								<ul>
 									<li>⦿ Banarasi Pure Silk Saree in Navy Blue</li>
