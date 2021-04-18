@@ -31,6 +31,8 @@ import Loader from "../../components/Loader";
 import ProductBar from "../../components/ProductBar";
 import { Link } from "react-router-dom";
 import Social from "../../components/Social";
+import DetailsBar from "./detailsBar";
+import Swal from "sweetalert2";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -78,8 +80,8 @@ export default function ProductDetails2(props) {
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
-	const [review, setReview] = useState("");
-	const [rating, setRating] = useState(null);
+	// const [review, setReview] = useState("");
+	// const [rating, setRating] = useState(null);
 
 	const classes = useStyles();
 	const dispatch = useDispatch();
@@ -104,9 +106,12 @@ export default function ProductDetails2(props) {
 	}, []);
 	let { productId } = props.match.params;
 
-	const onSubmitReview = (e) => {
+	const onSubmitReview = (e,review, rating) => {
 		e.preventDefault();
 		console.log({ productId, review, rating });
+		if(review=='') return Swal.fire('Opps','Review can not be empty','warning')
+		if (rating == null)
+			return Swal.fire("Opps", "Please give a rating", "warning");
 		dispatch(addReview({ productId, review, rating }));
 	};
 
@@ -268,116 +273,10 @@ export default function ProductDetails2(props) {
 					<div className='col-lg-6 col-md-6 col-sm-12'></div>
 				</div>
 
-				<div className=' text-lg' style={{ fontSize: "20px" }}>
-					<div className={classes.root}>
-						<AppBar
-							position='static'
-							style={{
-								backgroundImage:
-									"linear-gradient(315deg, #bc52d1 0%, #5f0a87 74%)",
 
-								backgroundColor: "#bc52d1",
-								boxShadow: " -2px 1px 2px 2px #ec96fd",
-								fontSize: "20px",
-							}}>
-							<Tabs
-								className='bold-600'
-								style={{ fontSize: "14px" }}
-								value={value}
-								onChange={handleChange}
-								aria-label='simple tabs example'>
-								<Tab
-									className='bold-600'
-									style={{ fontSize: "14px" }}
-									label='Details'
-									{...a11yProps(0)}
-								/>
-								<Tab
-									className='bold-600'
-									style={{ fontSize: "14px" }}
-									label='Reviews'
-									{...a11yProps(1)}
-								/>
-								<Tab
-									className='bold-600'
-									style={{ fontSize: "14px" }}
-									label='Submit Reviews'
-									{...a11yProps(2)}
-								/>
-							</Tabs>
-						</AppBar>
-						<TabPanel value={value} index={0}>
-							<p style={{ fontSize: "16px" }}>{product.productDetails.desc}</p>
-						</TabPanel>
+				<DetailsBar onSubmitReview={onSubmitReview}/>
 
-						<TabPanel value={value} index={1}>
-							{reviews.map((review, index) => {
-								let Picture = review.userId.profilePicture;
-
-								let userImage =
-									Picture.slice(0, 4) == "http"
-										? Picture
-										: generatePublicUrl(Picture);
-
-								return (
-									<Review
-										name={review.userId.name}
-										review={review.review}
-										rating={review.rating}
-										date={review.date ? review.date : null}
-										userPicture={userImage}
-									/>
-								);
-							})}
-						</TabPanel>
-						<TabPanel value={value} index={2}>
-							<div>
-								<TextField
-									id='outlined-multiline-static'
-									label='Write Your Review'
-									multiline
-									rows={4}
-									value={review}
-									onChange={(e) => setReview(e.target.value)}
-									// defaultValue='Default Value'
-									variant='outlined'
-									fullWidth
-								/>
-							</div>
-
-							<div>
-								<FormControl className={classes.formControl}>
-									<InputLabel htmlFor='age-native-simple'>
-										Select Rating..
-									</InputLabel>
-									<Select
-										native
-										value={rating}
-										onChange={(e) => setRating(e.target.value)}
-										style={{ width: "300px" }}
-										inputProps={{
-											name: "age",
-											id: "age-native-simple",
-										}}>
-										<option aria-label='None' value='' />
-										<option value={5}>⭐⭐⭐⭐⭐ </option>
-										<option value={4}>⭐⭐⭐⭐</option>
-										<option value={3}>⭐⭐⭐</option>
-										<option value={2}>⭐⭐</option>
-										<option value={1}>⭐</option>
-									</Select>
-								</FormControl>
-							</div>
-							<div className='mt-4'>
-								<Button
-									style={{ backgroundColor: "#fce00d", color: "black" }}
-									onClick={onSubmitReview}>
-									Submit your Review
-								</Button>
-							</div>
-						</TabPanel>
-					</div>
-				</div>
+			
 				<ProductBar
 					price={Price}
 					onClick={(e) => {

@@ -5,8 +5,8 @@ import Social from '../Social'
 
 export default function Footer() {
     return (
-			<footer id='footer' className='section footer'>
-				<div className='container my-0'>
+			<footer id='footer' className='section footer bg-secondary'>
+				<div className='container my-0 '>
 					<div className='footer-container'>
 						<div className='footer-center'>
 							<h3>EXTRAS</h3>
@@ -50,9 +50,8 @@ export default function Footer() {
 							<div className='payment-methods'>
 								<img src='./images/payment.png' alt='' />
 							</div>
-							{/* <div className='m-3 p-3'> */}
-								{" "}
-								{/* <Social title='Follow us on' /> */}
+							{/* <div className='m-3 p-3'> */}{" "}
+							{/* <Social title='Follow us on' /> */}
 							{/* </div> */}
 						</div>
 					</div>
