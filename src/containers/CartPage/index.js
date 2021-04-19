@@ -68,7 +68,7 @@ export default function CartPage3(props) {
 	}
 
 
-	
+
 if (cart.updatingCart) {
 	return <Loader />;
 }
@@ -81,7 +81,7 @@ Object.keys(cart.cartItems).map((item)=>{
 
 	if (itemsArray.length == 0) {
 		return <EmptyCart />;
-	} 
+	}
 
 
 
@@ -96,13 +96,13 @@ Object.keys(cart.cartItems).map((item)=>{
 						</tr>
 						{Object.keys(cartItems).map((key, index) => (
 							<CartItem
-								key={index}
-								cartItem={cartItems[key]}
-								onQuantityInc={onQuantityIncrement}
-								onQuantityDec={onQuantityDecrement}
-								onRemoveCartItem={onRemoveCartItem}
+							key={index}
+							cartItem={cartItems[key]}
+							onQuantityInc={onQuantityIncrement}
+							onQuantityDec={onQuantityDecrement}
+							onRemoveCartItem={onRemoveCartItem}
 							/>
-						))}
+							))}
 					</table>
 
 					<TotalPrice />

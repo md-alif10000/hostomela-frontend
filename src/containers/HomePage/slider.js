@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {Redirect} from 'react-router-dom'
- 
+import { Redirect } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { Container, Card, Row, Col } from "react-bootstrap";
@@ -9,7 +9,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { makeStyles } from "@material-ui/core/styles";
-
 
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
@@ -79,14 +78,14 @@ export default function NowPlaying(props) {
 				},
 			},
 			{
-				breakpoint: 420,
+				breakpoint: 430,
 				settings: {
-					slidesToShow: 1,
+					slidesToShow: 1.5,
 					slidesToScroll: 1,
 				},
 			},
 			{
-				breakpoint: 320,
+				breakpoint: 350,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
