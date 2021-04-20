@@ -162,7 +162,7 @@ export default function ProductDetails2(props) {
 			<div className='product-details-container '>
 				<section className='section product-detail  p-1 '>
 					<div className=' row bg-white p-3 '>
-						<div className='col-lg-4 col-sm-12 text-center ' >
+						<div className='col-lg-4 col-sm-12 text-center '>
 							<span className='t-secondary'>
 								Home/Product Details/ {product.productDetails.name}
 							</span>
@@ -181,6 +181,25 @@ export default function ProductDetails2(props) {
 									{Price}
 								</div>
 
+								<div
+									className='text-left font-16'
+									style={{ textAlign: "left", textDecoration: "none" }}>
+									<h3 className='m-4'>Details</h3>
+									<ul>
+										<li>⦿ Banarasi Pure Silk Saree in Navy Blue</li>
+										<li>⦿ Beautifully woven with Zari in Floral Motifs</li>
+										<li>
+											⦿ Available with an Unstitched Pure Banarasi Silk Blouse
+											in Black
+										</li>
+										<li>⦿ Free Services: Fall and Edging (Pico)</li>
+										<li>
+											⦿ Do Note: Accessories worn by model is for presentation
+											purpose
+										</li>
+									</ul>
+								</div>
+
 								<div className='m-3 p-3' style={{ fontSize: "16px" }}>
 									<FormControl component='fieldset'>
 										<FormLabel></FormLabel>
@@ -191,15 +210,19 @@ export default function ProductDetails2(props) {
 											value={stitch}
 											onChange={(e) => setStitch(e.target.value)}>
 											<FormControlLabel
-												style={stitch == "regular" ? { display: "none" } :null }
+												style={stitch == "regular" ? { display: "none" } : null}
 												value='regular'
 												control={<Radio />}
-												label={<h4>Regular</h4>}
+												label={<h4 className='t-dark'>Regular</h4>}
 											/>
 											<FormControlLabel
 												value='stitch'
 												control={<Radio />}
-												label={<h4>Stitch (Ready to wear)+500 tk</h4>}
+												label={
+													<h4 className='t-dark'>
+														Stitch (Ready to wear)+500 tk
+													</h4>
+												}
 											/>
 										</RadioGroup>
 									</FormControl>
@@ -223,28 +246,10 @@ export default function ProductDetails2(props) {
 										// <Redirect to='/cart' />;
 										props.history.push("/cart");
 									}}
-									className='addToCart btn '>
+									className='addToCart btn bold-700 '>
 									{console.log(stitching)}
 									<ShoppingCartIcon /> Add To Shopping Bag
 								</a>
-							</div>
-
-							<div
-								className='text-left font-16'
-								style={{ textAlign: "left", textDecoration: "none" }}>
-								<ul>
-									<li>⦿ Banarasi Pure Silk Saree in Navy Blue</li>
-									<li>⦿ Beautifully woven with Zari in Floral Motifs</li>
-									<li>
-										⦿ Available with an Unstitched Pure Banarasi Silk Blouse in
-										Black
-									</li>
-									<li>⦿ Free Services: Fall and Edging (Pico)</li>
-									<li>
-										⦿ Do Note: Accessories worn by model is for presentation
-										purpose
-									</li>
-								</ul>
 							</div>
 						</div>
 

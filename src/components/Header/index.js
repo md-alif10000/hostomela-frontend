@@ -421,15 +421,15 @@ export default function Header(props) {
 						<Link to='/account' className='font-18 t-primary'>
 							<ListItem button>
 								<ListItemIcon>
-									<AccountCircle />
+									<AccountCircle style={{fontSize:'25px'}}/>
 								</ListItemIcon>
 								<ListItemText
-									primary={<h5>My account /</h5>}
+									primary={<h4>My account /</h4>}
 									className='font-18 t-primary'
 								/>
-								<LockOpenIcon style={{ fontSize: "20px" }} />
+								{/* <LockOpenIcon style={{ fontSize: "20px" }} /> */}
 								<ListItemText
-									primary={<h5>Login</h5>}
+									primary={<h4>Login</h4>}
 									className='font-18 t-primary'
 								/>
 							</ListItem>

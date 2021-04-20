@@ -189,14 +189,14 @@ export default function () {
 									placeholder='Enter your phone'
 								/>
 							</div>
-							<div>
+							{/* <div>
 								<input
 									type='file'
 									className='btn btn-success'
 									placeholder='Choose Picture'
 									onChange={(e) => setProfilePicture(e.target.value)}
 								/>
-							</div>
+							</div> */}
 							<div className='input-container'>
 								<label className='label'>Password</label>
 								<br />

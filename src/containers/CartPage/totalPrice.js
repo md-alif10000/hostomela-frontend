@@ -14,7 +14,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import "./style.css";
 
 export default function TotalPrice(props) {
-	const [couponInput, setCouponInput] = useState(false);
+	const [couponInput, setCouponInput] = useState(true);
 	const [couponName, setCouponName] = useState("");
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
@@ -63,7 +63,7 @@ export default function TotalPrice(props) {
 				</tr>
 
 				<tr className='p-4'>
-					<FormControl component='fieldset'>
+					<FormControl component='fieldset' style={{padding:'20px'}}>
 						<FormLabel component='legend'>
 							<h3>Delivery Area</h3>
 						</FormLabel>

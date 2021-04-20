@@ -50,21 +50,20 @@ export default function ProductBar({price,onClick}) {
 	const classes = useStyles();
 
 	return (
-
-			<div className='product-bar-container'>
-				<AppBar position='fixed' className={classes.appBar}>
-					<Toolbar>
-					
-						<button className=' fixed-cart-button btn btn-primary '
-                        onClick={onClick}>
-							<ShoppingCartIcon /> Add To Shopping Bag
-						</button>
-						<span>
-							you pay <strong>৳</strong>{price}
-						</span>
-					</Toolbar>
-				</AppBar>
-			</div>
-
+		<div className='product-bar-container'>
+			<AppBar position='fixed' className={classes.appBar}>
+				<Toolbar>
+					<button
+						className=' fixed-cart-button btn btn-primary py-3 px-2'
+						onClick={onClick}>
+						<ShoppingCartIcon /> Add To Shopping Bag
+					</button>
+					<span>
+						you pay <strong>৳</strong>
+						{price}
+					</span>
+				</Toolbar>
+			</AppBar>
+		</div>
 	);
 }

@@ -39,6 +39,9 @@ background-color: #fff;
   color:#ffff
     
 }
+.t-dark{
+  color: rgb(51, 51, 51);
+}
 .t-secondary{
   color: #b643cd;
 }

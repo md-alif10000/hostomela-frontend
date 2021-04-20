@@ -23,14 +23,24 @@ const dispatch = useDispatch()
 
 
 useEffect(() => {
-	
+
+
 	dispatch(getProducts())
+	if (category.loading) {
+		return <Loader />;
+	}
+	
 }, [])
 
 
-if(category.loading){
-	return <Loader/>
-}
+useEffect(() => {
+	// dispatch(getProducts());
+	if (category.loading) {
+		return <Loader />;
+	}
+}, [category.loading]);
+
+
 if (cart.updatingCart) {
 	return <Loader />;
 }

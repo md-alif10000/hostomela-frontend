@@ -50,7 +50,6 @@ code {
 
 .listItem{
 	text-align: center;
-	border-bottom: 2px solid black;
 	padding: 3px;
 	margin-right: 10px;
   color: #f6f7fb;
@@ -58,8 +57,13 @@ code {
 
 
 }
+.listItem-container{
+  border-bottom:3px solid rgb(49, 48, 48);
+
+}
 .listItem-container:hover{
 	background-color:rgb(221, 50, 184);
+
 }
 .listItem:hover{
 	/* color: rgba(173, 173, 24, 0.966); */
@@ -416,15 +420,17 @@ color:white
   
     /* Empty cart css */
   
-    .total-price table {
+    /* .total-price table {
       border-top: 3px solid var(--primary);
       width: 100%;
       max-width: 35rem;
-      } 
+      }  */
      .total-price-table{
        width: 100%;
        background-color: rgb(223, 223, 223);
-       padding: 10px;
+       padding: 40px;
+       /* margin: 10px; */
+       border-radius: 5px;
 
      }
 

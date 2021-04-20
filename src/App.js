@@ -14,6 +14,7 @@ import { updateCart } from "./actions/cart.action";
 import OrderPage from "./containers/OrderPage/index";
 import OrderDetailsPage from "./containers/OrderDetailsPage/index";
 import CartPage from "./containers/CartPage";
+import CartPage2 from "./containers/CartPage/index2";
 import Account from "../src/containers/account";
 import AboutUs from "./containers/AboutUs";
 import ContactUs from "./containers/ContactUs";
@@ -22,7 +23,6 @@ import { getAllCategory } from "./actions";
 function App() {
 	const dispatch = useDispatch();
 	const auth = useSelector((state) => state.auth);
-
 
 	useEffect(() => {
 		if (!auth.authenticate) {
@@ -42,7 +42,7 @@ function App() {
 			<Router>
 				<Switch>
 					<Route path='/' exact component={HomePage} />
-					<Route path='/cart' component={CartPage} />
+					<Route path='/cart' component={CartPage2} />
 					<Route path='/checkout:deliveryCharge' component={CheckoutPage} />
 
 					<Route path='/login' component={Login} />
