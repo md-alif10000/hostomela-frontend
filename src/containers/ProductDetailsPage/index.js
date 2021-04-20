@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductDetails2(props) {
 	const [value, setValue] = React.useState(0);
 	var [stitch, setStitch] = useState("regular");
-	var stitching=stitch=='regular'? false :true
+	var stitching = stitch == "regular" ? false : true;
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -107,10 +107,11 @@ export default function ProductDetails2(props) {
 	}, []);
 	let { productId } = props.match.params;
 
-	const onSubmitReview = (e,review, rating) => {
+	const onSubmitReview = (e, review, rating) => {
 		e.preventDefault();
 		console.log({ productId, review, rating });
-		if(review=='') return Swal.fire('Opps','Review can not be empty','warning')
+		if (review == "")
+			return Swal.fire("Opps", "Review can not be empty", "warning");
 		if (rating == null)
 			return Swal.fire("Opps", "Please give a rating", "warning");
 		dispatch(addReview({ productId, review, rating }));
@@ -179,6 +180,27 @@ export default function ProductDetails2(props) {
 								<div className=''>
 									<span className='bolder'>৳ </span>
 									{Price}
+								</div>
+
+								<div className='color'>
+									<h3>color</h3>
+									<ul>
+										<li>
+											<a href='#!' className='colors color-bdot1 active'></a>
+										</li>
+										<li>
+											<a href='#!' className='colors color-bdot2' style={{backgroundColor:'red',  boxShadow:'0 0 0 3px white, 0 0 0 5px red' }}></a>
+										</li>
+										<li>
+											<a href='#!' className='colors color-bdot3'></a>
+										</li>
+										<li>
+											<a href='#!' className='colors color-bdot4'></a>
+										</li>
+										<li>
+											<a href='#!' className='colors color-bdot5'></a>
+										</li>
+									</ul>
 								</div>
 
 								<div
