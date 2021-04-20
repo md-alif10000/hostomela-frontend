@@ -115,7 +115,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     line-height: 1.4em;
   }
   .productItem .product-quantity input {
-    width: 30px;
+    width: 50px;
   }
   .productItem .remove-product {
     border: 0;
@@ -128,7 +128,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     margin: 5px;
   }
   .productItem .remove-product:hover {
-    background-color: #a44;
+    background-color: rgb(189, 52, 52);
   }
   
   /* Totals section */
@@ -197,6 +197,10 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   
     .column-labels {
       display: none;
+
+    }
+    .productItem .product-quantity input {
+      width: 30px;
     }
   
     .product-image {

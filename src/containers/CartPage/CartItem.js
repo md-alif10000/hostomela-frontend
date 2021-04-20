@@ -35,12 +35,14 @@ export default function CartItem(props) {
 			<div className='product-price m-1'>{price}</div>
 			<div className='product-quantity d-flex'>
 				<IndeterminateCheckBoxIcon
-					style={{ fontSize: "35px" }}
+					className='text-warning'
+					style={{ fontSize: "35px", cursor: "pointer" }}
 					onClick={onQuantityDecrement}></IndeterminateCheckBoxIcon>
 
 				<input type='number' value={qty} min='1' />
 				<AddBoxIcon
-					style={{ fontSize: "35px" }}
+					className='text-success'
+					style={{ fontSize: "35px", cursor: "pointer" }}
 					onClick={onQuantityIncrement}
 				/>
 			</div>

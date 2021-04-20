@@ -89,7 +89,7 @@ export default function CartPage2(props) {
 				<h1>Shopping Cart</h1>
 
 				<div className='shopping-cart'>
-					<div className='column-labels'>
+					<div className='column-labels mt-5'>
 						<label className='product-image'>Image</label>
 						<label className='product-details'>Product</label>
 						<label className='product-price'>Price</label>
