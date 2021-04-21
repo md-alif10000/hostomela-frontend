@@ -15,9 +15,9 @@ export default function Product(props) {
 							/>
 						</div>
 						<div className='product__bottom'>
-							<div className='rating'>
+							{/* <div className='rating'>
 								<span>⭐⭐⭐⭐⭐</span>
-							</div>
+							</div> */}
 							<div className='rating'>
 								<span>
 									<strong>৳</strong> {price}

@@ -295,7 +295,7 @@ export default function ProductDetails2(props) {
 							</p>
 							<hr />
 							<div style={{ width: "200px" }}>
-								<Social title='Follow us on' />
+								<Social title='Share this' />
 							</div>
 						</div>
 					</div>
@@ -306,7 +306,7 @@ export default function ProductDetails2(props) {
 					<div className='col-lg-6 col-md-6 col-sm-12'></div>
 				</div>
 
-				<DetailsBar onSubmitReview={onSubmitReview} />
+				{/* <DetailsBar onSubmitReview={onSubmitReview} /> */}
 
 				<ProductBar
 					price={Price}
