@@ -74,6 +74,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProductDetails2(props) {
+	const [selectedColor, setSelectedColor] = useState("");
+	const [selectedSize, setSelectedSize] = useState({});
 	const [value, setValue] = React.useState(0);
 	var [stitch, setStitch] = useState("regular");
 	var stitching = stitch == "regular" ? false : true;
@@ -89,10 +91,15 @@ export default function ProductDetails2(props) {
 	const product = useSelector((state) => state.product);
 	const cart = useSelector((state) => state.cart);
 
+
 	let Price =
-		stitch == "regular"
-			? product.productDetails.price
-			: product.productDetails.price + 500;
+		(selectedSize.price ? selectedSize.price : product.productDetails.price) +
+		(stitch == "regular"
+			? 0
+			:  500);
+	
+
+	// let Price =(stitch == "regular" ? product.productDetails.price : product.productDetails.price + 500 )+ selectedSize.price ?selectedSize.price :0;
 
 	const { reviews } = product.productDetails;
 	useEffect(() => {
@@ -182,43 +189,48 @@ export default function ProductDetails2(props) {
 									{Price}
 								</div>
 
-								<div className='color'>
-									<h3>color</h3>
-									<ul>
-										<li>
-											<a href='#!' className='colors color-bdot1 active'></a>
-										</li>
-										<li>
-											<a href='#!' className='colors color-bdot2' style={{backgroundColor:'red',  boxShadow:'0 0 0 3px white, 0 0 0 5px red' }}></a>
-										</li>
-										<li>
-											<a href='#!' className='colors color-bdot3'></a>
-										</li>
-										<li>
-											<a href='#!' className='colors color-bdot4'></a>
-										</li>
-										<li>
-											<a href='#!' className='colors color-bdot5'></a>
-										</li>
-									</ul>
+								<div className='sizeContainer '>
+									{product.productDetails.sizes.map((size, index) => (
+										<span className={selectedSize.size == size.size ? "size selectedSize":'size'} onClick={()=>setSelectedSize(size)}>
+											{size.size}
+										</span>
+									))}
+
 								</div>
+
+								{product.productDetails.colors.length > 0 ? (
+									<div className='color m-3'>
+										<h3>color</h3>
+										<ul>
+											{product.productDetails.colors.map((color, index) => (
+												<li key={index}>
+													<a
+														href='#!'
+														className='colors color-bdot1 '
+														style={{
+															backgroundColor: `${color.code}`,
+															boxShadow:
+																selectedColor == color.colorName
+																	? `0 0 0 3px white, 0 0 0 5px ${color.code}`
+																	: "none",
+														}}
+														onClick={() =>
+															setSelectedColor(color.colorName)
+														}></a>
+												</li>
+											))}
+										</ul>
+									</div>
+								) : null}
 
 								<div
 									className='text-left font-16'
 									style={{ textAlign: "left", textDecoration: "none" }}>
 									<h3 className='m-4'>Details</h3>
 									<ul>
-										<li>⦿ Banarasi Pure Silk Saree in Navy Blue</li>
-										<li>⦿ Beautifully woven with Zari in Floral Motifs</li>
-										<li>
-											⦿ Available with an Unstitched Pure Banarasi Silk Blouse
-											in Black
-										</li>
-										<li>⦿ Free Services: Fall and Edging (Pico)</li>
-										<li>
-											⦿ Do Note: Accessories worn by model is for presentation
-											purpose
-										</li>
+										{product.productDetails.highlights.map((desc, index) => (
+											<li>⦿ {desc}</li>
+										))}
 									</ul>
 								</div>
 
@@ -263,6 +275,8 @@ export default function ProductDetails2(props) {
 												price: Price,
 												image,
 												stitch: stitching,
+												size:selectedSize.size,
+												color:selectedColor
 											})
 										);
 										// <Redirect to='/cart' />;

@@ -47,10 +47,15 @@ export const addToCart = (product, newQty = 1) => {
 					{
 						product: product._id,
 						quantity: qty,
-						stitch:product.stitch
+						stitch:product.stitch,
+						color:product.color,
+						size:product.size,
+						price:product.price,
 					},
 				],
 			};
+
+			console.log('payload',payload)
 
 			const res = await axios.post(`/user/cart/addtocart`, payload);
 		

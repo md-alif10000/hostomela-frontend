@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from "../../components/Header/index";
+import Cart from '../../images/CART.png'
 
 export default function EmptyCart() {
     return (
@@ -12,7 +13,7 @@ export default function EmptyCart() {
 								<div className='card-body cart'>
 									<div className='col-sm-12 empty-cart-cls text-center'>
 										<img
-											src='https://www.graphicsfuel.com/wp-content/uploads/2012/01/shopping-cart-icon-515.png'
+											src={Cart}
 											width='170px'
 											height='170px'
 											className='image-fluid mb-3 mr-3'

@@ -97,3 +97,35 @@
   .color-bdot5:hover, .color-bdot5.active {
     box-shadow: 0 0 0 3px white, 0 0 0 5px #dfdfdf;
   }
+
+
+
+  .sizeContainer{
+
+  }
+  .size{
+    height: 20px;
+    color:rgb(202, 73, 202);
+    font-size: 14px;
+    background-color:white;
+    margin: 5px;
+    padding:2px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    border:1px solid rgb(212, 207, 207)
+  }
+  .size:hover{
+    background-color: rgb(187, 51, 187);
+    color: white;
+    
+  }
+  .selectedSize{
+    background-color: rgb(187, 51, 187);
+    color: white;
+
+  }
+
+  .size-price{
+    font-size: 10px;
+  }

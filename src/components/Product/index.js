@@ -4,6 +4,7 @@ import './style.css'
 
 export default function Product(props) {
     const {name,rating,image,price,link,onClick}=props
+	console.log(link)
     return (
 			// <div className='arrival__center'>
 				<a href={link}>
