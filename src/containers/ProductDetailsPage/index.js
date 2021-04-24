@@ -30,7 +30,7 @@ import SliderImage from "react-zoom-slider";
 import Loader from "../../components/Loader";
 import ProductBar from "../../components/ProductBar";
 import { Link } from "react-router-dom";
-import Social from "../../components/Social";
+import SocialShare from "../../components/SocialShare";
 import DetailsBar from "./detailsBar";
 import Swal from "sweetalert2";
 
@@ -91,13 +91,9 @@ export default function ProductDetails2(props) {
 	const product = useSelector((state) => state.product);
 	const cart = useSelector((state) => state.cart);
 
-
 	let Price =
 		(selectedSize.price ? selectedSize.price : product.productDetails.price) +
-		(stitch == "regular"
-			? 0
-			:  500);
-	
+		(stitch == "regular" ? 0 : 500);
 
 	// let Price =(stitch == "regular" ? product.productDetails.price : product.productDetails.price + 500 )+ selectedSize.price ?selectedSize.price :0;
 
@@ -136,7 +132,7 @@ export default function ProductDetails2(props) {
 					data.push(imageInfo);
 			  });
 
-	console.log(data);
+
 
 	const demoData = [
 		{
@@ -191,11 +187,16 @@ export default function ProductDetails2(props) {
 
 								<div className='sizeContainer '>
 									{product.productDetails.sizes.map((size, index) => (
-										<span className={selectedSize.size == size.size ? "size selectedSize":'size'} onClick={()=>setSelectedSize(size)}>
+										<span
+											className={
+												selectedSize.size == size.size
+													? "size selectedSize"
+													: "size"
+											}
+											onClick={() => setSelectedSize(size)}>
 											{size.size}
 										</span>
 									))}
-
 								</div>
 
 								{product.productDetails.colors.length > 0 ? (
@@ -275,8 +276,8 @@ export default function ProductDetails2(props) {
 												price: Price,
 												image,
 												stitch: stitching,
-												size:selectedSize.size,
-												color:selectedColor
+												size: selectedSize.size,
+												color: selectedColor,
 											})
 										);
 										// <Redirect to='/cart' />;
@@ -308,8 +309,8 @@ export default function ProductDetails2(props) {
 								</Link>
 							</p>
 							<hr />
-							<div style={{ width: "200px" }}>
-								<Social title='Share this' />
+							<div className='mx-5'>
+								<SocialShare />
 							</div>
 						</div>
 					</div>
@@ -326,10 +327,20 @@ export default function ProductDetails2(props) {
 					price={Price}
 					onClick={(e) => {
 						e.preventDefault();
-			
+
 						const { _id, name } = product.productDetails;
 						const image = product.productDetails.productPictures[0].image;
-						dispatch(addToCart({ _id, name, price: Price, image,color:selectedColor,size:selectedSize.size,stitch:stitching }));
+						dispatch(
+							addToCart({
+								_id,
+								name,
+								price: Price,
+								image,
+								color: selectedColor,
+								size: selectedSize.size,
+								stitch: stitching,
+							})
+						);
 						// <Redirect to='/cart' />;
 						props.history.push("/cart");
 					}}

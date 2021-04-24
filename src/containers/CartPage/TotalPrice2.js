@@ -113,12 +113,6 @@ export default function TotalPrice(props) {
 					</RadioGroup>
 				</FormControl>
 
-				<div className='totals-item'>
-					<label>Shipping</label>
-					<div className='totals-value' id='cart-shipping'>
-						{deliveryCharge}
-					</div>
-				</div>
 				{coupon ? (
 					<>
 						<div className='totals-item'>
@@ -129,25 +123,39 @@ export default function TotalPrice(props) {
 								{couponDiscont}
 							</div>
 						</div>
-					
+						<div className='totals-item'>
+							<label>Shipping</label>
+							<div className='totals-value' id='cart-shipping'>
+								{deliveryCharge}
+							</div>
+						</div>
+
 						<div className='totals-item totals-item-total'>
 							<label>Grand Total</label>
 							<div className='totals-value' id='cart-total'>
-							{afterDiscount}
+								{afterDiscount}
 							</div>
 						</div>
 					</>
-				) : 	<div className='totals-item totals-item-total'>
-					<label>Grand Total</label>
-					<div className='totals-value' id='cart-total'>
-						{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-							const { price, qty } = cart.cartItems[key];
-							return totalPrice + price * qty;
-						}, deliveryCharge)}{" "}
-					</div>
-				</div>}
-
-			
+				) : (
+					<>
+						<div className='totals-item'>
+							<label>Shipping</label>
+							<div className='totals-value' id='cart-shipping'>
+								{deliveryCharge}
+							</div>
+						</div>
+						<div className='totals-item totals-item-total'>
+							<label>Grand Total</label>
+							<div className='totals-value' id='cart-total'>
+								{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
+									const { price, qty } = cart.cartItems[key];
+									return totalPrice + price * qty;
+								}, deliveryCharge)}{" "}
+							</div>
+						</div>
+					</>
+				)}
 
 				<div
 					className=' d-flex px-1 mr-0'
