@@ -177,10 +177,13 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     border: 0;
     margin-top: 20px;
     padding: 6px 25px;
-    background-color: #6b6;
     color: #fff;
+    width: 100%;
+    max-width: 500px;
     font-size: 25px;
     border-radius: 3px;
+    background-image: linear-gradient(315deg, #bc52d1 0%, #871d9c 74%); 
+    background-color:#bc52d1;  
   }
   
   .checkout:hover {

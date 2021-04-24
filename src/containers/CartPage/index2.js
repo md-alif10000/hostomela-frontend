@@ -108,32 +108,7 @@ export default function CartPage2(props) {
 						/>
 					))}
 
-					<div className='productItem'>
-						<div className='product-image'>
-							<img src='https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png' />
-						</div>
-						<div className='product-details'>
-							<div className='product-title'>
-								Nutro™ Adult Lamb and Rice Dog Food
-							</div>
-							<p className='product-description'>
-								Who hi it's your dog's turn!
-							</p>
-						</div>
-						<div className='product-price'>45.99</div>
-						<div className='product-quantity d-flex'>
-							<IndeterminateCheckBoxIcon style={{ fontSize: "35px" }} />
-
-							<input type='number' value='1' min='1' />
-							<AddBoxIcon style={{ fontSize: "35px" }} />
-						</div>
-						<div className='product-removal'>
-							<button className='remove-product'>
-								<DeleteForeverIcon style={{ fontSize: "25px" }} />
-							</button>
-						</div>
-						<div className='product-line-price'>45.99</div>
-					</div>
+			
 
 					<TotalPrice />
 				</div>

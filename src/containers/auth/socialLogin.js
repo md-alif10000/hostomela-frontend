@@ -7,6 +7,7 @@ import {
 	facebookLogin,
 
 } from "../../actions/auth.action";
+import './style.css'
 
 export default function SocialLogin(props) {
 
@@ -56,7 +57,7 @@ export default function SocialLogin(props) {
 							/>
 						</div>
 
-						<div style={{ margin: "20px" }}>
+						<div style={{ margin: "20px" }} className='fb-login-container'>
 							<FacebookLogin
 								appId='142413274468639'
 								autoLoad={false}
@@ -65,6 +66,7 @@ export default function SocialLogin(props) {
 								// cssClass='kep-login-facebook-[80]'
 								icon='fa-facebook'
 								style={{ width: "80px" }}
+								className='fb-login'
 								size='small'
 								textButton=''
 							/>

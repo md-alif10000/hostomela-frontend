@@ -56,7 +56,7 @@ export const addToCart = (product, newQty = 1) => {
 									: product.stitch;
 
 
-			console.log(price)
+
 
 		cartItems[product._id] = {
 			...product,
@@ -93,7 +93,7 @@ export const addToCart = (product, newQty = 1) => {
 				dispatch(getCartItems());
 			}
 		} else {
-			console.log("Cart items",cartItems)
+
 			localStorage.setItem("cart", JSON.stringify(cartItems));
 		}
 
