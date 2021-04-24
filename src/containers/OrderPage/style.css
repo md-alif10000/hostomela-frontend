@@ -1,5 +1,5 @@
 .tableContainer{
-    margin: 100px;
+    margin:70px 100px;
 
 }
 .orderImg{
@@ -10,6 +10,6 @@
 }
 @media screen and (max-width:1000px){
     .tableContainer{
-        margin: 5px;
+        margin:60px 5px;
     }
 }

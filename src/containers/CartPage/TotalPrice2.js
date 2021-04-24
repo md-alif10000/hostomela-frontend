@@ -18,8 +18,13 @@ export default function TotalPrice(props) {
 	const [couponName, setCouponName] = useState("");
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
+	const delivery_charge = parseInt(
+		JSON.parse(localStorage.getItem("deliveryCharge"))
+	); ;
 
-	const [deliveryArea, setDeliveryArea] = useState("in-dhaka");
+	const [deliveryArea, setDeliveryArea] = useState(
+		delivery_charge == 80 ? "in-dhaka" : "out-dhaka"
+	);
 	const handleChange = (event) => {
 		setDeliveryArea(event.target.value);
 	};

@@ -41,6 +41,12 @@ export const registerOtp=(phone)=>{
 		console.log(phone)
 		dispatch({ type: authConstants.REGISTER_OTP_REQUEST });
 		const res = await axios.post("/register_verify", {phone});
+			if (res.status == 403) {
+				dispatch({
+					type: authConstants.REGISTER_OTP_FAILURE,
+				});
+		 Swal.fire("Oops...", "User already registered.!", "error");
+			}
 
 		if (res.status == 200) {
 			
@@ -50,6 +56,7 @@ export const registerOtp=(phone)=>{
 			});
 			Swal.fire("Wow.", "Otp sent successful.!", "success");
 		}
+	
 		else if(res.status==400){
 				dispatch({
 					type: authConstants.REGISTER_OTP_FAILURE,

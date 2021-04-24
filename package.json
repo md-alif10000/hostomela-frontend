@@ -1,7 +1,7 @@
 {
   "name": "flipkart_clone",
   "version": "0.1.0",
-   "proxy":"https://hostomela-backend.herokuapp.com",
+
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",

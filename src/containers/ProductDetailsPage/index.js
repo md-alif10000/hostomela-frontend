@@ -326,10 +326,10 @@ export default function ProductDetails2(props) {
 					price={Price}
 					onClick={(e) => {
 						e.preventDefault();
-						console.log(Price);
+			
 						const { _id, name } = product.productDetails;
 						const image = product.productDetails.productPictures[0].image;
-						dispatch(addToCart({ _id, name, price: Price, image }));
+						dispatch(addToCart({ _id, name, price: Price, image,color:selectedColor,size:selectedSize.size,stitch:stitching }));
 						// <Redirect to='/cart' />;
 						props.history.push("/cart");
 					}}

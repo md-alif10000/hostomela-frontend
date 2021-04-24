@@ -64,7 +64,7 @@ export default function OrderDetailsPage(props) {
 
 	return (
 		<>
-			<Header fixed/>
+			<Header fixed />
 			<div className='container p-0 text-center mt-70 font-14'>
 				<article className='card'>
 					<header className='card-header'> My Orders / Tracking </header>
@@ -90,11 +90,12 @@ export default function OrderDetailsPage(props) {
 								</div>
 								<div className='col'>
 									{" "}
-									<strong>Total:</strong> <bd /> {orderDetails.totalAmount} Tk
+									<strong>Delivery Charge:</strong> <bd />
+									{orderDetails.deliveryCharge}
 								</div>
 								<div className='col'>
 									{" "}
-									<strong>Tracking #:</strong> <bd /> BD045903594059{" "}
+									<strong>Total:</strong> <bd /> {orderDetails.totalAmount} Tk
 								</div>
 							</div>
 						</article>
@@ -118,7 +119,22 @@ export default function OrderDetailsPage(props) {
 										</div>
 										<div style={{ width: "250px" }}>
 											<div className='delItemName'>{item.productId.name}</div>
-											<Price value={item.payablePrice} />
+											<Price
+												value={`${item.payablePrice} x ${item.purchasedQty} = ${
+													item.payablePrice * item.purchasedQty
+												}`}
+											/>
+										</div>
+										<div style={{ width: "250px" }}>
+											{item.color ? (
+												<h4>
+													Color :
+													<span style={{ color: `${item.color}` }}>
+														{item.color}
+													</span>
+												</h4>
+											) : null}
+											{item.size ? <h4>Size :{item.size}</h4> : null}
 										</div>
 									</div>
 									<div
@@ -154,7 +170,10 @@ export default function OrderDetailsPage(props) {
 							))}
 						</ul>
 						<hr />
-						<a href='/account/orders' className='btn btn-warning' data-abc='true'>
+						<a
+							href='/account/orders'
+							className='btn btn-warning'
+							data-abc='true'>
 							{" "}
 							<i className='fa fa-chevron-left'></i> Back to orders
 						</a>

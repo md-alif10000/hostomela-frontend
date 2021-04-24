@@ -37,8 +37,8 @@ export default function OrderPage(props) {
 						<tr>
 							<th scope='col'>No</th>
 							<th scope='col'>Product Name</th>
-							<th scope='col'>Payment Method</th>
-							<th scope='col'>Order Status</th>
+							<th scope='col'></th>
+						
 
 							<th scope='col'>Total Amount</th>
 						</tr>
@@ -72,23 +72,23 @@ export default function OrderPage(props) {
 										})}
 									</td>
 									<td>{order.paymentType}</td>
-									<td>{getStatus(order)}</td>
+									{/* <td>{getStatus(order)}</td> */}
 
 									{console.log(order)}
 									<td>
 										{order.items.map((item, index) => {
 											return (
 												<p>
-													*{item.payablePrice} x {item.purchasedQty} pcs
+													{item.payablePrice} x {item.purchasedQty} pcs
 												</p>
 											);
 										})}
-										Total Price=
+										{/* Total Price=
 										{Object.keys(order.items).reduce((totalPrice, key) => {
 											const { payablePrice } = order.items[key];
 											const { purchasedQty } = order.items[key];
 											return totalPrice + payablePrice * purchasedQty;
-										}, 0)}
+										}, 0)} */}
 									</td>
 								</tr>
 							);

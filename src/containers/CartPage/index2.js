@@ -39,15 +39,15 @@ export default function CartPage2(props) {
 	}, [auth.authenticate]);
 
 	const onQuantityIncrement = (_id, qty) => {
-		const { name, price, image } = cartItems[_id];
+		const { name, price, image,size,color,stitch } = cartItems[_id];
 
-		dispatch(addToCart({ _id, name, price, image }, 1));
+		dispatch(addToCart({ _id, name, price, image, size, color, stitch }, 1));
 	};
 
 	const onQuantityDecrement = (_id, qty) => {
-		const { name, price, image } = cartItems[_id];
+		const { name, price, image, size, color, stitch } = cartItems[_id];
 
-		dispatch(addToCart({ _id, name, price, image }, -1));
+		dispatch(addToCart({ _id, name, price, image, size, color, stitch }, -1));
 	};
 
 	const onRemoveCartItem = (_id) => {

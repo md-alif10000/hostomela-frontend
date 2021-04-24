@@ -80,6 +80,7 @@ export default function Checkout(props) {
 	const user = useSelector((state) => state.user);
 	const selectedAddress = user.address.slice(user.address.length - 1)[0];
 
+
 	const steps = ["Shipping address", "Review your order", " Payment details"];
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = React.useState(0);
@@ -124,16 +125,24 @@ export default function Checkout(props) {
 
 	console.log("latest total",totalAmount)
 
-
+console.log('cart items before maping',cart.cartItems)
 
 		const items = Object.keys(cart.cartItems).map((key) => ({
 			productId: key,
 			payablePrice: cart.cartItems[key].price,
 			purchasedQty: cart.cartItems[key].qty,
+			color: cart.cartItems[key].color,
+			size: cart.cartItems[key].size,
+			stitch: cart.cartItems[key].stitch,
 		}));
+
+		console.log('Items before order',items)
+		console.log(selectedAddress)
 		const payload = {
 			addressId: selectedAddress._id,
+			address:selectedAddress,
 			totalAmount,
+			deliveryCharge,
 			items,
 			paymentStatus: "pending",
 			paymentType,
