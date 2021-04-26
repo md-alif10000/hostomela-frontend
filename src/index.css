@@ -443,6 +443,10 @@ color:white
      }
 
 
-
-
+.react-slider__btnPrev{
+  display: none;
+}
+.react-slider__btnNext{
+  display: none;
+}
 

@@ -173,7 +173,8 @@ export default function ProductDetails2(props) {
 							<SliderImage
 								data={demoData}
 								width='100%'
-								showDescription={true}
+								infinite='true'
+							
 								direction='right'
 							/>
 						</div>
@@ -267,7 +268,8 @@ export default function ProductDetails2(props) {
 									onClick={() => {
 										console.log(Price);
 										const { _id, name } = product.productDetails;
-										const image =product.productDetails.productPictures[0].image;
+										const image =
+											product.productDetails.productPictures[0].image;
 										dispatch(
 											addToCart({
 												_id,
