@@ -20,6 +20,7 @@ import Header from "../../components/Header/index";
 import Loader from "../../components/Loader";
 import EmptyCart from "./EmptyCart";
 import { deliveryCharge } from "../../utils/getParams";
+import { Fade } from "react-reveal";
 
 export default function CartPage2(props) {
 	const cart = useSelector((state) => state.cart);
@@ -97,18 +98,17 @@ export default function CartPage2(props) {
 						<label className='product-removal'>Remove</label>
 						<label className='product-line-price'>Total</label>
 					</div>
-
-					{Object.keys(cartItems).map((key, index) => (
-						<CartItem
-							key={index}
-							cartItem={cartItems[key]}
-							onQuantityInc={onQuantityIncrement}
-							onQuantityDec={onQuantityDecrement}
-							onRemoveCartItem={onRemoveCartItem}
-						/>
-					))}
-
 			
+						{Object.keys(cartItems).map((key, index) => (
+							<CartItem
+								key={index}
+								cartItem={cartItems[key]}
+								onQuantityInc={onQuantityIncrement}
+								onQuantityDec={onQuantityDecrement}
+								onRemoveCartItem={onRemoveCartItem}
+							/>
+						))}
+				
 
 					<TotalPrice />
 				</div>

@@ -16,6 +16,7 @@ import { addToCart } from "../../actions/cart.action";
 import "./style.css";
 import { api, generatePublicUrl } from "../../urlconfig";
 import Product from "../../components/Product";
+import Fade from "react-reveal";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -110,131 +111,135 @@ export default function NowPlaying(props) {
 					<Card.Title>
 						<h2 className='m-2 p-2 text-center'>LATEST PRODUCT</h2>
 					</Card.Title>
-					<Slider {...settings}>
-						{product.products.map(function (product, index) {
-							return (
-								<Product
-									name={product.name.slice(0, 20)}
-									rating={product.rating}
-									price={product.price}
-									link={`/${product.slug}/${product._id}/p`}
-									onClick={() => {
-										const { _id, name, price } = product;
-										const image = product.productPictures[0].image;
-										dispatch(addToCart({ _id, name, price, image }));
-										<Redirect to='/cart' />;
-										// props.history.push("/cart");
-									}}
-									image={generatePublicUrl(
-										product.productPictures[0]
-											? product.productPictures[0].image
-											: null
-									)}
-								/>
-							);
-						})}
+					<Fade bottom cascade>
+						<Slider {...settings}>
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										link={`/${product.slug}/${product._id}/p`}
+										onClick={() => {
+											const { _id, name, price } = product;
+											const image = product.productPictures[0].image;
+											dispatch(addToCart({ _id, name, price, image }));
+											<Redirect to='/cart' />;
+											// props.history.push("/cart");
+										}}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+									/>
+								);
+							})}
 
-						{product.products.map(function (product, index) {
-							return (
-								<Product
-									name={product.name.slice(0, 20)}
-									rating={product.rating}
-									price={product.price}
-									link={`/${product.slug}/${product._id}/p`}
-									onClick={() => {
-										const { _id, name, price } = product;
-										const image = product.productPictures[0].image;
-										dispatch(addToCart({ _id, name, price, image }));
-										<Redirect to='/cart' />;
-										// props.history.push("/cart");
-									}}
-									image={generatePublicUrl(
-										product.productPictures[0]
-											? product.productPictures[0].image
-											: null
-									)}
-								/>
-							);
-						})}
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										link={`/${product.slug}/${product._id}/p`}
+										onClick={() => {
+											const { _id, name, price } = product;
+											const image = product.productPictures[0].image;
+											dispatch(addToCart({ _id, name, price, image }));
+											<Redirect to='/cart' />;
+											// props.history.push("/cart");
+										}}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+									/>
+								);
+							})}
 
-						{product.products.map(function (product, index) {
-							return (
-								<Product
-									onClick={() => {
-										const { _id, name, price } = product;
-										const image = product.productPictures[0].image;
-										dispatch(addToCart({ _id, name, price, image }));
-										<Redirect to='/cart' />;
-										// props.history.push("/cart");
-									}}
-									name={product.name.slice(0, 20)}
-									rating={product.rating}
-									price={product.price}
-									link={`/${product.slug}/${product._id}/p`}
-									image={generatePublicUrl(
-										product.productPictures[0]
-											? product.productPictures[0].image
-											: null
-									)}
-								/>
-							);
-						})}
-					</Slider>
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										onClick={() => {
+											const { _id, name, price } = product;
+											const image = product.productPictures[0].image;
+											dispatch(addToCart({ _id, name, price, image }));
+											<Redirect to='/cart' />;
+											// props.history.push("/cart");
+										}}
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										link={`/${product.slug}/${product._id}/p`}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+									/>
+								);
+							})}
+						</Slider>
+					</Fade>
 					{/* // </Container> */}
 				</Card.Body>
 			</Card>
 
 			<Card className='mt-5'>
 				<div>
-					<Slider {...settings}>
-						{product.products.map(function (product, index) {
-							return (
-								<Product
-									name={product.name.slice(0, 20)}
-									rating={product.rating}
-									price={product.price}
-									image={generatePublicUrl(
-										product.productPictures[0]
-											? product.productPictures[0].image
-											: null
-									)}
-									link={`/${product.slug}/${product._id}/p`}
-								/>
-							);
-						})}
+					<Fade bottom cascade>
+						<Slider {...settings}>
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+										link={`/${product.slug}/${product._id}/p`}
+									/>
+								);
+							})}
 
-						{product.products.map(function (product, index) {
-							return (
-								<Product
-									name={product.name.slice(0, 20)}
-									rating={product.rating}
-									price={product.price}
-									image={generatePublicUrl(
-										product.productPictures[0]
-											? product.productPictures[0].image
-											: null
-									)}
-									link={`/${product.slug}/${product._id}/p`}
-								/>
-							);
-						})}
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+										link={`/${product.slug}/${product._id}/p`}
+									/>
+								);
+							})}
 
-						{product.products.map(function (product, index) {
-							return (
-								<Product
-									name={product.name.slice(0, 20)}
-									rating={product.rating}
-									price={product.price}
-									image={generatePublicUrl(
-										product.productPictures[0]
-											? product.productPictures[0].image
-											: null
-									)}
-									link={`/${product.slug}/${product._id}/p`}
-								/>
-							);
-						})}
-					</Slider>
+							{product.products.map(function (product, index) {
+								return (
+									<Product
+										name={product.name.slice(0, 20)}
+										rating={product.rating}
+										price={product.price}
+										image={generatePublicUrl(
+											product.productPictures[0]
+												? product.productPictures[0].image
+												: null
+										)}
+										link={`/${product.slug}/${product._id}/p`}
+									/>
+								);
+							})}
+						</Slider>
+					</Fade>
 				</div>
 			</Card>
 		</>

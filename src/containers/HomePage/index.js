@@ -9,6 +9,8 @@ import NowPlaying from './slider'
 import Footer from '../../components/Footer'
 import TopSlider from './topSlider'
 import Loader from '../../components/Loader'
+import  Fade  from 'react-reveal/Fade'
+
 
 
 
@@ -50,16 +52,18 @@ useEffect(() => {
 			<Layout>
 				<div className='main'>
 					<div className='mt-60' style={{ display: "flex" }}>
-						<div className='col-md-12 col-sm-12 col-lg-2 category'>
-							<h3>Our Categories</h3>
-							<hr className='hr' />
+						<Fade bottom cascade>
+							<div className='col-md-12 col-sm-12 col-lg-2 category'>
+								<h3>Our Categories</h3>
+								<hr className='hr' />
 
-							<ul>
-								{category.categories.length > 0
-									? renderCategories(category.categories)
-									: null}
-							</ul>
-						</div>
+								<ul>
+									{category.categories.length > 0
+										? renderCategories(category.categories)
+										: null}
+								</ul>
+							</div>
+						</Fade>
 						<div className='col-md-12 col-sm-12 col-lg-9 m-1 slider-container m-3'>
 							<TopSlider />
 						</div>

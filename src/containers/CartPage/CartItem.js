@@ -6,6 +6,7 @@ import "./style2.css";
 import { generatePublicUrl } from "../../urlconfig";
 import RemoveCircleOutlineOutlinedIcon from "@material-ui/icons/RemoveCircleOutlineOutlined";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import Fade from 'react-reveal/Fade'
 
 export default function CartItem(props) {
 	const { _id, name, price, image } = props.cartItem;
@@ -24,39 +25,41 @@ export default function CartItem(props) {
 	};
 
 	return (
-		<div className='productItem'>
-			<div className='product-image'>
-				<img src='https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png' />
-			</div>
-			<div className='product-details'>
-				<div className='product-title'>{name}</div>
-				{/* <p className='product-description'>Who hi it's your dog's turn!</p> */}
-			</div>
-			<div className='product-price m-1'>{price}</div>
-			<div className='product-quantity d-flex'>
-				<IndeterminateCheckBoxIcon
-					className='text-warning'
-					style={{ fontSize: "35px", cursor: "pointer" }}
-					onClick={onQuantityDecrement}></IndeterminateCheckBoxIcon>
+		<Fade left cascade>
+			<div className='productItem'>
+				<div className='product-image'>
+					<img src='https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png' />
+				</div>
+				<div className='product-details'>
+					<div className='product-title'>{name}</div>
+					{/* <p className='product-description'>Who hi it's your dog's turn!</p> */}
+				</div>
+				<div className='product-price m-1'>{price}</div>
+				<div className='product-quantity d-flex'>
+					<IndeterminateCheckBoxIcon
+						className='text-warning'
+						style={{ fontSize: "35px", cursor: "pointer" }}
+						onClick={onQuantityDecrement}></IndeterminateCheckBoxIcon>
 
-				<input type='number' value={qty} min='1' />
-				<AddBoxIcon
-					className='text-success'
-					style={{ fontSize: "35px", cursor: "pointer" }}
-					onClick={onQuantityIncrement}
-				/>
+					<input type='number' value={qty} min='1' />
+					<AddBoxIcon
+						className='text-success'
+						style={{ fontSize: "35px", cursor: "pointer" }}
+						onClick={onQuantityIncrement}
+					/>
+				</div>
+				<div className='product-removal'>
+					<a href='/cart'>
+						<button className='remove-product'>
+							<DeleteForeverIcon
+								style={{ fontSize: "25px" }}
+								onClick={() => props.onRemoveCartItem(_id)}
+							/>
+						</button>
+					</a>
+				</div>
+				<div className='product-line-price'>{qty * price}</div>
 			</div>
-			<div className='product-removal'>
-				<a href='/cart'>
-					<button className='remove-product'>
-						<DeleteForeverIcon
-							style={{ fontSize: "25px" }}
-							onClick={() => props.onRemoveCartItem(_id)}
-						/>
-					</button>
-				</a>
-			</div>
-			<div className='product-line-price'>{qty * price}</div>
-		</div>
+		</Fade>
 	);
 }

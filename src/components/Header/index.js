@@ -32,6 +32,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import "./style.css";
 import { Link } from "react-router-dom";
 import Social from "../Social";
+import  Fade  from "react-reveal/Fade";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -233,24 +234,26 @@ export default function Header(props) {
 				<a
 					style={{ fontSize: "14px" }}
 					href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-					<div className='d-flex justify-sb text-white listItem-container'>
-						<ListItem key={category.name} className='listItem text-white'>
-							{category.parentId ? (
-								<a
-									className='sublistItem text-white'
-									href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-									<ListItemText primary={category.name} />
-								</a>
-							) : (
-								<a
-									className='sublistItem text-white'
-									href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-									<span>{category.name}</span>
-								</a>
-							)}
-						</ListItem>
-						<ArrowForwardIosIcon style={{ marginLeft: "20px" }} />
-					</div>
+					<Fade left cascade>
+						<div className='d-flex justify-sb text-white listItem-container'>
+							<ListItem key={category.name} className='listItem text-white'>
+								{category.parentId ? (
+									<a
+										className='sublistItem text-white'
+										href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+										<ListItemText primary={category.name} />
+									</a>
+								) : (
+									<a
+										className='sublistItem text-white'
+										href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+										<span>{category.name}</span>
+									</a>
+								)}
+							</ListItem>
+							<ArrowForwardIosIcon style={{ marginLeft: "20px" }} />
+						</div>
+					</Fade>
 				</a>
 			);
 		}
@@ -409,19 +412,21 @@ export default function Header(props) {
 						</IconButton>
 					</div>
 					<Divider />
-					<List className='list'>
-						<h3 className='categoryHeader'>Categories</h3>
+					
+						<List className='list'>
+							<h3 className='categoryHeader'>Categories</h3>
 
-						{category.categories.length > 0
-							? renderCategories(category.categories)
-							: null}
-					</List>
+							{category.categories.length > 0
+								? renderCategories(category.categories)
+								: null}
+						</List>
+				
 					<Divider />
 					<List className='font-18 t-primary'>
 						<Link to='/account' className='font-18 t-primary'>
 							<ListItem button>
 								<ListItemIcon>
-									<AccountCircle style={{fontSize:'25px'}}/>
+									<AccountCircle style={{ fontSize: "25px" }} />
 								</ListItemIcon>
 								<ListItemText
 									primary={<h4>My account /</h4>}

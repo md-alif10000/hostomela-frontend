@@ -267,8 +267,7 @@ export default function ProductDetails2(props) {
 									onClick={() => {
 										console.log(Price);
 										const { _id, name } = product.productDetails;
-										const image =
-											product.productDetails.productPictures[0].image;
+										const image =product.productDetails.productPictures[0].image;
 										dispatch(
 											addToCart({
 												_id,
