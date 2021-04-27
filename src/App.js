@@ -13,11 +13,13 @@ import CheckoutPage from "./containers/CheckoutPage/option2/Checkout";
 import { updateCart } from "./actions/cart.action";
 import OrderPage from "./containers/OrderPage/index";
 import OrderDetailsPage from "./containers/OrderDetailsPage/index";
-import CartPage from "./containers/CartPage";
 import CartPage2 from "./containers/CartPage/index2";
 import Account from "../src/containers/account";
 import AboutUs from "./containers/AboutUs";
-import ContactUs from "./containers/ContactUs";
+import ContactUs from "./containers/Contact";
+import Terms from "./containers/Terms";
+import Return from "./containers/Return";
+import Privacy from "./containers/Privacy";
 import { getAllCategory } from "./actions";
 
 function App() {
@@ -52,6 +54,9 @@ function App() {
 					<Route path='/account' component={Account} />
 					<Route path='/about-us' component={AboutUs} />
 					<Route path='/contact-us' component={ContactUs} />
+					<Route path='/terms&conditions' component={Terms} />
+					<Route path='/privacy-policy' component={Privacy} />
+					<Route path='/return-policy' component={Return} />
 					<Route path='/order_details/:orderId' component={OrderDetailsPage} />
 
 					<Route

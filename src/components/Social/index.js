@@ -12,20 +12,18 @@ export default function Social({title}) {
 				<h4 className='font-18 m-3'>{title}</h4>
 				<div className='social-container'>
 					<Link>
-					<div>
-						
-					</div>
+				
 			
-						<img src={Fb} className='social-icon' />{" "}
+						<img src={Fb} className='social-follow-icon'/>{" "}
 					</Link>
 					<Link>
-						<img src={Insta} className='social-icon' />
+						<img src={Insta} className='social-follow-icon' />
 					</Link>
 					<Link>
-						<img src={Whatsapp} className='social-icon' />
+						<img src={Whatsapp} className='social-follow-icon' />
 					</Link>
 					<Link>
-						<img src={Youtube} className='social-icon' />
+						<img src={Youtube} className='social-follow-icon' />
 					</Link>
 				
 				</div>

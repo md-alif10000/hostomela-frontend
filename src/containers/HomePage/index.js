@@ -75,7 +75,7 @@ useEffect(() => {
 
 					<NowPlaying />
 				</div>
-				<Footer />
+	
 			</Layout>
 		);
 }

@@ -77,7 +77,7 @@ export default function Footer() {
 							</div>
 							<div className={link3 ? null : "footer-link-container"}>
 								<Link to='/account'>My Account</Link>
-								<Link to='/acccount/orders'>Order History</Link>
+								<Link to='/account/orders'>Order History</Link>
 								<Link to='#'>Wish List</Link>
 							</div>
 						</div>
@@ -87,19 +87,20 @@ export default function Footer() {
 								<span>
 									<i className='fas fa-map-marker-alt'></i>
 								</span>
-								42 Dream House, Dreammy street, 7131 Dreamville, USA
+								Address: House 36, Road 2/A, Block E, Sector 15, Uttara, Dhaka
+								1230. Bangladesh.
 							</div>
 							<div>
 								<span>
 									<i className='far fa-envelope'></i>
 								</span>
-								company@gmail.com
+								📩 E-mail: hostomela@gmail.com
 							</div>
 							<div>
 								<span>
 									<i className='fas fa-phone'></i>
 								</span>
-								456-456-4512
+								📞 Phone: (+88)01400691122 .
 							</div>
 							<div className='payment-methods'>
 								<img src='./images/payment.png' alt='' />

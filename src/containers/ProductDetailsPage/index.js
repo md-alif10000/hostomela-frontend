@@ -132,8 +132,6 @@ export default function ProductDetails2(props) {
 					data.push(imageInfo);
 			  });
 
-
-
 	const demoData = [
 		{
 			image:
@@ -174,7 +172,6 @@ export default function ProductDetails2(props) {
 								data={demoData}
 								width='100%'
 								infinite='true'
-							
 								direction='right'
 							/>
 						</div>
@@ -267,9 +264,27 @@ export default function ProductDetails2(props) {
 								<a
 									onClick={() => {
 										console.log(Price);
-										const { _id, name } = product.productDetails;
+										const { _id, name,colors,sizes } = product.productDetails;
 										const image =
 											product.productDetails.productPictures[0].image;
+
+													if (colors.length > 0) {
+														if (selectedColor == "")
+															return Swal.fire(
+																"Opps",
+																"Select a Color",
+																"warning"
+															);
+													}
+													if (sizes.length > 0) {
+														if (selectedSize == "")
+															return Swal.fire(
+																"Opps",
+																"Select a Color",
+																"warning"
+															);
+													}
+											
 										dispatch(
 											addToCart({
 												_id,
@@ -329,8 +344,17 @@ export default function ProductDetails2(props) {
 					onClick={(e) => {
 						e.preventDefault();
 
-						const { _id, name } = product.productDetails;
+						const { _id, name, colors, sizes } = product.productDetails;
 						const image = product.productDetails.productPictures[0].image;
+						if (colors.length > 0) {
+							if (selectedColor == "")
+								return Swal.fire("Opps", "Select a Color", "warning");
+						}
+						if (sizes.length > 0) {
+							if (selectedSize == "")
+								return Swal.fire("Opps", "Select a Size", "warning");
+						}
+
 						dispatch(
 							addToCart({
 								_id,

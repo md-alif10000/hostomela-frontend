@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import Review from "./Review";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@material-ui/core/Grid";
@@ -21,7 +21,6 @@ import { Button, SwipeableDrawer } from "@material-ui/core";
 import "./style.css";
 import { Redirect } from "react-router";
 import Header from "../../../components/Header/index";
-
 
 function Copyright() {
 	return (
@@ -80,7 +79,6 @@ export default function Checkout(props) {
 	const user = useSelector((state) => state.user);
 	const selectedAddress = user.address.slice(user.address.length - 1)[0];
 
-
 	const steps = ["Shipping address", "Review your order", " Payment details"];
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = React.useState(0);
@@ -88,10 +86,9 @@ export default function Checkout(props) {
 
 	const auth = useSelector((state) => state.auth);
 	const cart = useSelector((state) => state.cart);
-	const coupon=JSON.parse(localStorage.getItem('coupon'))
+	const coupon = JSON.parse(localStorage.getItem("coupon"));
 	var deliveryCharge = localStorage.getItem("deliveryCharge");
 	var deliveryCharge = parseInt(deliveryCharge);
-	
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
@@ -101,31 +98,32 @@ export default function Checkout(props) {
 		setActiveStep(activeStep - 1);
 	};
 
-	const couponAmount= coupon ? coupon.type== 'percentage'? coupon.amount*(1/100) : coupon.amount :null
-	console.log("Coupon Amount",couponAmount)
+	const couponAmount = coupon
+		? coupon.type == "percentage"
+			? coupon.amount * (1 / 100)
+			: coupon.amount
+		: null;
+	console.log("Coupon Amount", couponAmount);
 
 	//Address from Hooks............
 
 	//Order confirm hooksssss............
 	const [confirmOrder, setConfirmOrder] = useState("");
 	const onConfirmOrder = () => {
-		var TotalAmount = Object.keys(cart.cartItems).reduce(
-			(totalPrice, key) => {
-				const { price, qty } = cart.cartItems[key];
-				return totalPrice + price * qty;
-			},
-			0
-		);
+		var TotalAmount = Object.keys(cart.cartItems).reduce((totalPrice, key) => {
+			const { price, qty } = cart.cartItems[key];
+			return totalPrice + price * qty;
+		}, 0);
 
 		var totalAmount = coupon
 			? coupon.type == "percentage"
-				? TotalAmount * (1 - couponAmount)+deliveryCharge
+				? TotalAmount * (1 - couponAmount) + deliveryCharge
 				: totalAmount - couponAmount + deliveryCharge
-			: (TotalAmount + deliveryCharge);
+			: TotalAmount + deliveryCharge;
 
-	console.log("latest total",totalAmount)
+		console.log("latest total", totalAmount);
 
-console.log('cart items before maping',cart.cartItems)
+		console.log("cart items before maping", cart.cartItems);
 
 		const items = Object.keys(cart.cartItems).map((key) => ({
 			productId: key,
@@ -136,23 +134,24 @@ console.log('cart items before maping',cart.cartItems)
 			stitch: cart.cartItems[key].stitch,
 		}));
 
-		console.log('Items before order',items)
-		console.log(selectedAddress)
+		console.log("Items before order", items);
+		console.log(selectedAddress);
 		const payload = {
 			addressId: selectedAddress._id,
-			address:selectedAddress,
+			address: selectedAddress,
 			totalAmount,
 			deliveryCharge,
 			items,
 			paymentStatus: "pending",
 			paymentType,
-			coupon:coupon ? coupon._id:null
+			coupon: coupon ? coupon._id : null,
 		};
 
 		console.log(payload);
 		dispatch(addOrder(payload));
-		setActiveStep(activeStep+1)
-		localStorage.removeItem('coupon')
+		localStorage.removeItem("coupon");
+		localStorage.removeItem("deliveryCharge");
+		setActiveStep(activeStep + 1);
 		setConfirmOrder(true);
 	};
 
@@ -267,11 +266,6 @@ console.log('cart items before maping',cart.cartItems)
 			setActiveStep(activeStep + 1);
 		};
 
-
-
-
-
-
 		return (
 			<React.Fragment>
 				<div className='mainContainer' style={{ fontSize: "1.8rem" }}>
@@ -343,7 +337,7 @@ console.log('cart items before maping',cart.cartItems)
 									/>
 								</div>
 							</div>
-					
+
 							<div class='button'>
 								<input
 									type='submit'
@@ -364,8 +358,6 @@ console.log('cart items before maping',cart.cartItems)
 		);
 	}
 
-	
-
 	function PaymentForm() {
 		return (
 			<React.Fragment>
@@ -385,11 +377,7 @@ console.log('cart items before maping',cart.cartItems)
 								control={<Radio />}
 								label='Bkash'
 							/>
-							<FormControlLabel
-								value='ssl'
-								control={<Radio />}
-								label='SSL Commerce'
-							/>
+						
 							<FormControlLabel
 								value='cod'
 								control={<Radio />}
@@ -410,9 +398,8 @@ console.log('cart items before maping',cart.cartItems)
 
 	if (!cart.cartItems) {
 		return <Redirect to='/' />;
-	
 	}
-		if (!auth.authenticate) return <Redirect to='/login'></Redirect>;
+	if (!auth.authenticate) return <Redirect to='/login'></Redirect>;
 	return (
 		<React.Fragment>
 			<div className='mainContainer mt-70'>
@@ -442,7 +429,9 @@ console.log('cart items before maping',cart.cartItems)
 										send you an update when your order has shipped.
 									</Typography>
 									<Link to='/account/orders'>
-										<Button color='orange' className='bg-primary text-white'>Go to order page</Button>
+										<Button color='orange' className='bg-primary text-white'>
+											Go to order page
+										</Button>
 									</Link>
 								</React.Fragment>
 							) : (

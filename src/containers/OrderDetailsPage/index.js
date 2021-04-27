@@ -17,6 +17,16 @@ export default function OrderDetailsPage(props) {
 	const orderId = props.match.params.orderId;
 	const user = useSelector(state => state.user)
 
+
+
+	const order_status = (orderStatus) => {
+		let result = orderStatus.filter((obj) => {
+			return obj.isCompleted === true;
+		});
+
+		return result[result.length - 1].type;
+	};
+
 	useEffect(() => {
 		// console.log({ props });
 		const payload = {
@@ -86,7 +96,7 @@ export default function OrderDetailsPage(props) {
 								</div>
 								<div className='col'>
 									{" "}
-									<strong>Status:</strong> <bd /> Picked by the courier{" "}
+									<strong>Status:</strong> <bd /> {order_status(orderDetails.orderStatus)}
 								</div>
 								<div className='col'>
 									{" "}

@@ -31,6 +31,6 @@ export default function ProductListPage(props) {
 	console.log('Alifffffff')
 
 	return <Layout><ProductStore {...props}/>
-	<Footer/>
+	
 	</Layout>;
 }

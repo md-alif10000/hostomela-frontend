@@ -67,7 +67,7 @@ export default function CartPage2(props) {
 						onQuantityDec={onQuantityDecrement}
 					/>
 				))}
-				<TotalPrice nextStep />
+				<TotalPrice nextStep noButton/>
 			</>
 		);
 	}
@@ -83,6 +83,23 @@ export default function CartPage2(props) {
 	if (itemsArray.length == 0) {
 		return <EmptyCart />;
 	}
+	if(props.onlyCartItems) return (
+		<div>
+		
+
+					{Object.keys(cartItems).map((key, index) => (
+						<CartItem
+							key={index}
+							cartItem={cartItems[key]}
+							onQuantityInc={onQuantityIncrement}
+							onQuantityDec={onQuantityDecrement}
+							onRemoveCartItem={onRemoveCartItem}
+						/>
+					))}
+
+		
+		</div>
+	);
 
 	return (
 		<Layout>

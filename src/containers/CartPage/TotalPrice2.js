@@ -70,48 +70,50 @@ export default function TotalPrice(props) {
 						3.60
 					</div>
 				</div> */}
-				<FormControl component='fieldset' style={{ padding: "20px" }}>
-					<FormLabel component='legend'>
-						<h3>Delivery Area</h3>
-					</FormLabel>
-					<FormLabel component='legend'>
-						<h5>
-							<LocalShippingIcon /> Cash on delivery available
-						</h5>
-					</FormLabel>
-					<RadioGroup
-						aria-label='gender'
-						name='gender1'
-						value={deliveryArea}
-						onChange={handleChange}>
-						<div>
-							{" "}
-							<FormControlLabel
-								value='in-dhaka'
-								control={<Radio />}
-								label={
-									<h4>
-										In Dhaka -80tk <AccessTimeIcon />
-										48 hours
-									</h4>
-								}
-							/>
-						</div>
-						<div>
-							{" "}
-							<FormControlLabel
-								value='out-dhaka'
-								control={<Radio />}
-								label={
-									<h4>
-										Out of Dhaka -150tk <AccessTimeIcon />
-										72 hours
-									</h4>
-								}
-							/>
-						</div>
-					</RadioGroup>
-				</FormControl>
+				{!props.noButton && (
+					<FormControl component='fieldset' style={{ padding: "20px" }}>
+						<FormLabel component='legend'>
+							<h3>Delivery Area</h3>
+						</FormLabel>
+						<FormLabel component='legend'>
+							<h5>
+								<LocalShippingIcon /> Cash on delivery available
+							</h5>
+						</FormLabel>
+						<RadioGroup
+							aria-label='gender'
+							name='gender1'
+							value={deliveryArea}
+							onChange={handleChange}>
+							<div>
+								{" "}
+								<FormControlLabel
+									value='in-dhaka'
+									control={<Radio />}
+									label={
+										<h4>
+											In Dhaka -80tk <AccessTimeIcon />
+											48 hours
+										</h4>
+									}
+								/>
+							</div>
+							<div>
+								{" "}
+								<FormControlLabel
+									value='out-dhaka'
+									control={<Radio />}
+									label={
+										<h4>
+											Out of Dhaka -150tk <AccessTimeIcon />
+											72 hours
+										</h4>
+									}
+								/>
+							</div>
+						</RadioGroup>
+					</FormControl>
+				)}
 
 				{coupon ? (
 					<>
@@ -195,14 +197,19 @@ export default function TotalPrice(props) {
 					</div>
 				</div>
 			</div>
-			<Link
-				to={`/checkout:${deliveryCharge}`}
-				// className='checkout-btn'
-				onClick={() =>
-					localStorage.setItem("deliveryCharge", JSON.stringify(deliveryCharge))
-				}>
-				<button className='checkout '>Proceed To Checkout</button>
-			</Link>
+			{!props.noButton && (
+				<Link
+					to={`/checkout:${deliveryCharge}`}
+					// className='checkout-btn'
+					onClick={() =>
+						localStorage.setItem(
+							"deliveryCharge",
+							JSON.stringify(deliveryCharge)
+						)
+					}>
+					<button className='checkout '>Proceed To Checkout</button>
+				</Link>
+			)}
 		</div>
 	);
 }

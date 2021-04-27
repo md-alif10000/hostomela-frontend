@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import CartPage from "../../CartPage";
+import CartPage from "../../CartPage/index2";
 
 const products = [
 	{ name: "Product 1", desc: "A nice thing", price: "$9.99" },
