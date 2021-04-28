@@ -16,6 +16,7 @@ import Header from "../../../components/Header/index";
 import Swal from "sweetalert2";
 import SocialLogin from "../socialLogin";
 import Loader from "../../../components/Loader";
+import { Fade } from "react-reveal";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -153,43 +154,44 @@ export default function () {
 				<div>
 					<div className='login-container'>
 						<div className='icon-container'></div>
-						<form>
-							<h2>Register</h2>
-							<div className='input-container'>
-								<label className='label'>Enter Your Full name</label>
-								<br />
-								<input
-									value={name}
-									onChange={(e) => setName(e.target.value)}
-									className='input'
-									type='text'
-									placeholder='Your Full Name'
-								/>
-							</div>
-							<div className='input-container'>
-								<label className='label'>Enter Your Email</label>
-								<br />
-								<input
-									value={email}
-									onChange={(e) => setEmail(e.target.value)}
-									className='input'
-									type='email'
-									placeholder='Enter your email'
-								/>
-							</div>
-							<div className='input-container'>
-								<label className='label'>Enter Your Phone Number</label>
+						<Fade left cascade>
+							<form>
+								<h2>Register</h2>
+								<div className='input-container'>
+									<label className='label'>Enter Your Full name</label>
+									<br />
+									<input
+										value={name}
+										onChange={(e) => setName(e.target.value)}
+										className='input'
+										type='text'
+										placeholder='Your Full Name'
+									/>
+								</div>
+								<div className='input-container'>
+									<label className='label'>Enter Your Email</label>
+									<br />
+									<input
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+										className='input'
+										type='email'
+										placeholder='Enter your email'
+									/>
+								</div>
+								<div className='input-container'>
+									<label className='label'>Enter Your Phone Number</label>
 
-								<br />
-								<input
-									value={phone}
-									onChange={(e) => setPhone(e.target.value)}
-									className='input'
-									type='text'
-									placeholder='Enter your phone'
-								/>
-							</div>
-							{/* <div>
+									<br />
+									<input
+										value={phone}
+										onChange={(e) => setPhone(e.target.value)}
+										className='input'
+										type='text'
+										placeholder='Enter your phone'
+									/>
+								</div>
+								{/* <div>
 								<input
 									type='file'
 									className='btn btn-success'
@@ -197,42 +199,43 @@ export default function () {
 									onChange={(e) => setProfilePicture(e.target.value)}
 								/>
 							</div> */}
-							<div className='input-container'>
-								<label className='label'>Password</label>
-								<br />
-								<input
-									value={password}
-									onChange={(e) => setPassword(e.target.value)}
-									className='input'
-									type='password'
-									placeholder='Your password'
-								/>
-							</div>
-							<div className='input-container'>
-								<label className='label'>Confirm Password</label>
-								<br />
-								<input
-									onChange={(e) => setConfirmPassword(e.target.value)}
-									value={confirmPassword}
-									className='input'
-									type='password'
-									placeholder='Confirm password'
-								/>
-							</div>
+								<div className='input-container'>
+									<label className='label'>Password</label>
+									<br />
+									<input
+										value={password}
+										onChange={(e) => setPassword(e.target.value)}
+										className='input'
+										type='password'
+										placeholder='Your password'
+									/>
+								</div>
+								<div className='input-container'>
+									<label className='label'>Confirm Password</label>
+									<br />
+									<input
+										onChange={(e) => setConfirmPassword(e.target.value)}
+										value={confirmPassword}
+										className='input'
+										type='password'
+										placeholder='Confirm password'
+									/>
+								</div>
 
-							<div className='btn-container'>
-								<button className='submit-btn' onClick={otpRequest}>
-									Register
-								</button>
-							</div>
-							<p>
-								Already have an account?{" "}
-								<Link style={{ color: "#b8892c" }} to='/login'>
-									Login here
-								</Link>
-							</p>
-							<SocialLogin />
-						</form>
+								<div className='btn-container'>
+									<button className='submit-btn' onClick={otpRequest}>
+										Register
+									</button>
+								</div>
+								<p>
+									Already have an account?{" "}
+									<Link style={{ color: "#b8892c" }} to='/login'>
+										Login here
+									</Link>
+								</p>
+								<SocialLogin />
+							</form>
+						</Fade>
 					</div>
 				</div>
 			</>

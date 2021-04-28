@@ -8,6 +8,7 @@ import {
 
 } from "../../actions/auth.action";
 import './style.css'
+import Bounce from 'react-reveal/Bounce'
 
 export default function SocialLogin(props) {
 
@@ -41,38 +42,40 @@ export default function SocialLogin(props) {
 
 
     return (
-			<div>
-				<h2>OR</h2>
-				<p>Login With</p>
-				<div className='loginicon-container'>
-					<div style={{ display: "flex", justifyContent: "space-between" }}>
-						<div style={{ margin: "20px" }}>
-							<GoogleLogin
-								clientId='161216550543-5a1u9upt7odjarlg9j2cef9gbbbk9ict.apps.googleusercontent.com'
-								buttonText=''
-								onSuccess={responseSuccessGoogle}
-								onFailure={responseFailureGoogle}
-								cookiePolicy={"single_host_origin"}
-								style={{ width: "250px" }}
-							/>
-						</div>
+			<Bounce>
+				<div>
+					<h2>OR</h2>
+					<p>Login With</p>
+					<div className='loginicon-container'>
+						<div style={{ display: "flex", justifyContent: "space-between" }}>
+							<div style={{ margin: "20px" }}>
+								<GoogleLogin
+									clientId='161216550543-5a1u9upt7odjarlg9j2cef9gbbbk9ict.apps.googleusercontent.com'
+									buttonText=''
+									onSuccess={responseSuccessGoogle}
+									onFailure={responseFailureGoogle}
+									cookiePolicy={"single_host_origin"}
+									style={{ width: "250px" }}
+								/>
+							</div>
 
-						<div style={{ margin: "20px" }} className='fb-login-container'>
-							<FacebookLogin
-								appId='142413274468639'
-								autoLoad={false}
-								fields='name,email,picture'
-								callback={responseFacebook}
-								// cssClass='kep-login-facebook-[80]'
-								icon='fa-facebook'
-								style={{ width: "80px" }}
-								className='fb-login'
-								size='small'
-								textButton=''
-							/>
+							<div style={{ margin: "20px" }} className='fb-login-container'>
+								<FacebookLogin
+									appId='142413274468639'
+									autoLoad={false}
+									fields='name,email,picture'
+									callback={responseFacebook}
+									// cssClass='kep-login-facebook-[80]'
+									icon='fa-facebook'
+									style={{ width: "80px" }}
+									className='fb-login'
+									size='small'
+									textButton=''
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</Bounce>
 		);
 }

@@ -43,9 +43,9 @@ useEffect(() => {
 }, [category.loading]);
 
 
-// if (cart.updatingCart) {
-// 	return <Loader />;
-// }
+if (cart.updatingCart) {
+	return <Loader />;
+}
 
     
     return (

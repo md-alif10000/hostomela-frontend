@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './gridCategory.css'
-
+import Flip from 'react-reveal/Flip'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -97,28 +97,29 @@ export default function GridCategory() {
             
 
 	return (
-		<div className=' mx-0'>
-			<h3 className='category-header'>Categories</h3>
-			<hr/>
-			<hr/>
-			<Slider {...settings}>
-				{myCategories.map((category) => (
-					<Link
-						className='m-3'
-						to={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
-						<div className='categoryLink'>
-							<img
-								className='rounded-circle rounded-category-image'
-								// src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs7rEoPHBN7kL7cfUXLuZnpwCSvUQztwewzA&usqp=CAU'
-								src={`${domain}${category.image}`}
-								
-							/>
-							<p className='font-12'>{category.name}</p>
-						</div>
-					</Link>
-				))}
-			</Slider>
-			<hr/>
-		</div>
+		<Flip>
+			<div className=' mx-0'>
+				<h3 className='category-header'>Categories</h3>
+				<hr />
+				<hr />
+				<Slider {...settings}>
+					{myCategories.map((category) => (
+						<Link
+							className='m-3'
+							to={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+							<div className='categoryLink'>
+								<img
+									className='rounded-circle rounded-category-image'
+									// src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs7rEoPHBN7kL7cfUXLuZnpwCSvUQztwewzA&usqp=CAU'
+									src={`${domain}${category.image}`}
+								/>
+								<p className='font-12'>{category.name}</p>
+							</div>
+						</Link>
+					))}
+				</Slider>
+				<hr />
+			</div>
+		</Flip>
 	);
 }
