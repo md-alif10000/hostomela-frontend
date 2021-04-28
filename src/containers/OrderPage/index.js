@@ -17,16 +17,27 @@ export default function OrderPage(props) {
 		dispatch(getOrders());
 	}, []);
 
-    const getStatus=(order)=>{
-        const status=order.orderStatus.reverse().filter(status=>{
-             return (status.isCompleted = true);
 
-        }
-       
-        )
 
-        return status[status.length -1].type
-    }
+ 
+	const getStatus = (status) => {
+		let result = status.filter((obj) => {
+			return obj.isCompleted === true;
+		});
+		let type = result[result.length - 1].type;
+		let Class =
+			type == "delivered"
+				? "btn btn-success"
+				: type == "ordered"
+				? "btn btn-danger"
+				: type == "packed"
+				? "btn btn-warning"
+				: type == "shipped"
+				? "btn btn-info"
+				: null;
+
+		return <span className={Class}> {result[result.length - 1].type}</span>;
+	};
 	if (!auth.authenticate) return <Redirect to='/' />;
 	return (
 		<>
@@ -37,9 +48,7 @@ export default function OrderPage(props) {
 						<tr>
 							<th scope='col'>No</th>
 							<th scope='col'>Product Name</th>
-							<th scope='col'></th>
-						
-
+							<th scope='col'>Status</th>
 							<th scope='col'>Total Amount</th>
 						</tr>
 					</thead>
@@ -47,7 +56,7 @@ export default function OrderPage(props) {
 						{user.orders.map((order, index) => {
 							return (
 								<tr>
-									<td>{index}</td>
+									<td>{index+1}</td>
 
 									{/* <th scope='row'>1</th> */}
 
@@ -71,7 +80,7 @@ export default function OrderPage(props) {
 											);
 										})}
 									</td>
-									<td>{order.paymentType}</td>
+									<td>{getStatus(order.orderStatus)}</td>
 									{/* <td>{getStatus(order)}</td> */}
 
 									{console.log(order)}
