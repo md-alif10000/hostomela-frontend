@@ -19,13 +19,24 @@ export default function OrderDetailsPage(props) {
 
 
 
-	const order_status = (orderStatus) => {
-		let result = orderStatus.filter((obj) => {
-			return obj.isCompleted === true;
-		});
+		const getStatus = (status) => {
+			let result = status.filter((obj) => {
+				return obj.isCompleted === true;
+			});
+			let type = result[result.length - 1].type;
+			let Class =
+				type == "delivered"
+					? "btn btn-success"
+					: type == "ordered"
+					? "btn btn-danger"
+					: type == "packed"
+					? "btn btn-warning"
+					: type == "shipped"
+					? "btn btn-info"
+					: null;
 
-		return result[result.length - 1].type;
-	};
+			return <span className={Class}> {result[result.length - 1].type}</span>;
+		};
 
 	useEffect(() => {
 		// console.log({ props });
@@ -96,7 +107,7 @@ export default function OrderDetailsPage(props) {
 								</div>
 								<div className='col'>
 									{" "}
-									<strong>Status:</strong> <bd /> {order_status(orderDetails.orderStatus)}
+									<strong>Status:</strong> <bd /> {getStatus(orderDetails.orderStatus)}
 								</div>
 								<div className='col'>
 									{" "}
