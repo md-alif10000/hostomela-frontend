@@ -860,8 +860,8 @@ nav .wrapper {
 
 .footer {
   background-color: var(--black);
-  padding: 6rem 1rem;
-  line-height: 3rem;
+
+
 }
 
 .footer-center span {
@@ -894,7 +894,7 @@ nav .wrapper {
 .footer-center h3 {
   font-size: 1.8rem;
   font-weight: 400;
-  margin-bottom: 1rem;
+
 }
 
 .footer .payment-methods {

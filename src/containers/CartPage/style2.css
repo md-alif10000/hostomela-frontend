@@ -161,14 +161,14 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   }
   @media screen and (max-width:410px){
     .coupon-input{
-      width: 150px;
+      width: 100%px;
     }
     
   }
 
   @media screen and (max-width:450px){
     .coupon-input{
-      width: 170px;
+      width: 100%;
     }
     
   }
@@ -176,7 +176,8 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
     float: right;
     border: 0;
     margin-top: 20px;
-    padding: 6px 25px;
+    margin-bottom: 20px;
+    padding: 6px 2px;
     color: #fff;
     width: 100%;
     max-width: 500px;

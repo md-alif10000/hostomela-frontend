@@ -86,7 +86,7 @@ background-color: #fff;
 .footer {
     background-color: var(--black);
     padding: 6rem 1rem;
-    line-height: 3rem;
+    line-height: 2rem;
   }
   
   .footer-center span {
@@ -119,7 +119,7 @@ background-color: #fff;
   .footer-center h3 {
     font-size: 1.8rem;
     font-weight: 400;
-    margin-bottom: 1rem;
+
   }
   
   .footer .payment-methods {

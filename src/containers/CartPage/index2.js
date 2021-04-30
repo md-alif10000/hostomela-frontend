@@ -103,7 +103,7 @@ export default function CartPage2(props) {
 
 	return (
 		<Layout>
-			<div className='mt-60'>
+			<div className='mt-60 bold-600 bolder'>
 				<h1>Shopping Cart</h1>
 
 				<div className='shopping-cart'>
@@ -115,21 +115,19 @@ export default function CartPage2(props) {
 						<label className='product-removal'>Remove</label>
 						<label className='product-line-price'>Total</label>
 					</div>
-			
-						{Object.keys(cartItems).map((key, index) => (
-							<CartItem
-								key={index}
-								cartItem={cartItems[key]}
-								onQuantityInc={onQuantityIncrement}
-								onQuantityDec={onQuantityDecrement}
-								onRemoveCartItem={onRemoveCartItem}
-							/>
-						))}
-				
 
-					<TotalPrice />
+					{Object.keys(cartItems).map((key, index) => (
+						<CartItem
+							key={index}
+							cartItem={cartItems[key]}
+							onQuantityInc={onQuantityIncrement}
+							onQuantityDec={onQuantityDecrement}
+							onRemoveCartItem={onRemoveCartItem}
+						/>
+					))}
 				</div>
 			</div>
+			<TotalPrice />
 		</Layout>
 	);
 }

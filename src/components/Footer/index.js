@@ -37,7 +37,7 @@ export default function Footer() {
 
 
     return (
-			<footer id='footer' className='section footer bg-dark'>
+			<footer id='footer' className='section py-1 footer bg-dark'>
 				<div className='container my-0 '>
 					<Fade right cascade>
 						<div className='footer-container'>
@@ -104,9 +104,7 @@ export default function Footer() {
 									</span>
 									📞 Phone: (+88)01400691122 .
 								</div>
-								<div className='payment-methods'>
-									<img src='./images/payment.png' alt='' />
-								</div>
+							
 								{/* <div className='m-3 p-3'> */}{" "}
 								{/* <Social title='Follow us on' /> */}
 								{/* </div> */}

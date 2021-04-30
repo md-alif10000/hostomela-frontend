@@ -6,7 +6,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import "./style2.css";
-import { generatePublicUrl } from "../../urlconfig.js";
+import { domain, generatePublicUrl, siteUrl } from "../../urlconfig.js";
 import { addToCart } from "../../actions/cart.action";
 import { Redirect } from "react-router";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -16,7 +16,8 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -76,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductDetails2(props) {
 	const [selectedColor, setSelectedColor] = useState("");
 	const [selectedSize, setSelectedSize] = useState({});
+	const [showSize, setShowSize] = useState('')
 	const [value, setValue] = React.useState(0);
 	var [stitch, setStitch] = useState("regular");
 	var stitching = stitch == "regular" ? false : true;
@@ -96,6 +98,10 @@ export default function ProductDetails2(props) {
 		(stitch == "regular" ? 0 : 500);
 
 	// let Price =(stitch == "regular" ? product.productDetails.price : product.productDetails.price + 500 )+ selectedSize.price ?selectedSize.price :0;
+
+
+	const url = `${siteUrl}/${props.location.pathname}`;
+	console.log(url)
 
 	const { reviews } = product.productDetails;
 	useEffect(() => {
@@ -182,20 +188,44 @@ export default function ProductDetails2(props) {
 									<span className='bolder'>৳ </span>
 									{Price}
 								</div>
-
-								<div className='sizeContainer '>
-									{product.productDetails.sizes.map((size, index) => (
-										<span
-											className={
-												selectedSize.size == size.size
-													? "size selectedSize"
-													: "size"
-											}
-											onClick={() => setSelectedSize(size)}>
-											{size.size}
-										</span>
-									))}
-								</div>
+								{product.productDetails.sizes.length > 0 && (
+									<span>
+										<div>
+											<button
+												className='showSize m-1'
+												onClick={() => {
+													if (showSize) {
+														setShowSize(false);
+													} else {
+														setShowSize(true);
+													}
+												}}>
+												{" "}
+												Size Details
+												{showSize ? (
+													<KeyboardArrowUpIcon />
+												) : (
+													<KeyboardArrowDownIcon />
+												)}
+											</button>
+										</div>
+										{showSize && (
+											<div className='sizeContainer '>
+												{product.productDetails.sizes.map((size, index) => (
+													<span
+														className={
+															selectedSize.size == size.size
+																? "size selectedSize"
+																: "size"
+														}
+														onClick={() => setSelectedSize(size)}>
+														{size.size}
+													</span>
+												))}
+											</div>
+										)}
+									</span>
+								)}
 
 								{product.productDetails.colors.length > 0 ? (
 									<div className='color m-3'>
@@ -264,27 +294,19 @@ export default function ProductDetails2(props) {
 								<a
 									onClick={() => {
 										console.log(Price);
-										const { _id, name,colors,sizes } = product.productDetails;
+										const { _id, name, colors, sizes } = product.productDetails;
 										const image =
 											product.productDetails.productPictures[0].image;
 
-													if (colors.length > 0) {
-														if (selectedColor == "")
-															return Swal.fire(
-																"Opps",
-																"Select a Color",
-																"warning"
-															);
-													}
-													if (sizes.length > 0) {
-														if (selectedSize == "")
-															return Swal.fire(
-																"Opps",
-																"Select a Color",
-																"warning"
-															);
-													}
-											
+										if (colors.length > 0) {
+											if (selectedColor == "")
+												return Swal.fire("Opps", "Select a Color", "warning");
+										}
+										if (sizes.length > 0) {
+											if (selectedSize == "")
+												return Swal.fire("Opps", "Select a Color", "warning");
+										}
+
 										dispatch(
 											addToCart({
 												_id,
@@ -326,7 +348,7 @@ export default function ProductDetails2(props) {
 							</p>
 							<hr />
 							<div className='mx-5'>
-								<SocialShare />
+								<SocialShare url={url}/>
 							</div>
 						</div>
 					</div>

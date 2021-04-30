@@ -125,7 +125,14 @@
     color: white;
 
   }
-
+.showSize{
+  background-color: rgb(187, 51, 187);
+  padding: 5px 10px;
+  color: white;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 14px;
+}
   .size-price{
     font-size: 10px;
   }

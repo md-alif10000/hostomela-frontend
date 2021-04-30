@@ -20,7 +20,7 @@ export default function TotalPrice(props) {
 	const dispatch = useDispatch();
 	const delivery_charge = parseInt(
 		JSON.parse(localStorage.getItem("deliveryCharge"))
-	); ;
+	);
 
 	const [deliveryArea, setDeliveryArea] = useState(
 		delivery_charge == 80 ? "in-dhaka" : "out-dhaka"
@@ -53,128 +53,126 @@ export default function TotalPrice(props) {
 		? afterDeliveryCharge - couponDiscont + deliveryCharge
 		: null;
 	return (
-		<div>
-			<div className='totals'>
-				<div className='totals-item'>
-					<label>Subtotal</label>
-					<div className='totals-value' id='cart-subtotal'>
-						{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-							const { price, qty } = cart.cartItems[key];
-							return totalPrice + price * qty;
-						}, 0)}{" "}
+		<>
+			<div>
+				<div className='totals bolder bold-600'>
+					<div className='totals-item'>
+						<label>Subtotal</label>
+						<div className='totals-value' id='cart-subtotal'>
+							{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
+								const { price, qty } = cart.cartItems[key];
+								return totalPrice + price * qty;
+							}, 0)}{" "}
+						</div>
 					</div>
-				</div>
-				{/* <div className='totals-item'>
+					{/* <div className='totals-item'>
 					<label>Tax (5%)</label>
 					<div className='totals-value' id='cart-tax'>
 						3.60
 					</div>
 				</div> */}
-				{!props.noButton && (
-					<FormControl component='fieldset' style={{ padding: "20px" }}>
-						<FormLabel component='legend'>
-							<h3>Delivery Area</h3>
-						</FormLabel>
-						<FormLabel component='legend'>
-							<h5>
-								<LocalShippingIcon /> Cash on delivery available
-							</h5>
-						</FormLabel>
-						<RadioGroup
-							aria-label='gender'
-							name='gender1'
-							value={deliveryArea}
-							onChange={handleChange}>
-							<div>
-								{" "}
-								<FormControlLabel
-									value='in-dhaka'
-									control={<Radio />}
-									label={
-										<h4>
-											In Dhaka -80tk <AccessTimeIcon />
-											48 hours
-										</h4>
-									}
-								/>
-							</div>
-							<div>
-								{" "}
-								<FormControlLabel
-									value='out-dhaka'
-									control={<Radio />}
-									label={
-										<h4>
-											Out of Dhaka -150tk <AccessTimeIcon />
-											72 hours
-										</h4>
-									}
-								/>
-							</div>
-						</RadioGroup>
-					</FormControl>
-				)}
+					{!props.noButton && (
+						<FormControl component='fieldset' style={{ padding: "20px" }}>
+							<FormLabel component='legend'>
+								<h3>Delivery Area</h3>
+							</FormLabel>
+							<FormLabel component='legend'>
+								<h5>
+									<LocalShippingIcon /> Cash on delivery available
+								</h5>
+							</FormLabel>
+							<RadioGroup
+								aria-label='gender'
+								name='gender1'
+								value={deliveryArea}
+								onChange={handleChange}>
+								<div>
+									{" "}
+									<FormControlLabel
+										value='in-dhaka'
+										control={<Radio />}
+										label={
+											<h4>
+												In Dhaka -80tk <AccessTimeIcon />
+												48 hours
+											</h4>
+										}
+									/>
+								</div>
+								<div>
+									{" "}
+									<FormControlLabel
+										value='out-dhaka'
+										control={<Radio />}
+										label={
+											<h4>
+												Out of Dhaka -150tk <AccessTimeIcon />
+												72 hours
+											</h4>
+										}
+									/>
+								</div>
+							</RadioGroup>
+						</FormControl>
+					)}
 
-				{coupon ? (
-					<>
-						<div className='totals-item'>
-							<label className='font-16'>
-								Coupon-({coupon.name}) <span>Discount{"->"} </span>
-							</label>
-							<div className='totals-value' id='cart-shipping'>
-								{couponDiscont}
+					{coupon ? (
+						<>
+							<div className='totals-item'>
+								<label className='font-16'>
+									Coupon-({coupon.name}) <span>Discount{"->"} </span>
+								</label>
+								<div className='totals-value' id='cart-shipping'>
+									{couponDiscont}
+								</div>
 							</div>
-						</div>
-						<div className='totals-item'>
-							<label>Shipping</label>
-							<div className='totals-value' id='cart-shipping'>
-								{deliveryCharge}
+							<div className='totals-item'>
+								<label>Shipping</label>
+								<div className='totals-value' id='cart-shipping'>
+									{deliveryCharge}
+								</div>
 							</div>
-						</div>
 
-						<div className='totals-item totals-item-total'>
-							<label>Grand Total</label>
-							<div className='totals-value' id='cart-total'>
-								{afterDiscount}
+							<div className='totals-item totals-item-total'>
+								<label>Grand Total</label>
+								<div className='totals-value' id='cart-total'>
+									{afterDiscount}
+								</div>
 							</div>
-						</div>
-					</>
-				) : (
-					<>
-						<div className='totals-item'>
-							<label>Shipping</label>
-							<div className='totals-value' id='cart-shipping'>
-								{deliveryCharge}
+						</>
+					) : (
+						<>
+							<div className='totals-item'>
+								<label>Shipping</label>
+								<div className='totals-value' id='cart-shipping'>
+									{deliveryCharge}
+								</div>
 							</div>
-						</div>
-						<div className='totals-item totals-item-total'>
-							<label>Grand Total</label>
-							<div className='totals-value' id='cart-total'>
-								{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
-									const { price, qty } = cart.cartItems[key];
-									return totalPrice + price * qty;
-								}, deliveryCharge)}{" "}
+							<div className='totals-item totals-item-total'>
+								<label>Grand Total</label>
+								<div className='totals-value' id='cart-total'>
+									{Object.keys(cart.cartItems).reduce((totalPrice, key) => {
+										const { price, qty } = cart.cartItems[key];
+										return totalPrice + price * qty;
+									}, deliveryCharge)}{" "}
+								</div>
 							</div>
-						</div>
-					</>
-				)}
+						</>
+					)}
 
-				<div
-					className=' d-flex px-1 mr-0'
-					style={{ justifyContent: "flex-end" }}>
-					<div className='mr-0' style={{ float: "right" }}>
+					<div className=' d-flex px-1 mr-0'>
 						{couponInput ? null : (
 							<button
-								className='btn btn-success btn-lg m-3'
+								className='btn btn-success btn-lg m-3 mr-0'
 								onClick={(e) => setCouponInput(true)}>
 								Add Coupon
 							</button>
 						)}
 
 						{couponInput ? (
-							<div className='d-flex'>
+							<div className='d-flex' style={{ width: "100%" }}>
 								<input
-									className='m-3 coupon-input d'
+									className=' coupon-input '
 									maxLength='15'
 									type='txt'
 									placeholder='Enter your coupon code'
@@ -197,19 +195,21 @@ export default function TotalPrice(props) {
 					</div>
 				</div>
 			</div>
-			{!props.noButton && (
-				<Link
-					to={`/checkout:${deliveryCharge}`}
-					// className='checkout-btn'
-					onClick={() =>
-						localStorage.setItem(
-							"deliveryCharge",
-							JSON.stringify(deliveryCharge)
-						)
-					}>
-					<button className='checkout '>Proceed To Checkout</button>
-				</Link>
-			)}
-		</div>
+			<div className='row'>
+				{!props.noButton && (
+					<Link
+						to={`/checkout:${deliveryCharge}`}
+						// className='checkout-btn'
+						onClick={() =>
+							localStorage.setItem(
+								"deliveryCharge",
+								JSON.stringify(deliveryCharge)
+							)
+						}>
+						<button className='checkout '>Proceed To Checkout</button>
+					</Link>
+				)}
+			</div>
+		</>
 	);
 }

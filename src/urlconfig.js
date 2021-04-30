@@ -7,7 +7,7 @@ export const generatePublicUrl = (fileName) => {
 };
 
 
-
+export const siteUrl="https://hostomela.herokuapp.com"
 
 // export const api = "http://localhost:2000/api";
 // export const domain = "http://localhost:2000";

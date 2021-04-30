@@ -1,6 +1,6 @@
 import React, { useState, } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect ,useHistory} from "react-router-dom";
 import Header from "../../../components/Header";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
@@ -19,6 +19,7 @@ export default function Register(props) {
 	const [phone, setPhone] = useState("");
 	const [password, setPassword] = useState("");
 	const dispatch = useDispatch();
+	const history=useHistory()
 
 	const auth = useSelector((state) => state.auth);
 
@@ -33,6 +34,8 @@ export default function Register(props) {
 		return Swal.fire("Oops...", "Password can not be empty..", "error");
 		}
 		dispatch(login({ phone, password }));
+
+
 	};
 
 
