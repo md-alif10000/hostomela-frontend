@@ -135,33 +135,33 @@ export const isUserLoggedIn = () => {
 
 export const logout = () => {
 	return async (dispatch) => {
-		// dispatch({
-		// 	type: authConstants.LOGOUT_REQUEST,
-		// });
-		// localStorage.removeItem("user");
-		// localStorage.removeItem("token");
-		// dispatch({
-		// 	type: authConstants.LOGOUT_SUCCESS,
-		// });
+		dispatch({
+			type: authConstants.LOGOUT_REQUEST,
+		});
+		localStorage.removeItem("user");
+		localStorage.removeItem("token");
+		dispatch({
+			type: authConstants.LOGOUT_SUCCESS,
+		});
 
-		// <Redirect to='/' />;
-		// Swal.fire("Great..", "Logout Successful..!", "success");
-		// dispatch({
-		// 	type: cartConstants.RESET_CART,
-		// });
+		<Redirect to='/' />;
+		Swal.fire("Great..", "Logout Successful..!", "success");
+		dispatch({
+			type: cartConstants.RESET_CART,
+		});
 
-		const res = await axios.post("/logout");
-		if (res.status === 200) {
-			localStorage.clear();
-			dispatch({
-				type: authConstants.LOGOUT_SUCCESS,
-			});
-		} else {
-			dispatch({
-				type: authConstants.LOGOUT_FAILURE,
-				payload: { error: res.data.error },
-			});
-		}
+		// const res = await axios.post("/logout");
+		// if (res.status === 200) {
+		// 	localStorage.clear();
+		// 	dispatch({
+		// 		type: authConstants.LOGOUT_SUCCESS,
+		// 	});
+		// } else {
+		// 	dispatch({
+		// 		type: authConstants.LOGOUT_FAILURE,
+		// 		payload: { error: res.data.error },
+		// 	});
+		// }
 	};
 };
 
