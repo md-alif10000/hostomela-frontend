@@ -450,3 +450,13 @@ color:white
   display: none;
 }
 
+.giftbox{
+  position: fixed;
+ z-index: 2;
+ top:50%;
+ bottom: 50%;
+right: 5%;
+  height: 50px;
+  width: 50px;
+  border-radius: 20%;
+}

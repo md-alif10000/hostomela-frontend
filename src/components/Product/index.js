@@ -11,7 +11,7 @@ export default function Product(props) {
 					<div className='product font-14 bold-400'>
 						<div className='img__container'>
 							<img
-								src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8-d-b_nKnzVmD2H4qKlooalZX1Y2C4iiETw&usqp=CAU'
+								src={image}
 								alt=''
 							/>
 						</div>

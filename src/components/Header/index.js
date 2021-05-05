@@ -412,15 +412,15 @@ export default function Header(props) {
 						</IconButton>
 					</div>
 					<Divider />
-					
-						<List className='list'>
-							<h3 className='categoryHeader'>Categories</h3>
 
-							{category.categories.length > 0
-								? renderCategories(category.categories)
-								: null}
-						</List>
-				
+					<List className='list'>
+						<h3 className='categoryHeader'>Categories</h3>
+
+						{category.categories.length > 0
+							? renderCategories(category.categories)
+							: null}
+					</List>
+
 					<Divider />
 					<List className='font-18 t-primary'>
 						<Link to='/account' className='font-18 t-primary'>
@@ -440,19 +440,17 @@ export default function Header(props) {
 							</ListItem>
 						</Link>
 						{auth.authenticate ? (
-							<span>
-								<Link to='/account/orders' className='font-18 t-primary'>
-									<ListItem button>
-										<ListItemIcon>
-											<ViewListTwoToneIcon />
-										</ListItemIcon>
-										<ListItemText
-											primary={"My Orders"}
-											className='font-18 t-primary'
-										/>
-									</ListItem>
-								</Link>
-							</span>
+							<Link to='/account/orders' className='font-18 t-primary'>
+								<ListItem button>
+									<ListItemIcon>
+										<ViewListTwoToneIcon style={{ fontSize: "25px" }} />
+									</ListItemIcon>
+									<ListItemText
+										primary={<h4>Orders</h4>}
+										className='font-18 t-primary'
+									/>
+								</ListItem>
+							</Link>
 						) : null}
 
 						<div className='m-3 p-3'>

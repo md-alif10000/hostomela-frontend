@@ -18,6 +18,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Header from "../../../components/Header";
+import Product from "../../../components/Product";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -127,7 +128,7 @@ export default function ProductStore(props) {
 
 	return (
 		<>
-		<Header/>
+			<Header />
 			<div className='productPageContainer mt-70'>
 				{subCategories.length > 0 ? (
 					<span>
@@ -141,9 +142,9 @@ export default function ProductStore(props) {
 				{subCategories.length > 0 ? (
 					<Slider {...settings}>
 						{subCategories.map((category) => (
-							<Link
+							<a
 								className='m-3'
-								to={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
+								href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>
 								<div className='categoryLink'>
 									<img
 										className='rounded-circle rounded-category-image'
@@ -153,13 +154,13 @@ export default function ProductStore(props) {
 									<p className='font-12'>{category.name}</p>
 									{console.log(category)}
 								</div>
-							</Link>
+							</a>
 						))}
 					</Slider>
 				) : null}
 
 				<Grid container className={(classes.root, "mt-60")} spacing={2}>
-					{product.length > 0 ? (
+					{product.products.length > 0 ? (
 						<span>
 							{" "}
 							<h3 className='productCategoryHeader'>
@@ -170,56 +171,17 @@ export default function ProductStore(props) {
 							<Grid item xs={12}>
 								<Grid container justify='center' spacing={spacing}>
 									{product.products.map((product, index) => (
-										<Grid key={index} item>
-											<div className='paperContainer'>
-												<Link to={`/${product.slug}/${product._id}/p`}>
-													<Paper
-														className={classes.paper}
-														style={{
-															display: "flex",
-															flexDirection: "column",
-														}}>
-														<div style={{ backgroundColor: "#dbdbdb" }}>
-															<img
-																className='productImg'
-																src={generatePublicUrl(
-																	product.productPictures[0]
-																		? product.productPictures[0].img
-																		: null
-																)}
-															/>
-															<p
-																style={{
-																	color: "#cf9415",
-																	fontWeight: "bold",
-																}}>
-																<span>৳</span> {product.price}
-															</p>
-															<p style={{ fontSize: "13px" }}>
-																{product.name.slice(0, 20)}
-															</p>
-														</div>
-
-														<div>
-															<span className='cartIconContainer'>
-																<ShoppingCartIcon
-																	onClick={() => {
-																		const { _id, name, price } = product;
-																		const img = product.productPictures[0].img;
-																		dispatch(
-																			addToCart({ _id, name, price, img })
-																		);
-																		props.history.push("/cart");
-																	}}
-																	style={{ fontSize: "30" }}
-																	className='cartIcon'
-																/>
-															</span>
-														</div>
-													</Paper>
-												</Link>
-											</div>
-										</Grid>
+										<Product
+											name={product.name.slice(0, 20)}
+											rating={product.rating}
+											price={product.price}
+											image={generatePublicUrl(
+												product.productPictures[0]
+													? product.productPictures[0].image
+													: null
+											)}
+											link={`/${product.slug}/${product._id}/p`}
+										/>
 									))}
 								</Grid>
 							</Grid>{" "}

@@ -9,7 +9,13 @@ body{
 /* 
  background-image: linear-gradient(315deg, #c28581 0%, #e469fd 74%); 
 
+
 background-color:#bc52d1;  */
+
+
+
+
+
 background-color: #fff;
 }
 .flexRow{
@@ -151,3 +157,6 @@ background-color: #fff;
   .pointer{
     cursor: pointer;
   }
+
+
+  

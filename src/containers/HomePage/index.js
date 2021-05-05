@@ -10,6 +10,7 @@ import Footer from '../../components/Footer'
 import TopSlider from './topSlider'
 import Loader from '../../components/Loader'
 import  Fade  from 'react-reveal/Fade'
+import giftbox from "../../images/giftbox.png"
 
 
 
@@ -72,10 +73,12 @@ if (cart.updatingCart) {
 					<div className='gridCategoryContainer'>
 						<GridCategory />
 					</div>
+					<span className="giftbox-container">
+						<img src={giftbox} className="giftbox" />
+					</span>
 
 					<NowPlaying />
 				</div>
-	
 			</Layout>
 		);
 }
