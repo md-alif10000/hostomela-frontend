@@ -25,7 +25,6 @@ export default function CartItem(props) {
 	};
 
 	return (
-		<Fade left cascade>
 			<div className='productItem bold bold-600'>
 				<div className='product-image'>
 					<img src='https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png' />
@@ -60,6 +59,6 @@ export default function CartItem(props) {
 				</div>
 				<div className='product-line-price'>{qty * price}</div>
 			</div>
-		</Fade>
+
 	);
 }

@@ -67,7 +67,7 @@ backgroundImage: 'linear-gradient(315deg, #d4418e 0%, #0652c5 74%)',
 	},
 }));
 
-export default function () {
+export default function Register() {
 	const steps = ["Register info", "OTP verification"];
 	const classes = useStyles();
 	const [activeStep, setActiveStep] = React.useState(0);

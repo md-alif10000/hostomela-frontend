@@ -34,6 +34,7 @@ import { Link } from "react-router-dom";
 import SocialShare from "../../components/SocialShare";
 import DetailsBar from "./detailsBar";
 import Swal from "sweetalert2";
+import Header from "../../components/Header";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -166,7 +167,8 @@ export default function ProductDetails2(props) {
 	}
 
 	return (
-		<Layout>
+		<>
+		<Header/>
 			<div className='product-details-container '>
 				<section className='section product-detail  p-1 '>
 					<div className=' row bg-white p-3 '>
@@ -393,6 +395,7 @@ export default function ProductDetails2(props) {
 					}}
 				/>
 			</div>
-		</Layout>
+	
+		</>
 	);
 }

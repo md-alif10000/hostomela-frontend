@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../../components/Header";
-import {logout} from '../../actions/auth.action'
+import { logout, updateProfile } from "../../actions/auth.action";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getOrders } from "../../actions";
@@ -10,36 +10,169 @@ import LocalGroceryStoreIcon from "@material-ui/icons/LocalGroceryStore";
 import "./style.css";
 import { generatePublicUrl } from "../../urlconfig";
 import { Fade } from "react-reveal";
-
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
 
 export default function Account(props) {
+	const [updateModal, setupdateModal] = useState(false);
+
 	const auth = useSelector((state) => state.auth);
 	const user = useSelector((state) => state.user);
 	const cart = useSelector((state) => state.cart);
-	
+
+	const [name, setName] = useState(auth.user.name);
+	const [email, setEmail] = useState(auth.user.email);
+	const [phone, setPhone] = useState(auth.user.phone);
+	const [address, setAddress] = useState(auth.user.address);
+	const [image, setImage] = useState('')
+	const [profilePicture, setProfilePicture] = useState(
+		auth.user.profilePicture
+	);
+
 	const dp = auth.user.profilePicture
 		? auth.user.profilePicture.slice(0, 4) == "http"
 			? auth.user.profilePicture
 			: generatePublicUrl(auth.user.profilePicture)
 		: " https://bootdey.com/img/Content/avatar/avatar7.png";
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
-	const userLogout=()=>{
-		dispatch(logout())
-	}
+	const userLogout = () => {
+		dispatch(logout());
+	};
 
-		useEffect(() => {
-			dispatch(getOrders());
-	
-		}, []);
-
-
+	useEffect(() => {
+		dispatch(getOrders());
+	}, []);
 
 	if (!auth.authenticate) return <Redirect to='/login' />;
+
+	const update_profile = (e) => {
+		e.preventDefault();
+
+		console.log('Updating..........')
+	
+	const form=new FormData()
+
+	console.log(image)
+
+	form.append("name",name)
+	form.append("phone", phone);
+	form.append("address", address);
+	form.append("profilePicture",image)
+
+	dispatch(updateProfile(form))
+
+	setupdateModal(false)
+	
+	}
+
+
+	const imageHandler=(e)=>{
+		setImage(e.target.files[0])
+
+	}
+
+	const customStyles = {
+		content: {
+			top: "50%",
+			left: "50%",
+			right: "auto",
+			bottom: "auto",
+			marginRight: "-50%",
+			transform: "translate(-50%, -50%)",
+			maxWidth: "600px",
+		},
+	};
+
+	const profileUpdateModal = () => {
+		return (
+			<div style={{ maxWidth: "600px" }}>
+				<Modal
+					isOpen={updateModal}
+					onAfterOpen={() => setupdateModal(true)}
+					onRequestClose={() => setupdateModal(false)}
+					style={customStyles}
+					contentLabel='Edit your profile'>
+					<button className='btn btn-lg btn-danger'>cancel</button>
+
+					<div className='row text-center py-5'>
+						<h2>Update Profile</h2>
+						<div className='col-sm-12  text-center'>
+							<img
+								src={profilePicture}
+								alt='Admin'
+								className='rounded-circle m-3'
+								width='150'
+							/>
+							<div>
+								<input type='file' id='files' onChange={imageHandler} className='btn btn-primary' />
+							</div>
+						</div>
+
+						<div className='col-sm-12'>
+							<form>
+								<div className='input-container'>
+									<label className='label'>Your Full name</label>
+									<br />
+									<input
+										value={name}
+										onChange={(e) => setName(e.target.value)}
+										className='input'
+										type='text'
+										placeholder='Your Full Name'
+									/>
+								</div>
+								<div className='input-container'>
+									<label className='label'>Your Email</label>
+									<br />
+									<input
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+										className='input'
+										type='email'
+										readOnly
+										placeholder='Your email'
+									/>
+								</div>
+								<div className='input-container'>
+									<label className='label'>Phone Number</label>
+									<br />
+									<input
+										value={phone}
+										onChange={(e) => setPhone(e.target.value)}
+										className='input'
+										type='text'
+										placeholder='Your phone'
+									/>
+								</div>
+								<div className='input-container'>
+									<label className='label'>Address</label>
+									<br />
+									<input
+										value={address}
+										onChange={(e) => setAddress(e.target.value)}
+										className='input'
+										type='text'
+										placeholder='Your Address'
+									/>
+								</div>
+								<div className='btn-container'>
+									<button className='submit-btn' onClick={ update_profile}>
+										Update Profile
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</Modal>
+			</div>
+		);
+	};
 
 	return (
 		<>
 			<Header fixed></Header>
+			{profileUpdateModal()}
 			<div className='account-container mt-5'>
 				<div className='main-body  pt-3'>
 					<Fade bottom cascade>
@@ -62,9 +195,13 @@ export default function Account(props) {
 												<p className='text-muted font-size-sm'>
 													{auth.user.address}
 												</p>
-												<button className='btn btn-primary'>Follow</button>
 												<button
-													className='btn btn-outline-primary'
+													className='btn btn-primary mx-2'
+													onClick={() => setupdateModal(true)}>
+													Update
+												</button>
+												<button
+													className='btn btn-outline-primary mx-2'
 													onClick={userLogout}>
 													Logout
 												</button>

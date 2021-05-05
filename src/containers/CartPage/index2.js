@@ -102,7 +102,9 @@ export default function CartPage2(props) {
 	);
 
 	return (
-		<Layout>
+		<>
+		 {/* <Layout> */}
+		 <Header/>
 			<div className='mt-60 bold-600 bolder'>
 				<h1>Shopping Cart</h1>
 
@@ -128,6 +130,7 @@ export default function CartPage2(props) {
 				</div>
 			</div>
 			<TotalPrice />
-		</Layout>
+		 {/* </Layout> */}
+		</>
 	);
 }

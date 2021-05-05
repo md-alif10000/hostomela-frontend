@@ -17,6 +17,7 @@ import Loader from "../../../components/Loader";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Header from "../../../components/Header";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -126,6 +127,7 @@ export default function ProductStore(props) {
 
 	return (
 		<>
+		<Header/>
 			<div className='productPageContainer mt-70'>
 				{subCategories.length > 0 ? (
 					<span>
