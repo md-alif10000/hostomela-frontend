@@ -302,13 +302,14 @@ export const facebookLogin = (user) => {
 
 export const updateProfile = (form) => {
 	return async (dispatch) => {
-		console.log(form)
+		console.log(form);
 		dispatch({ type: authConstants.UPDATE_PROFILE_REQUEST });
 
 		try {
 			const res = await axios.post("/update-profile", form);
 
 			if (res.status == 201) {
+				localStorage.setItem("user", JSON.stringify(res.data.updatedUser));
 				dispatch({
 					type: authConstants.UPDATE_PROFILE_SUCCESS,
 					payload: res.data,

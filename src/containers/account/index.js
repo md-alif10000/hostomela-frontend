@@ -93,7 +93,7 @@ export default function Account(props) {
 					onRequestClose={() => setupdateModal(false)}
 					style={customStyles}
 					contentLabel='Edit your profile'>
-					<button className='btn btn-lg btn-danger'>cancel</button>
+					<button className='btn btn-lg btn-danger' onClick={()=>setupdateModal(false)} >cancel</button>
 
 					<div className='row text-center py-5'>
 						<h2>Update Profile</h2>

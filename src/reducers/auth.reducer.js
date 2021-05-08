@@ -16,6 +16,7 @@ const initState = {
 };
 
 export default (state = initState, action) => {
+	console.log(action.payload)
 	switch (action.type) {
 		case authConstants.LOGIN_REQUEST:
 			state = {
@@ -65,6 +66,20 @@ export default (state = initState, action) => {
 				authenticating: false,
 			};
 			break;
+			case authConstants.UPDATE_PROFILE_REQUEST:
+				return state={
+					...state,
+					loading:true,
+				}
+				break
+
+
+				case authConstants.UPDATE_PROFILE_SUCCESS:
+					return state={
+						...state,
+						loading:false,
+						user:action.payload.updatedUser
+					}
 	}
 
 	return state;
