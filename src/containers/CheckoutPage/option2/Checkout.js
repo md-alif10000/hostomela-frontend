@@ -127,6 +127,7 @@ export default function Checkout(props) {
 
 		const items = Object.keys(cart.cartItems).map((key) => ({
 			productId: key,
+			name:cart.cartItems[key].name,
 			payablePrice: cart.cartItems[key].price,
 			purchasedQty: cart.cartItems[key].qty,
 			color: cart.cartItems[key].color,

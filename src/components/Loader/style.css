@@ -1,0 +1,22 @@
+.loader_container_item {
+  width: 8rem;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  height: 8rem;
+  border-radius: 50%;
+  border-top: 0.4rem dotted #b643cd;;
+  border-left: 0.4rem dotted #b643cd;;
+  border-bottom: 0.4rem dotted #b643cd;;
+  border-right: 0.4rem solid transparent;
+  animation: loader 0.7s infinite;
+  margin-left:calc(50% - 4rem) ;
+  margin-top: 40%;
+  color: #b643cd;
+}
+
+@keyframes loader {
+  100% {
+    transform: rotate(360deg);
+  }
+}

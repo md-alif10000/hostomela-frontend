@@ -8,9 +8,11 @@ import {getProducts} from '../../actions/product.action'
 import NowPlaying from './slider'
 import Footer from '../../components/Footer'
 import TopSlider from './topSlider'
-import Loader from '../../components/Loader'
 import  Fade  from 'react-reveal/Fade'
 import giftbox from "../../images/giftbox.png"
+import Spinner from '../../components/Loader'
+import Product from '../../components/Product'
+import { generatePublicUrl } from '../../urlconfig'
 
 
 
@@ -22,6 +24,8 @@ const dispatch = useDispatch()
 
    const category = useSelector(state => state.category)
    const cart = useSelector(state => state.cart)
+   const {products} = useSelector(state => state.product)
+   const _products=products.slice(0,16)
 
 
 
@@ -30,7 +34,7 @@ useEffect(() => {
 
 	dispatch(getProducts())
 	if (category.loading) {
-		return <Loader />;
+		return <Spinner/>;
 	}
 	
 }, [])
@@ -39,14 +43,17 @@ useEffect(() => {
 useEffect(() => {
 	// dispatch(getProducts());
 	if (category.loading) {
-		return <Loader />;
+		return <Spinner/>;
 	}
 }, [category.loading]);
 
 
-if (cart.updatingCart) {
-	return <Loader />;
-}
+// if (cart.updatingCart) {
+// 	return <Spinner/>;
+// }
+
+
+
 
     
     return (
@@ -78,6 +85,25 @@ if (cart.updatingCart) {
 					</span>
 
 					<NowPlaying />
+
+					{
+						_products.map(product=>
+							<Product
+							name={product.name.slice(0, 20)}
+							rating={product.rating}
+							price={product.price}
+							image={generatePublicUrl(
+								product.productPictures[0]
+									? product.productPictures[0].image
+									: null
+							)}
+							link={`/${product.slug}/${product._id}/p`}
+							
+							/>)
+					}
+
+
+					
 				</div>
 			</Layout>
 		);
